@@ -1,0 +1,21 @@
+2024.4.4
+
+Tableau study Part.7
+
+함수 활용
+
+[DATEPART] 함수로 요일 만들 때 
+<요일>
+if DATEPART('weekday', [주문 일자])=1 THEN "SUN"
+ELSEIF DATEPART('weekday', [주문 일자])=2 THEN "MON"
+ELSEIF DATEPART('weekday', [주문 일자])=3 THEN "TUE"
+ELSEIF DATEPART('weekday', [주문 일자])=4 THEN "WED"
+ELSEIF DATEPART('weekday', [주문 일자])=5 THEN "THU"
+ELSEIF DATEPART('weekday', [주문 일자])=6 THEN "FRI"
+ELSE "SAT"
+END
+
+[DATEDIFF] 날짜 차이 알고싶을 때  
+<배송까지 걸린 기간> 
+DATEDIFF('day',[주문 일자],[배송 일자])
+
