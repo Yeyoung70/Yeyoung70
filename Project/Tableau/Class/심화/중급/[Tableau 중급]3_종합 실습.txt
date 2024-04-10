@@ -1,0 +1,40 @@
+2023-4-10
+
+Tableau 중급 영화 
+
+1)
+[영화명] Create - Group
+어벤져스 3개를 그룹으로 만들고 Incloud 'Other' 체크해서 나머지 다 기타로 포함 
+[영화명(그룹)] 더블클릭
+2)
+[관객수] 오른쪽 누르고 Default Prpperities - Aggragation - Average
+[관객수] 칼럼으로 지정 
+3)
+[영화명(그룹)] Create - Set  - [영화 set]
+[영화 set] 색상 마크로 생성 
+격자선 없애기 
+4)
+시크 복제해서 계산식 만들기 
+*영화 vs 영화(그룹)
+if [영화 Set] then [영화명] else [영화명 (group)] END
+[영화 vs 영화(그룹)] 로우로 끌고 오고 기존 영화명(그룹) 헤더는 꺼주기 
+5)
+두개의 시트로 대시보드 만들기 
+Horizontal Objects 시트에 놓고 시트두개 가로로 나열
+Dashboard - Actions - Add Actions - Change Set Values 
+Name은 영화 set action, Source Sheets중 기준이 되는 값만 체크 해주고 
+Select 체크해주고 Target Set을 천만영화 - 영화set 설정, Remove all values from set
+내림차순 정렬로 체크 
+
+-----------------------------------------------------------
+SET ACTION 활용하기 
+1. 어벤져스 시리즈와 나머지 영화들로 grouping
+2. 차원의 영화명(그룹) 더블-클릭
+3. 측정값의 관객수 집계 방식 변경, 열 선반으로 드래그
+4. 영화명(그룹)을 기준으로 set 만들기
+5. '영화 vs 영화(그룹)' 계산된 필드 만들기, 행 선반으로 
+6. 대시보드 만들기 
+7. 대시보드 작업 - 집합 값 변경(set action)
+
+=====================================
+
