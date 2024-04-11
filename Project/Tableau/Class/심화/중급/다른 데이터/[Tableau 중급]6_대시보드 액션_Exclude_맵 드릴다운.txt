@@ -1,0 +1,50 @@
+2023-4-11
+
+Tableau 중급 대시보드 액션 Exclude_맵 드릴다운하기
+
+1)
+[지역] 더블클릭 - Map그래프로 변경 - [지역] 레이블  - [인구수] 컬러
+Map - Background Layer - Washout(%) 100 / 해당 지도만 볼 수 있음
+시트명 -> 지역 
+복제 시트명 -> 시도 
+Detail[지역] '+' 누르면 [시도] 생성 되고, 기존의 Label[지역] 빼고, [시도] Label로 새로 끌어옴 
+복제 시트명 -> 시군구도 동일하게 진행  
+2)
+새시트에서 [시도] + [시군구] 삼각형 누르면 Create - Combined Field
+[시군구 및 시도(combained)] - Edit Combined Field - 시도 + 시군구 순으로 재정렬 - Separate members by - 띄어쓰기로 설정
+[시도+시군구] 드래그해서 로우로 [인구수] 드래그 칼럼 - 내림차순 정렬 - 마크 레이블 표시
+시트명 -> 시도+시군구 인구수
+3)
+대시보드 만들기 
+Horizontal Container - [지역] - 오른쪽에 [시도] - 오른쪽에 [시군구] - 인구수 색상범례 삭제 - 왼쪽 Size - Automatic
+Dashboard - Actions - Add filter - 지역->시도 - 지역만 체크 - Select - Target Sheets(시도만 체크) - Exclude all values
+Add filter - 시도->시군구 - 시도만 체크 - Select - Target Sheets(시군구만 체크) - Exclude all values
+Add filter - 시군구->시도+시군구 인구수 - 시군구만 체크 - Select - Target Sheets(!!!! back button 만들어서 다시진행)
+4)
+지역, 시도, 시군구 Hide Title 눌러서 제목을 숨겨야 깔끔하게 다 지워짐(오른쪽에 존재하긴함)
+대시보드 제목을 지역별 인구수로 넣고, Show dashboard title
+새 대시보드 만들고, (시도+시군구 인구수) 드래그해서 넣기
+새 워크시트 선택해서 [Back button] 만들기
+*Back button
+"back"
+마크를 Shape로 만들고 [Back button] Shape으로 드래그 - Shape 클릭 - Arrows - 뒤로가는버튼 선택
+시트명 -> Back button
+시도+시군구 인구수 대시보드에 Floating 누르고 (Back button) 가져오기 - Hide title - 모양 범례도 제거
+Dashboard - Actions - Add filter - home - back button만 체크 - Select - Target Sheets(지역별 인구수)만 체크) - Exclude
+Add filter - 시군구->시도+시군구 인구수 - 시군구만 체크 - Select - Target Sheets(시도+시군구 인구수) - Exclude all values
+5)
+Add filter - 시군구->시도+시군구 인구수 더블클릭 - Filter- Selected fields - Click to add - 시도 / 인구수 들어갔을 때 시도의 인구수 다 보여주기
+Add filter - 시군구->시도+시군구 인구수 더블클릭 - Target Sheets(Dashboard 선택) - backbutton 체크 해제 - Filter- Selected fields - Click to add - 시도
+/ 인구수의 백버튼 선택하면 다시 돌아갈 수 있음 
+
+-----------------------------------------------------------
+필터 액션 - Excloude 
+1. 지역 워크시트 만들기
+2. 지역 워크시트를 복사해 시도, 시군구 만들기
+3. 시도 + 시군구 결합된 필드 만들기
+4. 위 워크시트들을 포함한 대시보드 만들기
+5. 메뉴-대시보드-작업 추가-필터(Exclude)
+6. 제목 숨기기 활용하여 대시보드 정리하기
+7. 대상 필드 적용하여 대시보드 필터 작업 마무리
+=====================================
+
