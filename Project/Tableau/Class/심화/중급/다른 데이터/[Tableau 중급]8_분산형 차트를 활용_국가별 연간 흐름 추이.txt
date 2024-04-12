@@ -1,0 +1,33 @@
+2023-4-12
+
+Tableau 중급 8_분산형 차트를 활용_국가별 연간 흐름 추이
+
+1)
+[휴대폰 사용률]더블 클릭 [인터넷 사용률] 더블 클릭 - AVG, Percent로 설정
+원그래프로 변경 - [지역]filter - Asia만 선택 - [국가/지역] Color - All Memver add 
+2)
+로우[휴대폰 사용률] 복제 - 두번째[휴대폰 사용률] 라인그래프 - Color -> Detail로 변경
+Marks는 All 선택 - [연도] Dtail 마크에 끌어오기 - 첫번째[휴대폰 사용률] - [연도] Detail -> Color 
+- Color[연도] - Sort - Descending내림차순 정렬 - Dual Axis - Sinkronize Axis - Move mark to front
+그래프 하단의 null - Date Filtering - 오른쪽 축 Hide Header - 격자선, 0기준선 None  
+3)
+Analytics - Average Line - Table 추가
+Average Line - Edit - 점선라인 - Label(Custom) - <Computation>=<Value> / 평균선 x,y축 두개 다 적용 
+4)
+[국가/지역]filter - South Korea, China, Japan만 체크
+[국가/지역] 첫번째 Label  끌어다 놓고 - Most Recent - Allow labels to overlap other marks 체크 해제/ 켭치는 라벨은 위치 자동이동
+
+-----------------------------------------------------------
+분산형 차트를 활용해 국가별 연간 추이 살펴보기
+1. 분산형 차트 축 만들기
+   측정값의 [휴대폰 사용률], [인터넷 사용률] 더블 클릭
+2. 분산형 원 차트 만들기 (마크 '원')
+3. 분산형 원 차트를 복제해 분산형 라인 차트 만들기
+4. 이중 축 활용해 분산형 원+라인 차트 만들기
+   분산형 라인 차트 마크 안 [국가/지역] 속성은 세부 정보로 변경
+   분산형 원 차트 마크 안 [연도] 속성은 색상으로 변경
+   색상 연도 기준으로 색상 내림차순 정렬
+5. 필터, 마크를 활용해 보여주고 싶은 정보만 보여주기 
+
+=====================================
+
