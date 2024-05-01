@@ -1,0 +1,53 @@
+.Home {
+    padding-bottom: 60px;
+}
+
+.Home > .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    color: #dadada;
+}
+
+.Home > .header > .left {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.Home .icon {
+    /* 동그라미 만들기 */
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+    background-color: black;
+}
+
+.Home > .section {
+    margin: 1rem;
+    background-color: white;
+
+    border-radius: 10px;
+    border: .5px solid #dadada;
+}
+
+.Card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Card > .left {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.Card .icon {
+    /* 동그라미 만들기 */
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+
+    background-color: black;
+}
