@@ -1,0 +1,184 @@
+2024.5.23.
+
+자바스크립트 중급 강좌 #1 - 변수, 호이스팅, TDZ(Temporal Dead Zone)
+
+호이스팅 : 스코프 내부 어디서든 변수 선언은 최상위에 선언된 것처럼 행동 
+
+var로 선언한 모든 변수는 코드가 실제로 이동하지 않지만 상단으로 끌어올려져서
+인식함 -> 호이스팅(hoisting)
+
+let
+
+const
+
+[변수의 생성과정]
+1. 선언 단계
+2. 초기화 단계
+3. 할당 단계
+
+[스코프]
+var : 함수 스코프(funtion-scoped)
+let, const : 블록 스코프(block-scoped)
+함수, if문, for문, while문, try/catch문 등 
+
+~~> var는 이제 사용하지 않고 let, const를 권장
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #2 생성자 함수
+
+생성자 함수 - 비슷한 객체 여러개 만들고 싶을 때, 첫글자는 대문자로 하는게 관례
+ex. 붕어빵틀, 와플 팬  
+
+생성자 함수는 잊지말고 new를 붙여줘야함!
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #3 객체 메소드(Object methods), 계산된 프로퍼티(Computed property)
+
+a -> 변수
+user -> 객체 
+let a = 'age';
+const user = {
+    name : 'Mike',
+    age : 30 
+여기서 age 대신 [a]로 사용해도됨 => Computed property 
+
+
+객체에서 사용할 수 있는 메소드들
+[Methods] 
+Object.assign() : 객체 복제 
+Object.keys() : 키 배열 반환 
+Object.values() : 값 배열 반환
+Object.entries() : 키/값 배열 반환
+Object.fromEntries() : 키/값 배열을 객체로
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #4 심볼(Symbol) 
+
+[Symbol]
+유일한 식별자 만들 때 사용, 유일성 보장~
+const a = Symbol(); // new를 붙이지 않음!!
+
+Symbol.for() : 전역 심볼
+- 하나의 심볼만 보장받을 수 있음-> 없으면 만들고, 있으면 가져오기 때문
+- Symbol 함수는 매번 다른 Symbol값을 생성하지만, Symbol.for 메서드는 
+하나를 생성한 뒤 키를 통해 같은 Symbol을 공유 
+
+const id1 = Symbol.for('id');
+const id2 = Symbol.for('id');
+id1 === id2; <- true
+
+[keyfor]
+Symbol.keyFor(id1) // "id" keyfor를 넣어주면 생성할 때 적어주었던 이름을 알려줌 
+[description]
+const id = Symbol('id 입니다.');
+id.description; // "id 입니다." 전역심볼이 아니면 description 사용해서 이름 알 수 있음 
+[숨겨진 Symbol key 보는 법]
+방법1. Object.getOwnPropertySymbols(user); // [Symbol(id)] 심볼만 볼 수 있음 
+방법2. Reflect.ownKeys(user); // ["name", "age", Symbol(id)] 심볼을 포함한 객체의 모든 키를 볼 수 있음
+
+~~> 다른 개발자가 만들어 놓은 객체에 작업을 추가할 때,
+Symbol을 사용하면 다른 개발자의 코드에 영향을 미치지 않고 매서드 추가 가능함!
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #5 숫자, 수학 method(Number, Math)
+
+[toString()]
+실생활에서 사용하는 : 10진수 -> 2진수/16진수 
+
+let num = 10;
+num.toString(); // "10"
+num.toString(2); // "1010"  -> 2진수로 바꾸기
+
+let num2 = 255;
+num2.toString(16); // "ff"  -> 16진수로 바꾸기(색상) 
+
+[Math] 내장 객체 
+
+Math.ceil() : 올림(소수점 상관x)
+Math.floor() : 내림(소수점 상관x)
+Math.round() : 반올림
+
+소수점 자리수 
+방법1. Math.round(userRate * 100) / 100 // 30.12 -> 소수점 둘째자리까지 표현하고 싶을 때
+100으로 곱한뒤 반올림 해주고, 다시 100으로 나누면 됨 
+
+방법2. 변수명.toFixed(2); 소수점 둘째자리 까지 표현(셋째 자리에서 반올림)
+변수명.toFixed(0); "숫자" -> 정수로 표현 가능
+변수명.toFixed(6); "숫자.소수점6자리" -> 소수점 6자리 표현 가능   
+--> 큰 단점은 toFixed가 문자열로 반환한다는 것! 그래서,
+Number(변수명.toFixed(숫자))  -> 다시 숫자로 반환해줘야함
+
+
+[isNaN] NaN인지 판단해줌 
+let x = Number('x'); // NaN
+
+x == NaN // false
+x === NaN // false  
+NaN == NaN // false
+
+isNaN(x) // true
+isNaN(3) // false 
+
+--> isNaN만이 판단 해줌 
+
+[parseInt()]
+문자+숫자도 반환해줌 
+
+let margin = '10px';
+
+parseInt(margin); //10
+Number(margin); // NaN 
+
+let redColor = 'f3'
+parseInt(redColor); // NaN -> 하지만 문자가 먼저 오면 NaN
+방법 있음!
+let redColor = 'f3';
+parseInt(redColor, 16); // 243 -> 16진수 => 10진수로 바꿔줌
+
+parseInt('11', 2) // 3 -> 2진수 => 16진수로 바꿔줌 
+
+[parseFloat()]
+parseInt와 유사하지만 부동소수점까지 반환! 
+
+[Math.random()]
+0~1 사이의 무작위 숫자 생성 
+
+만일 1~100사이 임의의 숫자를 뽑고 싶다면?
+Math.floor(Math.random()*100)+1 => 100은 최대 기준임 5까지 하고싶으면 5로 수정하면 됨
+
+[Math.max(), Math.min()]
+()안의 숫자들 중 최대값, 최소값 구할 수 있음 
+
+[Math.abs()] 절대값 구해줌 
+
+[Math.pow(n,m)] n의 m승의 값 
+Math.pow(2, 10); // 1024
+
+[Math.sqrt()] 제곱근(루트)
+Math.sqrt(16) // 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
