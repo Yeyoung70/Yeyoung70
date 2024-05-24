@@ -157,14 +157,219 @@ Math.pow(2, 10); // 1024
 [Math.sqrt()] 제곱근(루트)
 Math.sqrt(16) // 4
 
+------------------------------------------------------
+자바스크립트 중급 강좌 #6 문자열 메서드(String Methods)
+
+let desc = `오늘은 맑고 화창한 
+날씨가 계속 되겠습니다.
+`
+- 문자열 여러줄 사용시 `` 백팁을 사용하는 것이 줄바꿈에도 좋다
+
+[.length] 문자열 길이 
+
+[toUpperCase(), toLowerCase()] 영어 대소문자 변경 
+
+[str.indexOf(text)]
+: 문자가 몇번째 인덱스인지 알려줌
+
+해당 문자가 없으면 -> -1 반환
+문자가 길어도 첫글자의 인덱스만 반환 
+
+[str.slice(n, m)] 
+: python과 유사, n부터 m-1까지 반환 
+
+[str.substring(n, m)]
+: n과 m사이 문자열 반환 (n,m) (m,n) 결과는 같음 
+
+[str.substr(n, m)]
+: n부터 시작해서 m개를 가져옴
+
+[str.trim()]
+: 앞 뒤 공백 제거 
+ 
+[str.repreat(n)] 
+: 문자열 n번 반복
 
 
+------------------------------------------------------
+자바스크립트 중급 강좌 #7 배열 메서드(Array Methods)
+
+push() : 뒤에 삽입
+pop() : 뒤에 삭제
+unshift() : 앞에 삽입
+shift() : 앞에 삭제 
+ 
+[arr.splice(n, m)] 
+: 특정 요소 지움 (n부터 m개를 지움) 
+
+[arr.splice(n, m, x)] 
+: 특정 요소 지우고 추가 (n부터 m개를 지우고 x추가)
+
+[arr.splice()] 
+: 삭제된 요소 반환 
+
+[arr.slice(n, m)]
+: n부터 m까지 반환 
+만약에 arr.slice() 이면 배열 전체 반환 
+
+[arr.concat(arr2, arr3 ...)]
+: 합쳐서 새배열 반환 
+
+[arr.forEach(fn)] 
+: 배열 반복 
+
+[arr.indexOf / arr.lastIndexOf]
+: 해당요소의 인덱스를 반환 (3, 3) 값이 3이고, 3번 인덱스부터 탐색
+lastIndexOf는 끝에서 부터 탐색
+
+[arr.includes()]
+: 포함하는지 확인 true, false로 반환 
+
+[arr.find(fn) / arr.findIndex(fn)]
+indexOf처럼 찾는다는건 동일하지만 복잡한 연산이 가능하도록 함수를 연결함
+주의 - 첫번째 true값만 반환하고 끝냄!  만일 없으면 undifined를 반환함
+
+[arr.filter(fn)]
+: 만족하는 모든 요소를 배열로 반환 
+
+[arr.reverse()]
+: 역순으로 재정렬 (게시판에 최근글로 정렬할 때 자주 사용)
+
+[arr.map(fn)]
+: 함수를 받아 특정 기능을 시행하고 새로운 배열을 반환
+☆ 실무에서 많이 사용 ☆
+
+[arr.join()] 
+: 배열을 합쳐서 문자열을 만들 때 사용
+arr.join() -> 공백으로 주면 , 쉼표로 구분돼서 합쳐짐
+arr.join(" ")  -> 공백을 주면 공백으로 구분돼서 합쳐짐 
+
+[arr.split()]
+: 반대로 문자열을 (쉼포 기준으로) 나눠서 배열로 만들어줌 
+
+[arr.isArray()]
+: 배열인지 아닌지 알고싶을 때
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #8 배열 메서드2(sort, reduce)
+
+[arr.sort()]
+: 배열 재정렬, 배열 자체가 변경되니 주의 
+
+<Lodash 사용>
+유용한 기능을 모아놓은 Lodash 라이브러리 사용 
+
+_.sortBy(arr); 
 
 
+[arr.reduce()]
+
+let arr = [1, 2, 3, 4, 5];
+
+let result = 0;
+arr.forEach(num) => {
+ result += num;
+});
+console.log(result);
+
+-> for문 돌리는 파이썬 같음
+
+(reduce 사용법)
+const result = arr.reduce( (prev, cur) => {
+    return prev + cur;
+}, 0) 
+여기서 0은 초기값 let result = 0 같은 것 
+
+ex.)
+let result = userList.reduce((prev, cur) => {
+    if (cur.age > 19) {
+    prev.push(cur.name);
+    }
+}, []);
+console.log(result);
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #9 구조 분해 할당 (Destructuring assignment)
+
+Destructuring assignment
+: 구조 분해 할당 구문은 배열이나 객체의 속성을 분해해서 
+그 값을 변수에 담을 수 있게 하는 표현식
+
+[배열 구조 분해]
+let users = ['Mike', 'Tom', 'Jane'];
+let [user1, user2, user3] = users;
+
+// ler user1 = users[0]; 
+console,log(user1); // 'Mike'
+
+[배열 구조 분해 : 기본값]
+
+값이 없으면 undefined로 정의 
+-> 이럴 때 기본값을 주면 오류가 나지 않음
+
+[배열 구조 분해 : 일부 반환값 무시]
+let [user1, ,user2] = ['Mike', 'Tom', 'Jane', 'Tony'];
+-> 여기서 Tom과 Tony는 무시됨
+
+[배열 구조 분해 : 바꿔치기]
+[a, b] = [b, a];
+-> 임시변수 c 없이 편하게 가능
+
+[객체 구조 분해]
+let {name, age} = user;
+let {age, name} = user; 
+
+[객체 구조 분해 : 새로운 변수 이름으로 할당]
+let {name, age} = user;
+   -> let {name: userName, age: userAge} = user;
+console.log(userName); 
+
+[객체 구조 분해 : 기본값]
+let {name, age, gender} = user; 
+   -> 여기서 gender는 undefined이고, 이럴때 기본값을 사용해주면 됨 
+   -> let {name, age, gener = 'male'} = user; 
+   -> undefined일 때만 male이 나옴
 
 
+------------------------------------------------------
+자바스크립트 중급 강좌 #10 나머지 매개변수, 전개구문 (Rest parameters, Spread syntax)
 
+[인수 전달]
+함수에 값을 넘기는 인수
+function showName(name) {
+    console.log(name);
+}
+showName('Mike');
+showName('Mike', 'Tom');
+showName(); 
+  -> 제한없이 다 넘길 수 있음
 
+<함수에 인수를 넘기는 방법 >
+1. arguements
+    : 함수 내에서 이용가능한 지역 변수
+      length / index 
+      Array 형태의 객체 
+2. 나머지 매개변수 
+
+[나머지 매개변수]
+{...변수명}
+제일 뒤에 위치해야함
+
+[전개 구문 (Spread syntax) : 배열]
+let result = [...arr1, ...arr2]; 
+let result = [0, ...arr1, ...arr2, 7, 8, 9];
+
+[전개 구문 : 객체]
+객체도 사용가능함 
+
+[전개 구문 : 복제]
+별개로 복제도 가능함 
+
+user = {
+    ...user,
+    ...info,
+     skills : [...fe, ...len]
+};
 
 
 
