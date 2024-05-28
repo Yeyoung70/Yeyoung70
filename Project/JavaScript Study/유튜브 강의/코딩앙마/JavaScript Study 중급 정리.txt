@@ -421,3 +421,157 @@ call은 일반적인 함수와 마찬가지로 매개변수를 직접 받지만,
 ------------------------------------------------------
 자바스크립트 중급 강좌 #14 상속, 프로토타입(Prototype)
 
+*상속의 개념 
+
+*프로토타입 체인 
+Prototype Chain
+-> 키와 값이 없으면 상위 변수의 키 값을 찾고, 매서드를 사용함
+
+__proto__   -> 프로토 타입 
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #15 클래스(Class)
+
+Class : ES6에 추가된 스펙 
+
+class는 new 없이 실행할 수 없음 
+class는 for in 문에서 제외됨 
+
+[Class 상속]
+
+[Class 메소드 오버라이딩(method overriding)]
+부모 클래스에 정의된 메소드를 사용함 
+
+[Class 오버라이딩(overriding)]
+constructor()가 없으면 이부분이 있는 것처럼 행동함
+자식 생성자는 무조건 부모 생성자를 호출해야함!
+super(); 항상 수퍼를 이용해서 호출해주고 this.property로 할당해줘야함!
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #16 프로미스(Promise)
+
+상점에 가서 물건을 사야할 때, 
+물건이 완성되거나 실패함을 손님에게 알릴 때, 
+-> 이러한 것을 프로미스라고 부름 
+
+
+const pr = new Promise( (resolve, reject) => {
+    // code
+} );
+어떤 일이 완료된 이후 실행되는 함수를 콜백 (callback)함수라 부름 
+
+
+뎁스가 깊어지면서 생기는 
+콜백 헬 
+콜백 지옥
+
+~~~
+// Promise chaining 프로미스 체이닝/ 프로미스가 연결 되어있는 것 
+const f1 = (message) => {
+  console.log(message);
+  return new Promise( (res, rej) => {
+    setTimeout( () => {
+      res("1번 주문 완료");
+    }, 3000);
+  });
+};
+
+...
+...
+
+console,log("시작");
+f1()
+  .then( (res) => f2(res) )
+  .then( (res) => f3(res) )
+  .then( (res) => console.log(res) )
+  .catch(console,log)
+  .finally( () => {
+    console.log("끝");
+  });
+~~~
+
+// Promise.all 하나의 정보라도 누락될 경우 다 안보여줘야하는 상황에서 사용 
+Promise.all( [f1(), f2(), f3()] ).then( (res) => {
+    console.log(res);
+} );
+
+
+
+// Promise.race 하나라도 1등으로 완료되면 코드 끝냄
+Promise.race( [f1(), f2(), f3()] ).then( (res) => {
+    console.log(res);
+} );
+
+
+------------------------------------------------------
+자바스크립트 중급 강좌 #17 async, await 
+
+async, await를 사용하면 promise의 .then 메서드를 체인형식으로 호출하는 것 보다 가독성이 좋음!
+
+[async]
+async function 함수앞에 async를 두면 항상 Promise를 반환함
+-> 그래서 함수를 호출하고 .then을 사용할 수 있음 
+-> return에 값을 넣어준다면 그 값이 반환됨 
+-> 함수 내부에서 예외가 발생하면 rejected 상태의 Promise가 반환됨 
+
+[await]
+async function showName() {
+  const result = await getName("Mike");
+  console.log(result);
+}
+showName();
+-> await 키워드는 async 함수 내부에서 사용됨
+
+~~~ 이전의 Promise문을 가져와서 async await으로 바꿔주면 ~~~
+f1()
+  .then( (res) => f2(res) )
+  .then( (res) => f3(res) )
+  .then( (res) => console.log(res) )
+  .catch(console,log)
+  .finally( () => {
+    console.log("끝");
+  });
+
+~>
+
+async function order() {
+  const result1 = await f1();
+  const result2 = await f2(result1);
+  const result3 = await f3(result2);
+  console.log(result3)
+  console.log('종료')
+};
+오류 발생시 try catch문을 사용하고 배열로 함수 사용 
+try { 
+  const result = await Promise.all( [f1(), f2(), f3()] );
+  console.log(result);
+  } catch (e) {
+    console.log(e);
+  }
+  console.log("종료");
+}
+order();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
