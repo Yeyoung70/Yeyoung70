@@ -553,22 +553,82 @@ try {
 order();
 
 
+------------------------------------------------------
+자바스크립트 중급 강좌 #18 Generator
+
+[Generator]
+함수의 실행을 멈췄다가 재개할 수 있는 기능 
+Generator가 가지고 있는 매서드 
+
+[next()]
+// 코드
+const a = fn();
+
+a.next();
+  -> 2
+  -> {value: 2, done: false} 
+
+가장 가까운 값을 만날 때까지 실행되고 데이터 객체를 반환   
+
+[return()]
+a.return('END);
+  -> {value: "END", done: true}
+바로 done의 속성값이 true가 되고 다음 값을 반환하지 않음
+
+[throw()]
+a.throw(new Error('err')
+  -> Error: err  at <anonymous>:1:9
+에러코드가 찍히고 done은 ture가 되고 다음 값을 반환하지 않고 끝남
+
+[Generator 설명]
+
+iterable
+- Symbol.iterator 메서드가 있다.
+- Symbol.iterator는 iterator를 반환해야 한다.
+
+iterator
+- next 메서드를 가진다.
+- next 메서드는 value와 done 속성을 가진 객체를 반환한다.
+- 작업이 끝나면 done은 true가 된다. 
+
+next()에 인수 전달
+값을 미리 만들어 두지 않아서 효율적임 
+제너레이터는 다른 작업을 하다가 다시 돌아와서 next() 해주면 진행이 멈췃던 부분부터 이어서 실행 
 
 
+------------------------------------------------------
+ES2021 자바스크립트에 추가된 새로운 기능들을 알아보자!
 
+[String.replaceall]
+기존의 replace는 첫글자만 바꿔주거나 //g 를 붙여야만 전체가 변경이 가능한데,
+repalceall 모든 문자열을 편하게 변동 가능함 
 
+[Promise.any]
+Promise.race 
+: 프로미스 중에 가장 먼저 완료된 결과값으로 이행/거부
+Promise.any
+: 프로미스 중에 가장 먼저 이행된 객체 반환 
 
+[Logical assignment Opetators] 논리할당연산자 
+num = num || 0; 
+  => num ||= 0; 
 
+name &&= 'Hello ${name}';
 
+name ??= "Mike"
+?? => Nullish coalescing operator : null 병합 연산자 
 
+|| 와 ?? 의 차이점 
+|| : 앞의 값이 falsy이면 뒤의 값 
+?? : 앞의 값이 null이나 undefined이면 뒤의 값 
 
+[금액 구분자]
+1,000,000,000(10억)을 인식할 수 없고 1_000_000_000는 사용가능 
 
-
-
-
-
-
-
+[WeakRef]
+WeakRef = weak reference
+약한 참조 = 가비지 컬렉터 대상 
+언제든지 가비지 컬렉터가 객체를 없애고 메모리를 회수할 수 있음!
 
 
 
