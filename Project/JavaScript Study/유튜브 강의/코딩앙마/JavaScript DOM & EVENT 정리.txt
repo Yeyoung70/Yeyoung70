@@ -1,0 +1,47 @@
+2024.5.30
+자바스크립트 DOM & EVENT
+
+
+=====================================
+#1 - 노드에 접근하기
+
+DOM (Document Object Model)
+: html 문서의 각요소들을 트리형식으로 보여줌 
+
+트리에서 하나의 객체를 노드라고 부름  
+
+=====================================
+#2 - 부모, 자식, 형제 노드
+
+
+           모든 모드          요소 노드만 
+-------------------------------------------
+부모    parentNode       parentElement
+
+자식    childNodes            children
+          firstChild         firstElementChild
+          lastChild          lastElementChild
+
+형제 previousSibling   previousElementSibling
+         nextSibling        nextElementSibling
+
+
+=====================================
+#3 - 노드 생성, 추가, 복제, 삭제
+
+[nodeValue]
+생성
+
+[textContent]
+
+[innerHTML]
+
+[.createElemet()]
+[.createTextNode()]
+[appendChild()]
+
+[insertBefore()]
+
+[cloneNode()]
+
+[removeChild()]
