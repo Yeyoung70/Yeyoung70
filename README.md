@@ -81,7 +81,7 @@
 <br>
 <br>
 <div align="center">
-	<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yeyoung70&layout=compact">
+	<!-- <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yeyoung70&layout=compact"> -->
   <br>
   <br>
   <img src="https://github-readme-stats.vercel.app/api?username=yeyoung70&show_icons=true">
