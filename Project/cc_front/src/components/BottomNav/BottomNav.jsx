@@ -4,28 +4,30 @@ import { Link } from "react-router-dom";
 
 import "./BottomNav.css";
 
-import { FaHouse } from "react-icons/fa6";
+import { GoHomeFill } from "react-icons/go";
+import { IoChatboxOutline, IoSearchOutline } from "react-icons/io5";
+import { AiOutlinePlusSquare } from "react-icons/ai";
+import { BsPersonCircle } from "react-icons/bs";
 
 const BottomNav = () => {
   return (
     <div className="bottom-nav">
-      <Link to={"/"}>
+      <Link to={"/home"}>
         <span>
-          <FaHouse size={24} />
+          <GoHomeFill size={27} />
         </span>
-        <span>홈</span>
       </Link>
       <Link to={"/search"}>
-        <span>검색</span>
+        <IoSearchOutline size={28} />
       </Link>
       <Link to={"/plus"}>
-        <span>판매/구매</span>
+        <AiOutlinePlusSquare size={28} />
       </Link>
       <Link to={"/deal"}>
-        <span>거래</span>
+        <IoChatboxOutline size={28} />
       </Link>
       <Link to={"/my"}>
-        <span>마이페이지</span>
+        <BsPersonCircle size={25} />
       </Link>
     </div>
   );

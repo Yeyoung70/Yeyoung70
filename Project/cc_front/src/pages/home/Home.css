@@ -1,0 +1,28 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 100%;
+  background-color: #ffffff;
+  margin-top: 23px;
+  margin-bottom: 5rem;
+  padding-bottom: 80px;
+}
+
+.Home .header {
+  display: flex;
+  margin: 1rem;
+}
+
+.Home .cartegory-sec {
+  display: flex;
+  margin: 1rem;
+
+}
+
+.Home .best-sec {
+  display: flex;
+  margin: 1rem;
+  text-align: left;
+}

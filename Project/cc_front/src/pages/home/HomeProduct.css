@@ -1,0 +1,27 @@
+.HomeProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 100%;
+  background-color: #ffffff;
+  margin-top: 23px;
+  margin-bottom: 5rem;
+  padding-bottom: 80px;
+}
+
+.HomeProduct .header-sec {
+  display: flex;
+
+  margin: 0.5rem;
+} 
+
+.HomeProduct .photo-sec {
+  background-color: bisque;
+  margin: 1rem;
+  padding: 10rem;
+}
+
+.HomeProduct .item-sec .item {
+  display: flex;
+}
