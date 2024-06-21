@@ -10,14 +10,14 @@ import { login } from "../../api/auth";
 
 const Login = () => {
   // const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await login(username, password);
+      const response = await login(email, password);
       console.log("Login successful:", response);
       navigate("/home");
     } catch (error) {
@@ -38,13 +38,13 @@ const Login = () => {
       <div className="sign-sec">
         <form className="form" onSubmit={handleLoginSubmit}>
           <input
-            type="username"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            aria-label="Username"
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-label="email"
             className="input-field"
-            autoComplete="username"
+            autoComplete="email"
           />
           <input
             type="password"

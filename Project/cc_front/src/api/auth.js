@@ -34,9 +34,9 @@ export const signUp = async (
 };
 
 // 로그인 API
-export const login = async (username, password) => {
+export const login = async (email, password) => {
   const requestData = {
-    username,
+    email,
     password,
   };
   console.log("Login Request Data:", requestData); // 요청 데이터 출력

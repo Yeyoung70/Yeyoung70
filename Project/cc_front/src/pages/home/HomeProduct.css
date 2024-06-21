@@ -5,23 +5,58 @@
   /* justify-content: center; */
   height: 100%;
   background-color: #ffffff;
+
   margin-top: 23px;
-  margin-bottom: 5rem;
-  padding-bottom: 80px;
+  padding: 0 1rem;
 }
 
 .HomeProduct .header-sec {
-  display: flex;
-
-  margin: 0.5rem;
-} 
-
-.HomeProduct .photo-sec {
-  background-color: bisque;
-  margin: 1rem;
-  padding: 10rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+    margin: 0.5rem 0;
 }
 
-.HomeProduct .item-sec .item {
+.HomeProduct .title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.HomeProduct .line {
+  width: 390px; /* 선의 길이 */
+  height: 1px; /* 선의 두께 */
+  background-color: #e4e4e4;
+}
+
+.HomeProduct .photo-sec {
   display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.HomeProduct .card {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.HomeProduct .product-sec {
+  margin: 1rem;
+}
+
+.HomeProduct .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+}
+
+.HomeProduct .interest {
+  color: #ff1c8e;
+}
+
+.HomeProduct .name {
+  font-size: 22px;
+  font-weight: 600;
+}
+.HomeProduct .nickname {
+  color: #d2d2d2;
 }

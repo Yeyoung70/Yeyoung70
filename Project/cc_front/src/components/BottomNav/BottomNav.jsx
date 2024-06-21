@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "./BottomNav.css";
 
@@ -10,24 +10,34 @@ import { AiOutlinePlusSquare } from "react-icons/ai";
 import { BsPersonCircle } from "react-icons/bs";
 
 const BottomNav = () => {
+  const location = useLocation();
+
   return (
     <div className="bottom-nav">
       <Link to={"/home"}>
-        <span>
-          <GoHomeFill size={27} />
+        <span className={location.pathname === "/home" ? "active" : ""}>
+          <GoHomeFill size={28} />
         </span>
       </Link>
       <Link to={"/search"}>
-        <IoSearchOutline size={28} />
+        <span className={location.pathname === "/search" ? "active" : ""}>
+          <IoSearchOutline size={28} />
+        </span>
       </Link>
       <Link to={"/plus"}>
-        <AiOutlinePlusSquare size={28} />
+        <span className={location.pathname === "/plus" ? "active" : ""}>
+          <AiOutlinePlusSquare size={28} />
+        </span>
       </Link>
       <Link to={"/deal"}>
-        <IoChatboxOutline size={28} />
+        <span className={location.pathname === "/deal" ? "active" : ""}>
+          <IoChatboxOutline size={28} />
+        </span>
       </Link>
       <Link to={"/my"}>
-        <BsPersonCircle size={25} />
+        <span className={location.pathname === "/my" ? "active" : ""}>
+          <BsPersonCircle size={25} />
+        </span>
       </Link>
     </div>
   );

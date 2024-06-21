@@ -13,8 +13,7 @@
   max-width: 480px;
   padding-bottom: 0.25rem;
   background-color: #fefefe;
-  /* border-top-left-radius: 10px;
-  border-top-right-radius: 10px; */
+
   box-sizing: border-box;
   border-top: 1px solid #d8d8d8;
 
@@ -25,4 +24,12 @@
    padding: 0 0.4rem; /* vertical, horizontal */
    padding-bottom: 1.2rem;
 
+}
+
+.bottom-nav span {
+  color: #1d1d1d; /* 기본 아이콘 색상 */
+}
+
+.bottom-nav span.active {
+  color: #8f0456; /* 활성화된 아이콘 색상 */
 }
