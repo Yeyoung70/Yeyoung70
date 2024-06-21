@@ -10,12 +10,17 @@ import { IoIosArrowBack } from "react-icons/io";
 import { GoBell } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { BiSolidHeartSquare } from "react-icons/bi";
+import QuestButton from "../../components/Button/QuestButton";
 
 const HomeProduct = () => {
   const navigate = useNavigate();
 
   const handleCardSecClick = () => {
     navigate(`/home`);
+  };
+
+  const handleQuestClick = () => {
+    navigate(`/chat`);
   };
 
   return (
@@ -45,11 +50,13 @@ const HomeProduct = () => {
         </div>
 
         <div className="nickname">@nickname</div>
-        <div className="price">가격</div>
-        <div className="sentence">소개글</div>
+        <div className="price">45,000 원</div>
+        <div className="sentence">거의 새상품이며 택배거래만 가능해요.</div>
       </div>
       <div className="question-sec">
-        <div className="button">버튼</div>
+        <div className="button">
+          <QuestButton onClick={handleQuestClick} />
+        </div>
         <div className="write">설명글</div>
       </div>
       <BottomNav />

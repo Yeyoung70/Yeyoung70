@@ -2,10 +2,13 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Plus from "../pages/Plus";
+
 import Deal from "../pages/Deal";
+import Chat from "../pages/deal/Chat";
+
 import My from "../pages/My";
 import Home from "../pages/home/Home";
-import Search from "../pages/Search";
+import Search from "../pages/search/Search";
 
 import Login from "../pages/login/Login";
 import Start from "../pages/login/Start";
@@ -26,7 +29,10 @@ const AllRoutes = () => {
 
       <Route path="/search" element={<Search />} />
       <Route path="/plus" element={<Plus />} />
+
       <Route path="/deal" element={<Deal />} />
+      <Route path="/chat" element={<Chat />} />
+
       <Route path="/my" element={<My />} />
     </Routes>
   );
