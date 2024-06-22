@@ -3,9 +3,9 @@
   flex-direction: column;
   /* align-items: center; */
 
-  height: 400px;
+  height: 100%;
   background-color: #ffffff;
-  margin-top: 40px;
+  margin-top: 5px;
   padding: 0 1rem;
 }
 
@@ -15,7 +15,7 @@
   justify-content: space-between;
 
   padding: 0 0.8rem;
-  margin: 0.5rem 0;
+  margin-top : 0.5rem;
 
   height: 42px;
   background-color: #f4f4f4;
@@ -23,42 +23,10 @@
   color: #a6a6a6;
 }
 
-.Search .category-sec .first {
-  display: flex;
-  justify-content: space-between;
-
-  padding: 0.5rem;
-}
-
-.Search .category-sec .line {
-  width: 100%; /* 선의 길이 */
-  height: 2px; /* 선의 두께 */
-  background-color: #e4e4e4;
-}
 
 .Search .second {
   display: flex;
   justify-content: space-around;
   
   padding: 0.8rem 0;
-}
-
-.Search .clothes {
-  display: flex;
-  align-items: center;
-
-  padding: 0 0.8rem;
-
-  background-color: #f6f6f6;
-  color: #8f0456;
-  border-radius: 15px;
-  height: 32px;
-
-  font-weight: 500;
-}
-
-.Search .line {
-  width: 100%; /* 선의 길이 */
-  height: 10px; /* 선의 두께 */
-  background-color: #e4e4e4;
 }

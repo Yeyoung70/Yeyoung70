@@ -1,0 +1,51 @@
+.CategoryTabs {
+  /* padding: 16px; */
+}
+
+.CategoryTabs .sticky-tabs {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+
+}
+
+.CategoryTabs .category-buttons {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 100%; /* 부모 컨테이너에 맞추기 */
+}
+
+.CategoryTabs .filter-buttons {
+  margin: 12px 0;
+}
+
+.CategoryTabs .line {
+  width: 100%;
+  height: 8px;
+  background-color: #eeeeee;
+}
+
+.CategoryTabs .filter-group {
+  margin-bottom: 16px;
+}
+
+.CategoryTabs .filter-group h4 {
+  margin: 0 0 8px;
+}
+
+.CategoryTabs .content {
+  padding: 16px;
+}
+
+.CategoryTabs .post {
+  margin: 8px 0;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

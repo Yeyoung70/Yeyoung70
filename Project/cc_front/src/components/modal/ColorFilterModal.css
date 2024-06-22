@@ -1,0 +1,37 @@
+.color-sample {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .color-sample span {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #000;
+  }
+  
+  .color-sample.selected {
+    border: 2px solid #000;
+  }
+  
+  .apply-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .apply-button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./HomeProduct.css";
-import Top from "../../components/top/Top";
 import BottomNav from "../../components/BottomNav/BottomNav";
 
 import card from "../../assets/card/card_sample.png";
@@ -25,7 +24,6 @@ const HomeProduct = () => {
 
   return (
     <div className="HomeProduct">
-      <Top />
       <div className="header-sec">
         <div className="back" onClick={handleCardSecClick}>
           <IoIosArrowBack size={26} />
