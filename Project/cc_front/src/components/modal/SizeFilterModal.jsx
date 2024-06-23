@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import FilterButton from '../Button/category/FilterButton';
 import './Modal.css';
+import CheckButton from "../Button/CheckButton";
+
+import { LuPlus } from "react-icons/lu";
 
 const SizeFilterModal = ({ isOpen, onClose, sizes, activeFilters, onApply }) => {
     const [selectedSizes, setSelectedSizes] = useState(activeFilters.size || []);
@@ -23,8 +26,12 @@ const SizeFilterModal = ({ isOpen, onClose, sizes, activeFilters, onApply }) => 
     return (
       <div className="modal-overlay">
         <div className="modal-content">
-          <button className="modal-close" onClick={onClose}>X</button>
-          <h4>Select Size</h4>
+        <button className='cancel' onClick={onClose}>
+          <LuPlus size={30}/>
+        </button>
+          <div className='modal-title'>사이즈를 선택하세요</div>
+          <div className='line'></div>
+
           <div className="size-samples">
             {sizes.map((size) => (
               <FilterButton
@@ -35,7 +42,9 @@ const SizeFilterModal = ({ isOpen, onClose, sizes, activeFilters, onApply }) => 
               />
             ))}
           </div>
-          <button className="apply-button" onClick={handleApply}>Apply</button>
+          <div className='modal-button' onClick={handleApply}>
+            <CheckButton />
+          </div>
         </div>
       </div>
     );

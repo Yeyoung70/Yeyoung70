@@ -21,7 +21,6 @@ const Search = () => {
       <div className="cartegory-sec">
         <CategoryTabs />
       </div>
-      
       <BottomNav />
     </div>
   );
