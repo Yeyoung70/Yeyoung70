@@ -20,10 +20,10 @@
 }
 
 .modal-overlay .cancel {
+  /* display: flex; */
   transform: rotate(45deg);
   margin-left: 95%;
   color: black;
-  
 }
 
 .modal-overlay .modal-title {
