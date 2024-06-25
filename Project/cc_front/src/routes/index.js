@@ -13,11 +13,12 @@ import Search from "../pages/search/Search";
 import Plus from "../pages/plus/Plus";
 import Sell from "../pages/plus/sell/Sell";
 import Buy from "../pages/plus/buy/Buy";
+import CameraPage from "../pages/plus/camera/Camerapage";
 
-import Deal from "../pages/Deal";
+import Deal from "../pages/deal/Deal";
 import Chat from "../pages/deal/Chat";
 
-import My from "../pages/My";
+import My from "../pages/my/My";
 
 const AllRoutes = () => {
   return (
@@ -35,6 +36,7 @@ const AllRoutes = () => {
       <Route path="/plus" element={<Plus />} />
       <Route path="/sell" element={<Sell />} />
       <Route path="/buy" element={<Buy />} />
+      <Route path="/camera" element={<CameraPage />} />
 
       <Route path="/deal" element={<Deal />} />
       <Route path="/chat" element={<Chat />} />

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -9,3 +10,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// 서비스 워커 등록
+serviceWorker.register();

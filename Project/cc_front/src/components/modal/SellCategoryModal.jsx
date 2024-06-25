@@ -6,8 +6,9 @@ import CategoryButton from "../Button/category/CategoryButton";
 
 import { LuPlus } from "react-icons/lu";
 import WideModal from "./WideModal";
+import CheckButton from "../Button/CheckButton";
 
-const SellCategoryModal = ({ closeModal }) => {
+const SellCategoryModal = ({ closeModal, setSelectedcategory }) => {
   const categories = {
     상의: [
       "니트",
@@ -53,8 +54,21 @@ const SellCategoryModal = ({ closeModal }) => {
     Object.keys(categories)[0]
   );
 
+  const [selectedSubcategory, setSelectedSubcategory] = useState("");
+
   const handleTabClick = (category) => {
     setCurrentCategory(category);
+  };
+
+  const handleCategorySelect = (subcategory) => {
+    setSelectedSubcategory(subcategory);
+  };
+
+  const handleConfirmClick = () => {
+    if (selectedSubcategory) {
+      setSelectedcategory(`${currentCategory} > ${selectedSubcategory}`);
+      closeModal();
+    }
   };
 
   return (
@@ -77,9 +91,12 @@ const SellCategoryModal = ({ closeModal }) => {
             <CategoryButton
               key={subcategory}
               label={subcategory}
-              onClick={() => console.log(subcategory)}
+              onClick={() => handleCategorySelect(subcategory)}
             />
           ))}
+          <div className="confirm">
+            <CheckButton type="submit" onClick={handleConfirmClick} />
+          </div>
         </div>
       </div>
     </WideModal>

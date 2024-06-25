@@ -11,7 +11,7 @@
   padding-bottom: 0.8rem;
 
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
 
   cursor: pointer;
 }
@@ -28,7 +28,7 @@
 }
 
 .Sell .photo-text {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -68,7 +68,7 @@
 
 }
 .Sell .left {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -100,27 +100,33 @@
   background-color: #dadada;
 }
 
-.Sell .category-sec {
+.Sell .category-sec, .Sell .option-sec {
   display: flex;
   justify-content: space-between;
 
   padding: 1rem 0;
 }
-.Sell .category-sec .text {
+.Sell .text {
   font-size: 18px;
   font-weight: 500;
 }
 
-.Sell .category-sec .select {
+.Sell .select {
   display: flex;
   align-items: center;
   color: #b9b9b9;
 }
 
-
 .Sell .select .icon {
   margin: 0 0.5rem;
   color: #b9b9b9;
-
 }
+
+.Sell .sell-button {
+  display: flex;
+  justify-content: center;
+
+  margin: 1rem 0;
+}
+
 

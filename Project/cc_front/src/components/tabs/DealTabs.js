@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Tabs.css";
+import "./DealTabs.css";
 
-const Tabs = ({ tabs, onTabClick }) => {
+const DealTabs = ({ tabs, onTabClick }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.label || "");
   const [lineStyle, setLineStyle] = useState({});
   const tabsRef = useRef(null);
@@ -27,11 +27,11 @@ const Tabs = ({ tabs, onTabClick }) => {
   }, [tabs, activeTab]);
 
   return (
-    <div className="tabs" ref={tabsRef}>
+    <div className="deal-tabs">
       {tabs.map((tab, index) => (
         <div
           key={tab.label}
-          className={`tab ${activeTab === tab.label ? "active" : ""}`}
+          className={`deal-tab ${activeTab === tab.label ? "active" : ""}`}
           onClick={() => handleTabClick(tab.label, index)}
         >
           {tab.label}
@@ -42,4 +42,4 @@ const Tabs = ({ tabs, onTabClick }) => {
   );
 };
 
-export default Tabs;
+export default DealTabs;

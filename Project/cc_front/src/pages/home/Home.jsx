@@ -18,6 +18,9 @@ const Home = (cardSec) => {
   const handleCardSecClick = () => {
     navigate(`/home_product?cardsec=${cardSec}`);
   };
+  const handleSearchClick = () => {
+    navigate(`/search`);
+  };
 
   return (
     <div className="Home">
@@ -31,31 +34,31 @@ const Home = (cardSec) => {
       <div className="category-sec">
         <div className="item">
           <span className="icon-circle">
-            <IoShirtSharp size={28} />
+            <IoShirtSharp size={28} onClick={handleSearchClick} />
           </span>
           <div className="items-text">Top</div>
         </div>
         <div className="item">
           <span className="icon-circle">
-            <PiPantsFill size={30} />
+            <PiPantsFill size={30} onClick={handleSearchClick} />
           </span>
           <div className="items-text">Bottom</div>
         </div>
         <div className="item">
           <span className="icon-circle">
-            <PiHoodieFill size={32} />
+            <PiHoodieFill size={32} onClick={handleSearchClick} />
           </span>
           <div className="items-text">Outer</div>
         </div>
         <div className="item">
           <span className="icon-circle">
-            <GiLargeDress size={32} />
+            <GiLargeDress size={32} onClick={handleSearchClick} />
           </span>
           <div className="items-text">Dress</div>
         </div>
         <div className="item">
           <span className="icon-circle">
-            <GiSkirt size={26} />
+            <GiSkirt size={26} onClick={handleSearchClick} />
           </span>
           <div className="items-text">Skirt</div>
         </div>

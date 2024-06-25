@@ -1,4 +1,4 @@
-.modal-overlay {
+.center-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,9 +8,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999; /* 다른 요소들보다 앞에 위치 */
 }
 
-.modal-overlay .modal-content {
+.center-modal .content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +24,7 @@
   position: relative;
 }
 
-.modal-overlay .modal-close {
+/* .center-modal .x-button {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -32,4 +33,4 @@
   transform: rotate(45deg);
   margin-left: 0.3rem;
   color: black;
-}
+} */

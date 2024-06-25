@@ -18,7 +18,7 @@ const Plus = () => {
 
   const handleAiBuyClick = () => {
     setTimeout(() => {
-      navigate("/buy");
+      navigate("/camera");
     }, 200);
   };
 
@@ -27,11 +27,11 @@ const Plus = () => {
       <div className="logo-sec">
         <img src={logo} alt="Logo" className="logo" />
       </div>
-      <div className="ai-sell" onClick={handleAiSellClick}>
-        <AiSellButton />
+      <div className="ai-sell">
+        <AiSellButton onClick={handleAiSellClick} />
       </div>
-      <div className="ai-buy" onClick={handleAiBuyClick}>
-        <AiBuyButton />
+      <div className="ai-buy">
+        <AiBuyButton onClick={handleAiBuyClick} />
       </div>
       <BottomNav />
     </div>

@@ -6,12 +6,18 @@ import BottomNav from "../../../components/BottomNav/BottomNav";
 import GuideModal from "../../../components/modal/GuideModal";
 
 import { FaCirclePlus } from "react-icons/fa6";
-import SellCategoryModal from "../../../components/modal/SellCategoryModal";
 import { IoIosArrowForward } from "react-icons/io";
+
+import SellCategoryModal from "../../../components/modal/SellCategoryModal";
+import SellOptionModal from "../../../components/modal/SellOptionModal";
+import SellButton from "../../../components/Button/SellButton";
 
 const Sell = () => {
   const [showModal, setShowModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [selectedCategory, setSelectedcategory] = useState("");
+  const [showOptionModal, setShowOptionModal] = useState(false);
+  const [selectedOption, setSelectedoption] = useState("");
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -27,6 +33,14 @@ const Sell = () => {
 
   const handleCloseCategoryModal = () => {
     setShowCategoryModal(false);
+  };
+
+  const handleShowOptionModal = () => {
+    setShowOptionModal(true);
+  };
+
+  const handleCloseOptionModal = () => {
+    setShowOptionModal(false);
   };
 
   return (
@@ -74,15 +88,34 @@ const Sell = () => {
         <div className="category-sec">
           <div className="text">카테고리</div>
           <div className="select" onClick={handleShowCategoryModal}>
-            선택 <IoIosArrowForward size={22} className="icon" />
+            {selectedCategory ? selectedCategory : "선택"}{" "}
+            <IoIosArrowForward size={22} className="icon" />
           </div>
         </div>
         {showCategoryModal && (
-          <SellCategoryModal closeModal={handleCloseCategoryModal} />
+          <SellCategoryModal
+            closeModal={handleCloseCategoryModal}
+            setSelectedcategory={setSelectedcategory}
+          />
         )}
         <div className="line"></div>
-        <div className="option">옵션</div>
-        <div className="sell-button">상품을 판매할래요</div>
+        <div className="option-sec">
+          <div className="text">옵션</div>
+          <div className="select" onClick={handleShowOptionModal}>
+            {selectedOption ? selectedOption : "선택"}{" "}
+            <IoIosArrowForward size={22} className="icon" />
+          </div>
+        </div>
+        {showOptionModal && (
+          <SellOptionModal
+            closeModal={handleCloseOptionModal}
+            setSelectedoption={setSelectedoption}
+          />
+        )}
+        <div className="line"></div>
+        <div className="sell-button">
+          <SellButton />
+        </div>
       </div>
 
       <BottomNav />
