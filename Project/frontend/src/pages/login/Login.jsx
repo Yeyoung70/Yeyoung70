@@ -29,6 +29,9 @@ const Login = () => {
   const handleSignupClick = () => {
     navigate("/signup");
   };
+  const handleNoneClick = () => {
+    navigate("/login");
+  };
 
   return (
     <div className="login-con">
@@ -36,10 +39,10 @@ const Login = () => {
         <img src={logo} alt="Logo" />
       </div>
       <div className="sign-sec">
-        <form className="form" onSubmit={handleLoginSubmit}>
+        <form className="form">
           <input
             type="email"
-            placeholder="email"
+            placeholder="이메일을 입력해 주세요"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             aria-label="email"
@@ -48,7 +51,7 @@ const Login = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="비밀번호를 입력해 주세요"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             aria-label="Password"
@@ -57,8 +60,8 @@ const Login = () => {
           />
           <LoginButton type="submit" onClick={handleLoginSubmit} />
           <p className="bar-1"></p>
-          <KakaoButton onClick={handleLoginSubmit} />
-          <GoogleButton onClick={handleLoginSubmit} />
+          <KakaoButton onClick={handleNoneClick} />
+          <GoogleButton onClick={handleNoneClick} />
         </form>
       </div>
       <div className="find-sec">

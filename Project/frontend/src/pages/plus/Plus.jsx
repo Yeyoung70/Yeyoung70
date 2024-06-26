@@ -27,11 +27,13 @@ const Plus = () => {
       <div className="logo-sec">
         <img src={logo} alt="Logo" className="logo" />
       </div>
-      <div className="ai-sell">
-        <AiSellButton onClick={handleAiSellClick} />
-      </div>
-      <div className="ai-buy">
-        <AiBuyButton onClick={handleAiBuyClick} />
+      <div className="button-sec">
+        <div className="ai-sell">
+          <AiSellButton onClick={handleAiSellClick} />
+        </div>
+        <div className="ai-buy">
+          <AiBuyButton onClick={handleAiBuyClick} />
+        </div>
       </div>
       <BottomNav />
     </div>

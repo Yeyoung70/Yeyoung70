@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../api/auth";
 
-import Top from "../../components/top/Top";
 import "./SignUp.css";
-import { IoIosArrowBack } from "react-icons/io";
+
 import SignupButton from "../../components/Button/SignupButton";
+import { GoCheckCircle } from "react-icons/go";
+import { IoIosArrowBack } from "react-icons/io";
+import { SlArrowDown } from "react-icons/sl";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -35,12 +37,15 @@ const SignUp = () => {
     }
   };
 
+  const handleCardSecClick = () => {
+    navigate(`/login`);
+  };
+
   return (
     <div className="SignUp">
-      <Top />
       <div className="header-sec">
         <div className="left">
-          <IoIosArrowBack size={26} />
+          <IoIosArrowBack size={26} onClick={handleCardSecClick} />
         </div>
         <div className="right">회원가입</div>
       </div>
@@ -48,53 +53,78 @@ const SignUp = () => {
       <div className="putin-sec">
         <form className="sign-form" onSubmit={(e) => e.preventDefault()}>
           <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            aria-label="Username"
-            className="sign-field"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            aria-label="Password"
-            className="sign-field"
-            autoComplete="current-password"
-          />
-          <input
-            type="text"
-            placeholder="Nickname"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            aria-label="Nickname"
-            className="sign-field"
-          />
-          <input
             type="email"
-            placeholder="Email"
+            placeholder="이메일을 입력해 주세요"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             aria-label="Email"
             className="sign-field"
             autoComplete="email"
           />
+          <div className="line"></div>
+          <input
+            type="password"
+            placeholder="비밀번호를 입력해 주세요"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            aria-label="Password"
+            className="sign-field"
+            autoComplete="current-password"
+          />
+          <div className="line"></div>
           <input
             type="text"
-            placeholder="휴대폰 번호를 -없이 입력해주세요"
+            placeholder="이름을 입력해 주세요"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            aria-label="Username"
+            className="sign-field"
+          />
+          <div className="line"></div>
+          <input
+            type="text"
+            placeholder="닉네임을 입력해 주세요"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            aria-label="Nickname"
+            className="sign-field"
+          />
+          <div className="line"></div>
+          <input
+            type="text"
+            placeholder="휴대폰 번호를 -없이 입력해 주세요"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             aria-label="Phone"
             className="sign-field"
           />
+          <div className="line"></div>
           {/* 프로필 이미지 업로드 필드를 추가할 수도 있습니다. */}
         </form>
       </div>
-
       {error && <div className="error-message">{error}</div>}
-      <div className="terms-sec">약관 확인</div>
+
+      <div className="marketing-sec">
+        <div className="icon">
+          <GoCheckCircle size={30} />
+        </div>
+        <div className="text">
+          신제품, 이벤트 안내 등 광고성 마케팅 수신 동의 (선택)
+        </div>
+      </div>
+
+      <div className="terms-sec">
+        <div className="term">
+          <div className="title">놀부심보 이용 약관</div>
+          <div className="icon">
+            <SlArrowDown size={18} />
+          </div>
+        </div>
+        <div className="content">
+          본인은 만 14세 이상이며, 위 약관 내용을 확인하였습니다
+        </div>
+      </div>
+
       <div className="signup-sec">
         <SignupButton onClick={handleSignupClick} />
       </div>

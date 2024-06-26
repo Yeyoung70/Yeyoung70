@@ -75,6 +75,7 @@ const My = () => {
             )}
           </div>
         </div>
+        <div className="line"></div>
       </div>
       <div className="my-sec">
         <div>나의 관심 상품</div>
