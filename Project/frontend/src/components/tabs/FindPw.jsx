@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { findPwAuth } from "../../api/auth";
+// import { findPwAuth } from "../../api/auth";
 import "./FindPw.css";
 
 import FindPwButton from "../Button/find/FindPwButton";
@@ -9,13 +9,13 @@ const FindPw = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [showFindModal, setShowFindModal] = useState(false);
-  const [foundPwAuth, setFoundPwAuth] = useState("");
+  // const [foundPwAuth, setFoundPwAuth] = useState("");
 
   // 액세스 토큰을 환경 변수에서 가져오기 (또는 하드코딩된 값 사용)
-  const acToken =
-    process.env.REACT_APP_ACCESS_TOKEN || "your-access-token-here";
+  // const acToken =
+  //   process.env.REACT_APP_ACCESS_TOKEN || "your-access-token-here";
 
   const handleShowFindModal = () => {
     setShowFindModal(true);
@@ -25,22 +25,22 @@ const FindPw = () => {
     setShowFindModal(false);
   };
 
-  const handleFindPwAuthClick = async () => {
-    try {
-      const response = await findPwAuth(username, email, phone, acToken);
-      console.log("FindId response:", response); // 응답 전체를 출력
-      if (response) {
-        setFoundPwAuth(response);
-        handleShowFindModal();
-      } else {
-        console.log("PW not found");
-        setError("비밀번호를 찾을 수 없습니다. 다시 시도해주세요.");
-      }
-    } catch (error) {
-      console.error("FindPwAuth error", error);
-      setError("비밀번호 찾기에 실패했습니다. 다시 시도해주세요.");
-    }
-  };
+  // const handleFindPwAuthClick = async () => {
+  //   try {
+  //     const response = await findPwAuth(username, email, phone);
+  //     console.log("FindId response:", response); // 응답 전체를 출력
+  //     if (response) {
+  //       setFoundPwAuth(response);
+  //       handleShowFindModal();
+  //     } else {
+  //       console.log("PW not found");
+  //       setError("비밀번호를 찾을 수 없습니다. 다시 시도해주세요.");
+  //     }
+  //   } catch (error) {
+  //     console.error("FindPwAuth error", error);
+  //     setError("비밀번호 찾기에 실패했습니다. 다시 시도해주세요.");
+  //   }
+  // };
 
   return (
     <div className="FindPw">
@@ -73,16 +73,16 @@ const FindPw = () => {
         />
         <div className="line"></div>
       </form>
-      {error && <div className="error-message">{error}</div>}
+      {/* {error && <div className="error-message">{error}</div>} */}
       <div className="id-button">
-        <FindPwButton onClick={handleFindPwAuthClick} />
+        <FindPwButton onClick={handleShowFindModal} />
       </div>
-      {showFindModal && (
+      {/* {showFindModal && (
         <FindPwModal
           closeModal={handleCloseFindModal}
           foundPwAuth={foundPwAuth}
         />
-      )}
+      )} */}
     </div>
   );
 };

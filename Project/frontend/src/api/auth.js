@@ -54,22 +54,16 @@ export const login = async (email, password) => {
 };
 
 // 아이디 찾기 API
-export const findId = async (username, phone_number, ac_token) => {
+export const findId = async (username, phone_number) => {
   const requestData = {
     username,
     phone_number,
   };
   console.log("FindId Request Data:", requestData); // 요청 데이터 출력
 
-  const headers = {
-    Authorization: `Bearer ${ac_token}`, // 접속시 헤더에 ac_token 필요
-  };
-
   try {
-    const response = await api.post("/api/accounts/auth/user/", requestData, {
-      headers,
-    });
-    return response.data; // 응답 데이터 반환
+    const response = await api.post("/api/accounts/auth/user/", requestData);
+    return response.data; // access token이 포함된 응답 데이터 반환
   } catch (error) {
     if (error.response) {
       console.error("FindId Response Data:", error.response.data); // 서버 응답 데이터 출력
@@ -87,15 +81,15 @@ export const findPwAuth = async (username, email, phone_number, ac_token) => {
   };
   console.log("FindPwAuth Request Data:", requestData); // 요청 데이터 출력
 
-  const headers = {
-    Authorization: `Bearer ${ac_token}`, // 접속시 헤더에 ac_token 필요
-  };
+  // const headers = {
+  //   Authorization: `Bearer ${ac_token}`, // 접속시 헤더에 ac_token 필요
+  // };
 
   try {
     const response = await axios.post(
       "/api/accounts/auth/password/",
-      requestData,
-      { headers } // 헤더 포함
+      requestData
+      // { headers } // 헤더 포함
     );
     return response.data; // 응답 데이터 반환
   } catch (error) {

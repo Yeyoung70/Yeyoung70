@@ -12,10 +12,6 @@ const FindId = () => {
   const [showFindModal, setShowFindModal] = useState(false);
   const [foundId, setFoundId] = useState("");
 
-  // 액세스 토큰을 환경 변수에서 가져오기 (또는 하드코딩된 값 사용)
-  const acToken =
-    process.env.REACT_APP_ACCESS_TOKEN || "your-access-token-here";
-
   const handleShowFindModal = () => {
     console.log("Opening modal");
     setShowFindModal(true);
@@ -28,10 +24,11 @@ const FindId = () => {
 
   const handleFindIdClick = async () => {
     try {
-      const response = await findId(username, phone, acToken);
+      const response = await findId(username, phone);
       console.log("FindId response:", response); // 응답 전체를 출력
       if (response && response.email) {
-        setFoundId(response.email); // `id` 대신 `email` 사용
+        setFoundId(response.email); // id 대신 email 사용
+        // console.log("Found ID (email):", response.email);
         handleShowFindModal();
       } else {
         console.log("ID not found");
