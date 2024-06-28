@@ -90,7 +90,7 @@ const Sell = () => {
             </div>
           </div>
         </div>
-        <div className="line"></div>
+        {/* <div className="line"></div> */}
         <div className="category-sec">
           <div className="text">카테고리</div>
           <div className="select" onClick={handleShowCategoryModal}>
@@ -104,7 +104,7 @@ const Sell = () => {
             setSelectedcategory={setSelectedcategory}
           />
         )}
-        <div className="line"></div>
+
         {/* <div className="option-sec">
           <div className="text">옵션</div>
           <div className="select" onClick={handleShowOptionModal}>
@@ -118,7 +118,6 @@ const Sell = () => {
             setSelectedoption={setSelectedoption}
           />
         )} */}
-        <div className="line"></div>
         <div className="sell-button">
           <SellButton onClick={handleQuestClick} />
         </div>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import FilterButton from "../Button/category/FilterButton";
-import "./Modal.css";
+import "./ColorFilterModal.css";
 import CheckButton from "../Button/CheckButton";
 
-import { LuPlus } from "react-icons/lu";
+import { IoCloseOutline } from "react-icons/io5";
 
 const SizeFilterModal = ({
   isOpen,
@@ -32,8 +32,8 @@ const SizeFilterModal = ({
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="cancel" onClick={onClose}>
-          <LuPlus size={30} />
+        <button className="cancel">
+          <IoCloseOutline size={30} onClick={onClose} />
         </button>
         <div className="modal-title">사이즈를 선택하세요</div>
         <div className="line"></div>

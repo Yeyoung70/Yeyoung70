@@ -16,7 +16,7 @@ const Home = (cardSec) => {
   const navigate = useNavigate();
 
   const handleCardSecClick = () => {
-    navigate(`/home_product?cardsec=${cardSec}`);
+    navigate(`/product?cardsec=${cardSec}`);
   };
   const handleSearchClick = () => {
     navigate(`/search`);
@@ -67,7 +67,6 @@ const Home = (cardSec) => {
           <div className="items-text">Skirt</div>
         </div>
       </div>
-      <div className="line"></div>
 
       <div className="left_2">Best</div>
 

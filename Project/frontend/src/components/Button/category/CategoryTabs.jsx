@@ -160,7 +160,7 @@ const CategoryTabs = (cardSec) => {
 
   const navigate = useNavigate();
   const handleCardSecClick = () => {
-    navigate(`/home_product?cardsec=${cardSec}`);
+    navigate(`/product?cardsec=${cardSec}`);
   };
 
   return (

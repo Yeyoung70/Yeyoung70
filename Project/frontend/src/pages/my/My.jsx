@@ -82,7 +82,6 @@ const My = () => {
     <div className="My">
       <div className="header-sec">
         <div className="title">My Page</div>
-        <div className="line"></div>
       </div>
       <div className="info-sec">
         <div className="photo">
@@ -121,7 +120,6 @@ const My = () => {
             )}
           </div>
         </div>
-        <div className="line"></div>
       </div>
       <div className="my-sec">
         <div className="interest">
@@ -149,7 +147,6 @@ const My = () => {
           )}
         </div>
       </div>
-      <div className="line"></div>
       <div className="out-sec">
         <div className="out">
           <div>회원 탈퇴</div>

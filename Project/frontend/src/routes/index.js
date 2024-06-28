@@ -8,7 +8,7 @@ import Find from "../pages/login/Find";
 import Wellcome from "../pages/login/Wellcome";
 
 import Home from "../pages/home/Home";
-import HomeProduct from "../pages/home/HomeProduct";
+import Product from "../pages/home/Product";
 import Search from "../pages/search/Search";
 
 import Plus from "../pages/plus/Plus";
@@ -32,7 +32,7 @@ const AllRoutes = () => {
       <Route path="/wellcome" element={<Wellcome />} />
 
       <Route path="/home" element={<Home />} />
-      <Route path="/home_product" element={<HomeProduct />} />
+      <Route path="/product" element={<Product />} />
 
       <Route path="/search" element={<Search />} />
 

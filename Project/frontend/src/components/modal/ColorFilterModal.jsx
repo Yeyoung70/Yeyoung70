@@ -3,7 +3,7 @@ import "./ColorFilterModal.css";
 
 import CheckButton from "../Button/CheckButton";
 
-import { LuPlus } from "react-icons/lu";
+import { IoCloseOutline } from "react-icons/io5";
 
 const ColorFilterModal = ({
   isOpen,
@@ -35,9 +35,9 @@ const ColorFilterModal = ({
     isOpen && (
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <button className="cancel" onClick={onClose}>
-            <LuPlus size={30} />
-          </button>
+          <div className="cancel">
+            <IoCloseOutline size={30} onClick={onClose} />
+          </div>
           <div className="modal-title">색상을 선택하세요</div>
           <div className="line"></div>
           <div className="color-options">
