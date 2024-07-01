@@ -33,28 +33,27 @@ const ColorFilterModal = ({
 
   return (
     isOpen && (
-      <div className="modal-overlay" onClick={onClose}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="color-modal" onClick={onClose}>
+        <div className="color-content" onClick={(e) => e.stopPropagation()}>
           <div className="cancel">
             <IoCloseOutline size={30} onClick={onClose} />
           </div>
-          <div className="modal-title">색상을 선택하세요</div>
-          <div className="line"></div>
+          <div className="title">색상을 선택하세요</div>
           <div className="color-options">
             {colors.map((color) => (
-              <button
-                key={color.name}
-                className={`color-button ${
-                  selectedColors.includes(color.name) ? "selected" : ""
-                }`}
-                onClick={() => handleColorToggle(color)}
-                style={{ backgroundColor: color.color }}
-              >
-                {color.name}
-              </button>
+              <div className="color-item" key={color.name}>
+                <button
+                  className={`color-button ${
+                    selectedColors.includes(color.name) ? "selected" : ""
+                  }`}
+                  onClick={() => handleColorToggle(color)}
+                  style={{ backgroundColor: color.color }}
+                />
+                <div className="color-name">{color.name}</div>
+              </div>
             ))}
           </div>
-          <div className="modal-button">
+          <div className="button">
             <CheckButton onClick={handleApply} />
           </div>
         </div>

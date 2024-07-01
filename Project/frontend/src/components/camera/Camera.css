@@ -1,0 +1,13 @@
+.Camera {
+  height: 100%;
+  text-align: center;
+}
+
+.Camera .input {
+  display: none;
+}
+
+.Camera .message {
+  margin: 20px 0;
+  color: #888;
+}

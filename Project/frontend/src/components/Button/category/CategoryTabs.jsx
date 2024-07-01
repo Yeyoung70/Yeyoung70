@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Tabs from "./Tabs";
 import card from "../../../assets/card/card_sample_2.png";
-
 import CategoryButton from "./CategoryButton";
 import FilterButton from "./FilterButton";
 import ColorFilterModal from "../../modal/ColorFilterModal";
@@ -102,6 +101,11 @@ const filters = {
     { name: "초록", color: "green" },
     { name: "검정", color: "black" },
     { name: "흰색", color: "white" },
+    { name: "보라", color: "purple" },
+    { name: "주황", color: "orange" },
+    { name: "분홍", color: "pink" },
+    { name: "갈색", color: "brown" },
+    { name: "회색", color: "gray" },
   ],
   size: ["XS", "S", "M", "L", "XL", "2XL 이상", "FREE"],
   condition: ["New", "Used"],
@@ -115,6 +119,8 @@ const CategoryTabs = (cardSec) => {
   const [activeFilters, setActiveFilters] = useState({
     condition: [],
     availability: [],
+    color: [],
+    size: [],
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
@@ -131,7 +137,7 @@ const CategoryTabs = (cardSec) => {
           (value) => value !== filterValue
         );
       } else {
-        newFilters[filterType].push(filterValue); // 여기서 배열에 값을 추가
+        newFilters[filterType].push(filterValue);
       }
       return newFilters;
     });
@@ -152,6 +158,7 @@ const CategoryTabs = (cardSec) => {
   };
 
   const handleApplyFilter = (filterType, selectedFilters) => {
+    console.log(`Applying filter for ${filterType}:`, selectedFilters); // 디버깅용 콘솔 로그 추가
     setActiveFilters((prevFilters) => ({
       ...prevFilters,
       [filterType]: selectedFilters,
@@ -185,7 +192,6 @@ const CategoryTabs = (cardSec) => {
 
       <div className="filter-buttons">
         <FilterButton
-          IoIosArrowDown
           label="색상"
           isActive={false}
           onClick={() => openModal("color")}
@@ -248,14 +254,14 @@ const CategoryTabs = (cardSec) => {
         isOpen={isModalOpen && modalContent === "color"}
         onClose={closeModal}
         colors={filters.color}
-        activeFilters={activeFilters}
+        activeFilters={activeFilters.color}
         onApply={handleApplyFilter}
       />
       <SizeFilterModal
         isOpen={isModalOpen && modalContent === "size"}
         onClose={closeModal}
         sizes={filters.size}
-        activeFilters={activeFilters}
+        activeFilters={activeFilters.size}
         onApply={handleApplyFilter}
       />
     </div>

@@ -1,0 +1,37 @@
+.moveModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 모달을 화면 중앙에 위치 */
+}
+
+.moveModal .moveModal-content {
+  display: flex;
+  flex-direction: column;
+  background: white;
+
+  margin-top: 20rem;
+  padding: 0 20px;
+  padding-top: 0.6rem;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  height: 80%;
+  position: absolute; /* absolute로 변경 */
+}
+
+.moveModal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

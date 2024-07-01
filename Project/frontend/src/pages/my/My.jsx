@@ -14,6 +14,7 @@ import EmailModal from "../../components/modal/my/EmailModal";
 import InterestModal from "../../components/modal/my/InterestModal";
 import ReviewModal from "../../components/modal/my/ReviewModal";
 import OutModal from "../../components/modal/my/OutModal";
+import LogoutModal from "../../components/modal/my/LogoutModal";
 
 const My = () => {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
@@ -22,6 +23,7 @@ const My = () => {
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [showInterestModal, setShowInterestModal] = useState(false);
   const [showReviewModal, setShowReviewModal] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showOutModal, setShowOutModal] = useState(false);
   const navigate = useNavigate();
 
@@ -77,6 +79,16 @@ const My = () => {
   const handleDealClick = () => {
     navigate("/deal");
   };
+
+  const handleShowLogoutModal = () => {
+    setShowLogoutModal(true);
+  };
+
+  const handleCloseLogoutModal = () => {
+    setShowLogoutModal(false);
+  };
+
+  const userId = 2;
 
   return (
     <div className="My">
@@ -153,9 +165,18 @@ const My = () => {
           <div className="arrow" onClick={handleShowOutModal}>
             <IoIosArrowForward size={20} />
           </div>
-          {showOutModal && <OutModal closeModal={handleCloseOutModal} />}
+          {showOutModal && (
+            <OutModal closeModal={handleCloseOutModal} userId={userId} />
+          )}
         </div>
-        <div className="logout">로그아웃</div>
+        <div className="logout">
+          <div className="input" onClick={handleShowLogoutModal}>
+            로그아웃
+          </div>
+          {showLogoutModal && (
+            <LogoutModal closeModal={handleCloseLogoutModal} />
+          )}
+        </div>
       </div>
       <BottomNav />
     </div>
