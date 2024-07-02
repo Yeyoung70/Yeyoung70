@@ -109,7 +109,15 @@ export const login = async (email, password) => {
 
   try {
     const response = await api.post("/api/accounts/login/", requestData);
-    return response.data; // access token이 포함된 응답 데이터 반환
+
+    // accessToken이 포함된 응답 헤더 가져오기
+    const accessToken = response.headers["authorization"];
+
+    // 응답 데이터와 accessToken 반환
+    return {
+      data: response.data,
+      accessToken: accessToken,
+    };
   } catch (error) {
     if (error.response) {
       console.error("Login Response Data:", error.response.data); // 서버 응답 데이터 출력

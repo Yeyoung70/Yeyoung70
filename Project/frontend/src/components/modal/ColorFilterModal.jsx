@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ColorFilterModal.css";
 
-import CheckButton from "../Button/CheckButton";
-
 import { IoCloseOutline } from "react-icons/io5";
 
 const ColorFilterModal = ({
@@ -54,7 +52,17 @@ const ColorFilterModal = ({
             ))}
           </div>
           <div className="button">
-            <CheckButton onClick={handleApply} />
+            <button
+              className="apply-button"
+              onClick={handleApply}
+              style={{
+                backgroundColor:
+                  selectedColors.length > 0 ? "#8f0456" : "#dadada",
+                color: "#ffffff",
+              }}
+            >
+              확인
+            </button>
           </div>
         </div>
       </div>

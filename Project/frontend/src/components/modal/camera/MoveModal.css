@@ -8,30 +8,27 @@
   z-index: 999;
   display: flex;
   justify-content: center;
-  align-items: center; /* 모달을 화면 중앙에 위치 */
+  align-items: flex-end; 
+  overflow: hidden; /* Prevent overflow */
 }
 
 .moveModal .moveModal-content {
   display: flex;
   flex-direction: column;
-  background: white;
+  justify-content: center;
 
-  margin-top: 20rem;
+  background: white;
   padding: 0 20px;
   padding-top: 0.6rem;
-  border-radius: 20px;
-  max-width: 500px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   width: 90%;
-  height: 80%;
-  position: absolute; /* absolute로 변경 */
+  max-height: 55%; /* Limit the modal height */
+  position: relative;
+  overflow-y: auto; /* Enable vertical scrolling */
+  cursor: grab; /* Indicate draggable content */
 }
 
-.moveModal .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+.moveModal .moveModal-content:active {
+  cursor: grabbing; /* Indicate dragging in progress */
 }

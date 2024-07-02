@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import FilterButton from "../Button/category/FilterButton";
-import "./ColorFilterModal.css";
-import CheckButton from "../Button/CheckButton";
-
+import "./SizeFilterModal.css";
 import { IoCloseOutline } from "react-icons/io5";
 
 const SizeFilterModal = ({
@@ -30,26 +27,36 @@ const SizeFilterModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <button className="cancel">
-          <IoCloseOutline size={30} onClick={onClose} />
+    <div className="size-modal">
+      <div className="size-content">
+        <button className="cancel" onClick={onClose}>
+          <IoCloseOutline size={30} />
         </button>
-        <div className="modal-title">사이즈를 선택하세요</div>
-        <div className="line"></div>
-
+        <div className="size-title">사이즈를 선택하세요</div>
         <div className="size-samples">
           {sizes.map((size) => (
-            <FilterButton
+            <span
               key={size}
-              label={size}
-              isActive={selectedSizes.includes(size)}
+              className={`size-item ${
+                selectedSizes.includes(size) ? "active" : ""
+              }`}
               onClick={() => handleSizeClick(size)}
-            />
+            >
+              {size}
+            </span>
           ))}
         </div>
-        <div className="modal-button">
-          <CheckButton onClick={handleApply} />
+        <div className="size-button">
+          <button
+            className="apply-button"
+            onClick={handleApply}
+            style={{
+              backgroundColor: selectedSizes.length > 0 ? "#8f0456" : "#dadada",
+              color: "#ffffff",
+            }}
+          >
+            확인
+          </button>
         </div>
       </div>
     </div>

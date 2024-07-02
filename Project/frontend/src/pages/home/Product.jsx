@@ -26,6 +26,10 @@ const Product = () => {
     navigate(`/alarm`);
   };
 
+  const handleUserClick = () => {
+    navigate(`/user`);
+  };
+
   return (
     <div className="Product">
       <div className="header-sec">
@@ -51,7 +55,9 @@ const Product = () => {
           </div>
         </div>
 
-        <div className="nickname">@nickname</div>
+        <div className="nickname" onClick={handleUserClick}>
+          @nickname
+        </div>
         <div className="price">45,000 원</div>
         <div className="sentence">거의 새상품이며 택배거래만 가능해요.</div>
       </div>

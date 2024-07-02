@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useLocation } from "react-router-dom";
 import "./Upload.css";
 import BuyModal from "../modal/camera/BuyModal";
-import { BlobContext } from "../../contexts/BlobContext";
 
 const Upload = () => {
-  const { blobUrl } = useContext(BlobContext);
+  const location = useLocation();
+  const { imageUrl } = location.state || {}; // 전달받은 상태에서 imageUrl 추출
 
   return (
     <div className="upload">
       <div className="image">
-        {blobUrl ? (
+        {imageUrl ? (
           <div className="imgBox">
-            <img src={blobUrl} alt="Captured" className="img" />
+            <img src={imageUrl} alt="Captured" className="img" />
           </div>
         ) : (
           <p>No image captured</p>

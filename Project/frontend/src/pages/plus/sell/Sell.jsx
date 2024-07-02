@@ -12,11 +12,19 @@ import { IoIosArrowForward } from "react-icons/io";
 import SellCategoryModal from "../../../components/modal/SellCategoryModal";
 // import SellOptionModal from "../../../components/modal/SellOptionModal";
 import SellButton from "../../../components/Button/SellButton";
+import AiButton from "../../../components/Button/plus/AiButton";
+import BrendCategoryModal from "../../../components/modal/plus/BrendCategoryModal";
+import StatusCategoryModal from "../../../components/modal/plus/StatusCategoryModal";
+import Placeholder from "../../../components/placeholder/Placeholder";
 
 const Sell = () => {
   const [showModal, setShowModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [selectedCategory, setSelectedcategory] = useState("");
+  const [showBrendCategoryModal, setShowBrendCategoryModal] = useState(false);
+  const [selectedBrendCategory, setSelectedBrendcategory] = useState("");
+  const [showStatusCategoryModal, setShowStatusCategoryModal] = useState(false);
+  const [selectedStatusCategory, setSelectedStatuscategory] = useState("");
   // const [showOptionModal, setShowOptionModal] = useState(false);
   // const [selectedOption, setSelectedoption] = useState("");
   const navigate = useNavigate();
@@ -35,6 +43,22 @@ const Sell = () => {
 
   const handleCloseCategoryModal = () => {
     setShowCategoryModal(false);
+  };
+
+  const handleShowBrendCategoryModal = () => {
+    setShowBrendCategoryModal(true);
+  };
+
+  const handleCloseBrendCategoryModal = () => {
+    setShowBrendCategoryModal(false);
+  };
+
+  const handleShowStatusCategoryModal = () => {
+    setShowStatusCategoryModal(true);
+  };
+
+  const handleCloseStatusCategoryModal = () => {
+    setShowStatusCategoryModal(false);
   };
 
   // const handleShowOptionModal = () => {
@@ -62,17 +86,52 @@ const Sell = () => {
           <div className="photo-box">
             <div className="box">
               <FaCirclePlus size={26} className="box-icon" />
-              <div className="box-text">0/10</div>
             </div>
           </div>
         </div>
+        <div className="brend">
+          <div className="text">브랜드</div>
+          <div className="select" onClick={handleShowBrendCategoryModal}>
+            {selectedBrendCategory ? selectedBrendCategory : "선택"}{" "}
+            <IoIosArrowForward size={22} className="icon" />
+          </div>
+        </div>
+        {showBrendCategoryModal && (
+          <BrendCategoryModal
+            closeModal={handleCloseBrendCategoryModal}
+            setSelectedBrendcategory={setSelectedBrendcategory}
+          />
+        )}
+        <div className="status">
+          <div className="text">상품 상태</div>
+          <div className="select" onClick={handleShowStatusCategoryModal}>
+            {selectedStatusCategory ? selectedStatusCategory : "선택"}{" "}
+            <IoIosArrowForward size={22} className="icon" />
+          </div>
+        </div>
+        {showStatusCategoryModal && (
+          <StatusCategoryModal
+            closeModal={handleCloseStatusCategoryModal}
+            setSelectedStatuscategory={setSelectedStatuscategory}
+          />
+        )}
+        <div className="ai-button">
+          <AiButton onClick={handleQuestClick} />
+        </div>
+
         <div className="info">
           <div className="title">
             <div className="title-text">
               <div className="left">상품 제목</div>
               <div className="right">0 / 30</div>
             </div>
-            <div className="title-box">상품 제목 입력</div>
+            <div className="title-box">
+              <input
+                type="text"
+                className="product-input"
+                placeholder="상품 제목을 입력하세요"
+              />
+            </div>
           </div>
           <div className="content">
             <div className="content-text">
@@ -80,18 +139,11 @@ const Sell = () => {
               <div className="right">0 / 2500</div>
             </div>
             <div className="content-box">
-              상품 설명을 자세하게 적어주세요. <br /> 문의가 줄어들고, 판매율이
-              올라갈 수 있어요. <br />
-              ex.) 실측 사이트, 소재, 제품 상태
-              <br />
-              <br />
-              아이템 관련 해쉬태그를 작성할 수 있어요.
-              <br /># 추천태그 # 특수문자 제외
+              <Placeholder />
             </div>
           </div>
         </div>
-        {/* <div className="line"></div> */}
-        <div className="category-sec">
+        <div className="category">
           <div className="text">카테고리</div>
           <div className="select" onClick={handleShowCategoryModal}>
             {selectedCategory ? selectedCategory : "선택"}{" "}
@@ -104,20 +156,6 @@ const Sell = () => {
             setSelectedcategory={setSelectedcategory}
           />
         )}
-
-        {/* <div className="option-sec">
-          <div className="text">옵션</div>
-          <div className="select" onClick={handleShowOptionModal}>
-            {selectedOption ? selectedOption : "선택"}{" "}
-            <IoIosArrowForward size={22} className="icon" />
-          </div>
-        </div>
-        {showOptionModal && (
-          <SellOptionModal
-            closeModal={handleCloseOptionModal}
-            setSelectedoption={setSelectedoption}
-          />
-        )} */}
         <div className="sell-button">
           <SellButton onClick={handleQuestClick} />
         </div>

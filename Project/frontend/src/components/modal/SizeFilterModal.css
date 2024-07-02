@@ -1,4 +1,5 @@
-.color-modal {
+/* SizeFilterModal.css */
+.size-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +12,7 @@
   align-items: end;
 }
 
-.color-content {
+.size-modal .size-content {
   display: flex;
   flex-direction: column;
   background: white;
@@ -22,13 +23,16 @@
   width: 100%;
 }
 
-.color-modal .color-content .cancel {
+.size-modal .cancel {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
+  background: none;
+  border: none;
+  color: black;
 }
 
-.color-modal .title {
+.size-modal .size-title {
   display: flex;
   justify-content: center;
   font-size: 22px;
@@ -38,44 +42,32 @@
   border-bottom: 0.5px solid #e5e5e5;
 }
 
-.color-options {
+.size-samples {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-.color-modal .color-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-}
-
-.color-button {
-  width: 35px;
-  height: 35px;
-  border: 1px solid #e5e5e5; /* 기본 상태의 연한 테두리 */
-  border-radius: 100%;
+.size-item {
   cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: font-weight 0.3s;
 }
 
-.color-button.selected {
-  border: 2px solid #838383;
+.size-item.active {
+  font-weight: 800;
+  color: #d02488;
 }
 
-.color-modal .color-name {
-  margin-top: 5px;
-  text-align: center;
-  width: 40px; /* 버튼과 동일한 너비로 설정하여 고정 */
-}
-
-.color-modal .button {
+.size-modal .size-button {
   display: flex;
   justify-content: center;
   margin: 1rem 0;
 }
 
-.color-modal .button .apply-button {
+.size-button .apply-button {
   width: 80%;
   padding: 15px 20px;
   margin-bottom: 1rem;

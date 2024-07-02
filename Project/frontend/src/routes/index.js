@@ -23,40 +23,38 @@ import Chat from "../pages/deal/Chat";
 
 import My from "../pages/my/My";
 import Alarm from "../pages/alarm/Alarm";
-
-import { BlobProvider } from "../contexts/BlobContext";
+import User from "../pages/home/User";
 
 const AllRoutes = () => {
   return (
-    <BlobProvider>
-      <Routes>
-        <Route path="/" element={<Start />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/find" element={<Find />} />
-        <Route path="/service" element={<Service />} />
+    <Routes>
+      <Route path="/" element={<Start />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/find" element={<Find />} />
+      <Route path="/service" element={<Service />} />
 
-        <Route path="/wellcome" element={<Wellcome />} />
+      <Route path="/wellcome" element={<Wellcome />} />
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/product" element={<Product />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/product" element={<Product />} />
+      <Route path="/user" element={<User />} />
 
-        <Route path="/search" element={<Search />} />
+      <Route path="/search" element={<Search />} />
 
-        <Route path="/plus" element={<Plus />} />
-        <Route path="/sell" element={<Sell />} />
-        <Route path="/buy" element={<Buy />} />
-        <Route path="/camera" element={<CameraPage />} />
-        <Route path="/upload" element={<Upload />} />
+      <Route path="/plus" element={<Plus />} />
+      <Route path="/sell" element={<Sell />} />
+      <Route path="/buy" element={<Buy />} />
+      <Route path="/camera" element={<CameraPage />} />
+      <Route path="/upload" element={<Upload />} />
 
-        <Route path="/deal" element={<Deal />} />
-        <Route path="/chat" element={<Chat />} />
+      <Route path="/deal" element={<Deal />} />
+      <Route path="/chat" element={<Chat />} />
 
-        <Route path="/my" element={<My />} />
+      <Route path="/my" element={<My />} />
 
-        <Route path="/alarm" element={<Alarm />} />
-      </Routes>
-    </BlobProvider>
+      <Route path="/alarm" element={<Alarm />} />
+    </Routes>
   );
 };
 
