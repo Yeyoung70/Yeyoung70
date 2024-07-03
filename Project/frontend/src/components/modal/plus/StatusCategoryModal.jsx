@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "./StatusCategoryModal.css";
+
 import CategoryButton from "../../Button/category/CategoryButton";
-import { LuPlus } from "react-icons/lu";
-import WideModal from "../WideModal";
-import CheckButton from "../../Button/CheckButton";
 import ShortModal from "../my/ShortModal";
+
+import { LuPlus } from "react-icons/lu";
+
+import "./StatusCategoryModal.css";
 
 const StatusCategoryModal = ({ closeModal, setSelectedStatuscategory }) => {
   const categories = [
@@ -46,7 +47,17 @@ const StatusCategoryModal = ({ closeModal, setSelectedStatuscategory }) => {
             />
           ))}
           <div className="confirm">
-            <CheckButton type="submit" onClick={handleConfirmClick} />
+            <button
+              className="apply-button"
+              onClick={handleConfirmClick}
+              style={{
+                backgroundColor:
+                  selectedCategory.length > 0 ? "#8f0456" : "#dadada",
+                color: "#ffffff",
+              }}
+            >
+              확인
+            </button>
           </div>
         </div>
       </div>

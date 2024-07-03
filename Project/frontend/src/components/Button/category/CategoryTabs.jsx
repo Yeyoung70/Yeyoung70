@@ -4,8 +4,8 @@ import Tabs from "./Tabs";
 import card from "../../../assets/card/card_sample_2.png";
 import CategoryButton from "./CategoryButton";
 import FilterButton from "./FilterButton";
-import ColorFilterModal from "../../modal/ColorFilterModal";
-import SizeFilterModal from "../../modal/SizeFilterModal";
+import ColorFilterModal from "../../modal/search/ColorFilterModal";
+import SizeFilterModal from "../../modal/search/SizeFilterModal";
 
 import "./CategoryTabs.css";
 

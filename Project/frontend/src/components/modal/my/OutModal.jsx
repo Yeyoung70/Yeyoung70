@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CenterModal from "./CenterModal";
 import { deleteAccount } from "../../../api/auth";
@@ -8,18 +8,42 @@ import "./OutModal.css";
 import { IoCloseOutline } from "react-icons/io5";
 import DeleteButton from "../../Button/DeleteButton";
 
-const OutModal = ({ closeModal, userId }) => {
+const OutModal = ({ closeModal }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      setUserId(storedUserId);
+    } else {
+      setError("로그인이 필요합니다. 다시 로그인해 주세요.");
+    }
+  }, []);
 
   const handleOut = async () => {
     try {
+      if (!userId) {
+        throw new Error("No user ID available");
+      }
+
       const response = await deleteAccount(userId, username, password);
       console.log("Account deletion successful:", response);
       navigate("/login");
     } catch (error) {
       console.error("Account deletion failed:", error);
+      if (
+        error.message === "No access token available" ||
+        error.message === "No user ID available"
+      ) {
+        setError("로그인이 필요합니다. 다시 로그인해 주세요.");
+        navigate("/login");
+      } else {
+        setError("계정 삭제에 실패했습니다. 다시 시도해 주세요.");
+      }
     }
   };
 
@@ -51,6 +75,7 @@ const OutModal = ({ closeModal, userId }) => {
             className="input-fields"
           />
         </div>
+        {error && <div className="error-message">{error}</div>}
         <div className="button">
           <DeleteButton onClick={handleOut} />
         </div>

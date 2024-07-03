@@ -4,9 +4,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import PhotoCameraRoundedIcon from "@mui/icons-material/PhotoCameraRounded";
-import "./Camera.css";
+import "./CameraBuyPage.css";
 
-function Camera() {
+function CameraBuyPage() {
   const [source, setSource] = useState("");
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ function Camera() {
   };
 
   return (
-    <div className="Camera">
+    <div className="CameraBuy-page">
       <Grid container>
         <Grid item xs={12}>
           <h5>Capture your image</h5>
@@ -61,4 +61,4 @@ function Camera() {
   );
 }
 
-export default Camera;
+export default CameraBuyPage;

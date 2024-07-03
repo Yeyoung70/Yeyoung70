@@ -1,4 +1,4 @@
-.Camera {
+.CameraSell-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,11 +7,11 @@
   text-align: center;
 }
 
-.Camera .input {
+.CameraSell-page .input {
   display: none;
 }
 
-.Camera .message {
+.CameraSell-page .message {
   margin: 20px 0;
   color: #888;
 }

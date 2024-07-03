@@ -1,18 +1,17 @@
 .Sell {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  margin-bottom: 10rem;
 }
 .Sell .guide-sec {
   display: flex;
   justify-content: center;
   background-color: #dadada;
-
   padding-top: 2rem;
   padding-bottom: 0.8rem;
-
   font-weight: 600;
   font-size: 15px;
-
   cursor: pointer;
 }
 
@@ -35,7 +34,6 @@
 .Sell .photo-box {
   display: flex;
   /* border-bottom: 0.5px solid #ddd;  */
-  
 }
 
 .Sell .box {
@@ -43,14 +41,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   width: 200px;
   height: 200px;
   margin: 0.8rem 0;
   margin-right: 1rem;
-
   background-color: #f7f7f7;
-  border: 2px solid #d8d8d8 ;
+  border: 2px solid #d8d8d8;
   border-radius: 8px;
   border-style: dashed;
 }
@@ -60,14 +56,22 @@
   color: #888888;
 }
 
+.Sell .box .uploaded-img {
+  width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
 /*  */
 
-.Sell .brend, .Sell .status, .Sell .category {
+.Sell .brend,
+.Sell .status,
+.Sell .category, 
+.Sell .option {
   display: flex;
   justify-content: space-between;
-
   padding: 1rem 0;
-  border-bottom: 0.5px solid #ddd; 
+  border-bottom: 0.5px solid #ddd;
 }
 
 .Sell .status {
@@ -90,23 +94,36 @@
   color: #b9b9b9;
 }
 
-
 /*  */
-
-.Sell .ai-button {
+.Sell .ai-button, .Sell .sell-button {
   display: flex;
   justify-content: center;
-  margin: 2rem;
+  margin-top: 2rem;
+  margin: 1rem 0;
 }
+
+
+.Sell .apply-button {
+  width: 80%;
+  padding: 15px 20px;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
 
 .Sell .info {
-  border-bottom: 0.5px solid #ddd; 
+  border-bottom: 0.5px solid #ddd;
 }
 
-.Sell .title-text, .Sell .content-text {
+.Sell .title-text,
+.Sell .price-text, 
+.Sell .content-text {
   display: flex;
   justify-content: space-between;
-
 }
 .Sell .left {
   font-size: 20px;
@@ -122,13 +139,14 @@
   text-decoration: none;
 }
 
-.Sell .title-box, .Sell .content-box {
+.Sell .title-box,
+.Sell .price-box, 
+.Sell .content-box {
   display: flex;
   align-items: center;
   position: relative;
   width: 100%;
   margin: 1.5rem 0;
-
   background-color: #ffffff;
   border-radius: 10px;
 }
@@ -141,14 +159,10 @@
   background-color: #ffffff;
   border: 0.5px solid #888888;
   color: #333333;
-
 }
 
 .Sell .sell-button {
   display: flex;
   justify-content: center;
-
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
-
-

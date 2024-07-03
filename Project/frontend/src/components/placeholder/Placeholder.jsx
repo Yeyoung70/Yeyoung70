@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Placeholder.css";
 
-const Placeholder = () => {
-  const [value, setValue] = useState("");
-
+const Placeholder = ({ value, onChange, maxLength }) => {
   return (
     <div className="multi-line-placeholder">
       <textarea
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={onChange}
         placeholder=" " // 공백으로 설정하여 기본 placeholder를 숨깁니다.
+        maxLength={maxLength}
       />
       {!value && (
         <div className="placeholder-text">

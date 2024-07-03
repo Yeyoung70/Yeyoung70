@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import "./SizeFilterModal.css";
+
 import { IoCloseOutline } from "react-icons/io5";
+
+import "./SizeFilterModal.css";
 
 const SizeFilterModal = ({
   isOpen,

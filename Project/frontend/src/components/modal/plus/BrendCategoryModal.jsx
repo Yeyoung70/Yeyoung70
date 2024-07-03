@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import "./BrendCategoryModal.css";
+
 import Tabs from "../../Button/category/Tabs";
 import CategoryButton from "../../Button/category/CategoryButton";
-import { LuPlus } from "react-icons/lu";
 import WideModal from "../WideModal";
-import CheckButton from "../../Button/CheckButton";
+
+import { LuPlus } from "react-icons/lu";
+
+import "./BrendCategoryModal.css";
 
 const BrendCategoryModal = ({ closeModal, setSelectedBrendcategory }) => {
   const categories = {
@@ -84,7 +86,17 @@ const BrendCategoryModal = ({ closeModal, setSelectedBrendcategory }) => {
             />
           ))}
           <div className="confirm">
-            <CheckButton type="submit" onClick={handleConfirmClick} />
+            <button
+              className="apply-button"
+              onClick={handleConfirmClick}
+              style={{
+                backgroundColor:
+                  selectedSubcategory.length > 0 ? "#8f0456" : "#dadada",
+                color: "#ffffff",
+              }}
+            >
+              확인
+            </button>
           </div>
         </div>
       </div>
