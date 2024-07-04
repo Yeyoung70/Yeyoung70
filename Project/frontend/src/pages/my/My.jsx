@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./My.css";
@@ -25,7 +25,14 @@ const My = () => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showOutModal, setShowOutModal] = useState(false);
+  const [profileImage, setProfileImage] = useState(() => {
+    return localStorage.getItem("profileImage") || card;
+  });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("profileImage", profileImage);
+  }, [profileImage]);
 
   const handleShowPhotoModal = () => {
     setShowPhotoModal(true);
@@ -97,11 +104,16 @@ const My = () => {
       </div>
       <div className="info-sec">
         <div className="photo">
-          <img src={card} alt="Card" className="card" />
+          <img src={profileImage} alt="Card" className="card" />
           <div className="photo-text" onClick={handleShowPhotoModal}>
             사진 변경하기
           </div>
-          {showPhotoModal && <PhotoModal closeModal={handleClosePhotoModal} />}
+          {showPhotoModal && (
+            <PhotoModal
+              closeModal={handleClosePhotoModal}
+              setProfileImage={setProfileImage}
+            />
+          )}
         </div>
 
         <div className="info-modal">

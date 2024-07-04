@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getUsername } from "../../api/auth"; // getUsername 함수를 불러옵니다.
 
 import BottomNav from "../../components/BottomNav/BottomNav";
 
@@ -14,6 +15,27 @@ import "./Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const fetchedUsername = await getUsername();
+        setUsername(fetchedUsername);
+      } catch (error) {
+        console.error("Failed to fetch username:", error);
+      }
+    };
+
+    // 로컬 스토리지에서 사용자 이름 가져오기
+    const storedUsername = localStorage.getItem("username");
+    console.log("Stored Username:", storedUsername); // 로컬 스토리지에서 가져온 값 출력
+    if (storedUsername) {
+      setUsername(storedUsername);
+    } else {
+      fetchUsername();
+    }
+  }, []);
 
   const handleSearchClick = (category) => {
     navigate(`/search?category=${category}`);
@@ -75,18 +97,20 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="welcome">{username}님 환영합니다!</div>
+
       <div className="left_2">Best</div>
 
       <div className="Home-cards">
         <div className="cards">
           <div className="card-sec" onClick={handleProductClick}>
             <img src={card} alt="Card" className="card" />
-            <div className="name">username</div>
+            <div className="name">{username}</div>
             <div className="nickname">@nickname</div>
           </div>
           <div className="card-sec" onClick={handleProductClick}>
             <img src={card} alt="Card" className="card" />
-            <div className="name">username</div>
+            <div className="name">{username}</div>
             <div className="nickname">@nickname</div>
           </div>
         </div>

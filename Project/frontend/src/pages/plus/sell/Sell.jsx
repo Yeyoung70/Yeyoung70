@@ -8,6 +8,7 @@ import BrendCategoryModal from "../../../components/modal/plus/BrendCategoryModa
 import StatusCategoryModal from "../../../components/modal/plus/StatusCategoryModal";
 import Placeholder from "../../../components/placeholder/Placeholder";
 import SellOptionModal from "../../../components/modal/plus/SellOptionModal";
+import { article_create } from "../../../api/articles";
 
 import { FaCirclePlus } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
@@ -32,6 +33,7 @@ const Sell = () => {
   const [price, setPrice] = useState("");
   const [contentLength, setContentLength] = useState(0);
   const [content, setContent] = useState("");
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -105,6 +107,38 @@ const Sell = () => {
     const content = event.target.value;
     setContent(content);
     setContentLength(content.length);
+  };
+
+  const handleSubmit = async () => {
+    const optionParts = selectedOption.split(" / ");
+    const size = optionParts.length > 1 ? optionParts[1].split(": ")[1] : "";
+    const color = optionParts.length > 0 ? optionParts[0].split(": ")[1] : "";
+
+    const topCategory = selectedCategory.split(" > ")[0];
+    const bottomCategory = selectedCategory.split(" > ")[1] || "";
+
+    try {
+      const response = await article_create(
+        [imageUrl],
+        selectedBrendCategory,
+        1,
+        selectedStatusCategory,
+        price,
+        topCategory,
+        bottomCategory,
+        size,
+        color,
+        title,
+        content
+      );
+      console.log("Article posted successfully:", response);
+      navigate("/articles"); // 실제 게시글 목록 페이지 경로로 수정하세요
+    } catch (error) {
+      console.error("Failed to post article:", error);
+      if (error.response) {
+        console.error("Server response:", error.response.data);
+      }
+    }
   };
 
   const isAIButtonEnabled = selectedBrendCategory && selectedStatusCategory;
@@ -251,7 +285,7 @@ const Sell = () => {
         <div className="sell-button">
           <button
             className="apply-button"
-            onClick={handleQuestClick}
+            onClick={handleSubmit} // 게시글 등록 함수 호출
             style={{
               backgroundColor: isSellButtonEnabled ? "#8f0456" : "#dadada",
               color: "#ffffff",
@@ -263,7 +297,6 @@ const Sell = () => {
           </button>
         </div>
       </div>
-
       <BottomNav />
     </div>
   );
