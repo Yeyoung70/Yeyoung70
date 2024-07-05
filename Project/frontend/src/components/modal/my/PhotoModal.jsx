@@ -16,14 +16,14 @@ const PhotoModal = ({ closeModal, setProfileImage }) => {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const objectUrl = URL.createObjectURL(file);
-      setProfileImage(objectUrl);
-      closeModal();
-    }
-  };
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const objectUrl = URL.createObjectURL(file);
+  //     setProfileImage(objectUrl);
+  //     closeModal();
+  //   }
+  // };
 
   return (
     <ShortModal isOpen={true} closeModal={closeModal}>
@@ -42,7 +42,7 @@ const PhotoModal = ({ closeModal, setProfileImage }) => {
               type="file"
               ref={fileInputRef}
               style={{ display: "none" }}
-              onChange={handleFileChange}
+              // onChange={handleFileChange}
             />
           </div>
           <div className="content">
