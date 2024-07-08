@@ -37,13 +37,17 @@ const Sell = () => {
   const location = useLocation();
 
   useEffect(() => {
+    if (location.state && location.state.imageUrl) {
+      setImageUrl(location.state.imageUrl);
+    }
+
     if (location.state && location.state.articleData) {
       const { articleData } = location.state;
       setTitle(articleData.title || "");
       setContent(articleData.content || "");
       setTitleLength(articleData.title?.length || 0);
       setContentLength(articleData.content?.length || 0);
-      setPriceLength(articleData.price?.length || 0);
+      setPriceLength(articleData.product.price?.length || 0);
       setPrice(articleData.product.price || "");
       setImageUrl(articleData.product.product_images[0]?.image_url || "");
       setSelectedcategory(
