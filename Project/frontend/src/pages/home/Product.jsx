@@ -4,7 +4,6 @@ import { article_detail } from "../../api/articles";
 
 import ProductModal from "../../components/modal/home/ProductModal";
 import BottomQuest from "../../components/BottomNav/BottomQuest";
-
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 
@@ -21,52 +20,31 @@ const Product = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    console.log("Current URL:", window.location.href);
-    console.log("searchParams:", searchParams.toString());
-    console.log("article_pk:", article_pk);
-  }, [searchParams, article_pk]);
-
-  useEffect(() => {
     const fetchArticle = async () => {
       try {
         const access = localStorage.getItem("access");
         if (!access) {
-          throw new Error("Access token not found");
+          throw new Error("액세스 토큰을 찾을 수 없습니다");
         }
         const data = await article_detail(article_pk, access);
         setArticle(data);
       } catch (err) {
         setError(err);
-        console.error("Error fetching article detail:", err);
+        console.error("게시물 정보를 가져오는 중 오류 발생:", err);
       }
     };
 
     if (article_pk) {
       fetchArticle();
     } else {
-      console.error("Article ID is undefined");
+      console.error("게시물 ID가 정의되지 않았습니다");
     }
   }, [article_pk]);
-
-  const handleProductClick = (article_pk) => {
-    navigate(`/product?detail=${article_pk}`);
-  };
-
-  const handleUserClick = () => {
-    navigate(`/user`);
-  };
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  if (!article) {
-    return <div>Loading...</div>;
-  }
 
   const handleShowProductModal = () => {
     setShowProductModal(true);
   };
+
   const handleCloseProductModal = () => {
     setShowProductModal(false);
   };
@@ -91,25 +69,34 @@ const Product = () => {
     );
   };
 
-  const articles = [];
+  if (error) {
+    return <div>오류: {error.message}</div>;
+  }
+
+  if (!article) {
+    return <div>로딩 중...</div>;
+  }
+
+  const handleSearchCleck = () => {
+    navigate("/search");
+  };
 
   return (
     <div className="Product">
       <div className="header-sec">
-        <div className="back" onClick={() => navigate(-1)}>
+        <div className="back" onClick={handleSearchCleck}>
           <IoIosArrowBack size={26} />
         </div>
-        {articles.map((article) => (
-          <div key={article.id} onClick={() => handleProductClick(article.id)}>
-            <p>{article.title}</p>
-          </div>
-        ))}
         <div className="title">{article.title}</div>
         <div className="alarm">
           <HiOutlineDotsVertical size={26} onClick={handleShowProductModal} />
         </div>
         {showProductModal && (
-          <ProductModal closeModal={handleCloseProductModal} />
+          <ProductModal
+            closeModal={handleCloseProductModal}
+            article_pk={article_pk}
+            user_id={article.user.id}
+          />
         )}
       </div>
 
@@ -132,7 +119,7 @@ const Product = () => {
       <div className="thumbnail-sec">
         {article.product.product_images.map((image, index) => (
           <img
-            key={image.id}
+            key={index}
             src={image.image_url}
             alt="Thumbnail"
             className={`thumbnail ${
@@ -149,14 +136,13 @@ const Product = () => {
         <div className="info">
           <div className="name">{article.title}</div>
         </div>
-        <div className="nickname" onClick={handleUserClick}>
-          @{article.user}
+        <div className="nickname" onClick={() => navigate(`/user`)}>
+          @{article.user.username}
         </div>
         <div className="price">{article.product.price} 원</div>
       </div>
       <div className="content">{article.content}</div>
       <BottomQuest />
-      {/* <BottomNav /> */}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import api from "./utils/axios";
 
 // 게시글 등록 API
 export const article_create = async (
-  product_image,
+  product_images,
   brand,
   product_type,
   product_status,
@@ -16,7 +16,7 @@ export const article_create = async (
 ) => {
   const requestData = {
     product: {
-      product_image,
+      image_urls: product_images, // 기대하는 키로 조정
       brand,
       product_type,
       product_status,
@@ -42,6 +42,8 @@ export const article_create = async (
         Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
     });
+    localStorage.setItem("product_images", product_images);
+
     return response.data;
   } catch (error) {
     console.error("Post Article Response Data:", error.response?.data);
@@ -69,20 +71,79 @@ export const article_list = async (articleData, access) => {
   }
 };
 
-// 게시글 상세 조회 API
+// // 게시글 상세 조회 API
+// export const article_detail = async (article_pk, access) => {
+//   try {
+//     const response = await api.get(`/api/articles/detail/${article_pk}`, {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${access}`, // 액세스 토큰을 헤더에 추가
+//       },
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error(
+//       "Get Article Detail Error Response Data:",
+//       error.response?.data
+//     );
+//     throw error;
+//   }
+// };
+
+// 게시글 상세 정보 API
 export const article_detail = async (article_pk, access) => {
   try {
     const response = await api.get(`/api/articles/detail/${article_pk}`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${access}`, // 액세스 토큰을 헤더에 추가
+        Authorization: `Bearer ${access}`,
       },
     });
     return response.data;
   } catch (error) {
+    console.error("게시물 상세 정보 오류 응답 데이터:", error.response?.data);
+    throw error;
+  }
+};
+
+// 게시글 수정 API
+export const article_modify = async (article_pk, access, modifiedData) => {
+  try {
+    const response = await api.patch(
+      `/api/articles/modify/${article_pk}`,
+      modifiedData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("게시글 수정 중 오류 발생:", error.response?.data);
+    throw error;
+  }
+};
+
+// 게시글 삭제 API
+export const article_delete = async (article_pk, access) => {
+  try {
+    console.log(`Deleting article with ID: ${article_pk}`); // 요청 전 로그
+    const response = await api.delete(`/api/articles/delete/${article_pk}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${access}`,
+      },
+    });
+    console.log(`Delete response data:`, response.data); // 응답 데이터 로그
+
+    localStorage.removeItem("product_images");
+    return response.data;
+  } catch (error) {
     console.error(
-      "Get Article Detail Error Response Data:",
-      error.response?.data
+      "게시글 삭제 중 오류 발생:",
+      error.response?.data || error.message
     );
     throw error;
   }

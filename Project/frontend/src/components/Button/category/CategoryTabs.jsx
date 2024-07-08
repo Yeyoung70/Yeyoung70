@@ -14,15 +14,49 @@ import "./CategoryTabs.css";
 
 const categories = {
   전체: ["반소매 티셔츠", "숏팬츠", "코튼 팬츠"],
-  상의: ["니트", "후드", "맨투맨"],
-  하의: ["데님 팬츠", "슬랙스", "트레이닝/조거팬츠"],
-  아우터: ["후드 집업", "바람막이", "코트"],
+  상의: [
+    "니트",
+    "후드",
+    "맨투맨",
+    "셔츠블라우스",
+    "긴소매티셔츠",
+    "반소매티셔츠",
+    "민소매티셔츠",
+    "카라티셔츠",
+    "베스트",
+  ],
+  하의: [
+    "데님 팬츠",
+    "슬랙스",
+    "트레이닝조거팬츠",
+    "숏팬츠",
+    "코튼팬츠",
+    "레깅스",
+  ],
+  아우터: [
+    "후드집업",
+    "바람막이아노락",
+    "코트",
+    "롱패딩",
+    "숏패딩",
+    "패딩베스트",
+    "블루종",
+    "레더자켓",
+    "무스탕",
+    "트러커자켓",
+    "블레이저",
+    "가디건",
+    "뽀글이후리스",
+    "사파리자켓",
+  ],
   원피스: ["미니 원피스", "미디 원피스", "롱원피스"],
   스커트: ["미니스커트", "미디스커트", "롱스커트"],
 };
 
 const filters = {
   color: [
+    { name: "블랙", color: "black" },
+    { name: "화이트", color: "white" },
     { name: "옐로우", color: "yellow" },
     { name: "레드", color: "red" },
     { name: "블루", color: "blue" },
@@ -234,7 +268,10 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
                 onClick={() => handleCardSecClick(article.id)}
               >
                 <img
-                  src={article.product.product_images[0].image_url}
+                  src={
+                    article.product.product_images[0]?.image_url ||
+                    "기본이미지경로"
+                  }
                   alt={article.title}
                   className="card"
                 />

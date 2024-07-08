@@ -37,8 +37,24 @@ const Sell = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.state && location.state.imageUrl) {
-      setImageUrl(location.state.imageUrl);
+    if (location.state && location.state.articleData) {
+      const { articleData } = location.state;
+      setTitle(articleData.title || "");
+      setContent(articleData.content || "");
+      setTitleLength(articleData.title?.length || 0);
+      setContentLength(articleData.content?.length || 0);
+      setPriceLength(articleData.price?.length || 0);
+      setPrice(articleData.product.price || "");
+      setImageUrl(articleData.product.product_images[0]?.image_url || "");
+      setSelectedcategory(
+        `${articleData.product.category.top_category} > ${articleData.product.category.bottom_category}` ||
+          ""
+      );
+      setSelectedOption(
+        `Color: ${articleData.product.option.color} / Size: ${articleData.product.option.size}` ||
+          ""
+      );
+      // 필요한 다른 데이터 설정
     }
   }, [location]);
 
@@ -117,7 +133,7 @@ const Sell = () => {
 
     try {
       const response = await article_create(
-        [imageUrl],
+        [imageUrl], // 이미지 URL 배열로 전달
         selectedBrendCategory,
         1,
         selectedStatusCategory,

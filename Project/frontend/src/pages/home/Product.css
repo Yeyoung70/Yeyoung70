@@ -89,7 +89,7 @@
 .Product .card {
   border-radius: 8px;
   margin-bottom: 1rem;
-  padding: 0 4rem;
+  /* padding: 0 4rem; */
 }
 .Product .product-sec {
   margin: 1rem;

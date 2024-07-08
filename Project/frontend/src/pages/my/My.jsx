@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getProfileImageURL, getUserPk } from "../../api/auth";
 
 import BottomNav from "../../components/BottomNav/BottomNav";
-import card from "../../assets/card/profile_photo_1.jpg";
 import PhotoModal from "../../components/modal/my/PhotoModal";
 import NameModal from "../../components/modal/my/NameModal";
 import NickModal from "../../components/modal/my/NickModal";
@@ -25,15 +25,18 @@ const My = () => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showOutModal, setShowOutModal] = useState(false);
+  const [profileImageURL, setProfileImageURL] = useState(
+    "/default_profile.jpg"
+  ); // 기본 프로필 이미지 지정
 
-  // const [profileImage, setProfileImage] = useState(() => {
-  //   return localStorage.getItem("profileImage") || card;
-  // });
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   localStorage.setItem("profileImage", profileImage);
-  // }, [profileImage]);
+  useEffect(() => {
+    const storedProfileImageURL = getProfileImageURL();
+    if (storedProfileImageURL) {
+      setProfileImageURL(storedProfileImageURL);
+    }
+  }, []);
 
   const handleShowPhotoModal = () => {
     setShowPhotoModal(true);
@@ -105,14 +108,14 @@ const My = () => {
       </div>
       <div className="info-sec">
         <div className="photo">
-          <img src={card} alt="Card" className="card" />
+          <img src={profileImageURL} alt="Profile" className="profile_images" />
           <div className="photo-text" onClick={handleShowPhotoModal}>
             사진 변경하기
           </div>
           {showPhotoModal && (
             <PhotoModal
               closeModal={handleClosePhotoModal}
-              // setProfileImage={setProfileImage}
+              setProfileImageURL={setProfileImageURL}
             />
           )}
         </div>
