@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+// Home.jsx
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getUsername } from "../../api/auth";
+import { useUser } from "../../pages/context/UserContext";
 
 import BottomNav from "../../components/BottomNav/BottomNav";
-
 import { GoBell } from "react-icons/go";
 import { GiLargeDress, GiSkirt } from "react-icons/gi";
 import { IoShirtSharp } from "react-icons/io5";
@@ -16,22 +16,11 @@ import "./Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-
-  useEffect(() => {
-    const storedUsername = getUsername();
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-  }, []);
+  const { user } = useUser(); // Context에서 사용자 정보 가져오기
 
   const handleSearchClick = (category) => {
     navigate(`/search?category=${category}`);
   };
-
-  // const handleProductClick = (cardSec) => {
-  //   navigate(`/product?cardsec=${cardSec}`);
-  // };
 
   const handleSAlarmClick = () => {
     navigate(`/alarm`);
@@ -88,7 +77,7 @@ const Home = () => {
       <div className="welcome">
         <BsStars />
         &nbsp;
-        {username} 님 환영합니다! &nbsp;
+        {user.username} 님 환영합니다! &nbsp;
         <BsStars />
       </div>
 

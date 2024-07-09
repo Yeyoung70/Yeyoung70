@@ -2,7 +2,7 @@ import api from "./utils/axios";
 
 // 게시글 등록 API
 export const article_create = async (
-  product_images,
+  image_url,
   brand,
   product_type,
   product_status,
@@ -16,7 +16,7 @@ export const article_create = async (
 ) => {
   const requestData = {
     product: {
-      image_urls: product_images, // 기대하는 키로 조정
+      product_images: image_url, // 기대하는 키로 조정
       brand,
       product_type,
       product_status,
@@ -42,7 +42,7 @@ export const article_create = async (
         Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
     });
-    localStorage.setItem("product_images", product_images);
+    localStorage.setItem("product_images", image_url);
 
     return response.data;
   } catch (error) {
@@ -108,6 +108,8 @@ export const article_detail = async (article_pk, access) => {
 
 // 게시글 수정 API
 export const article_modify = async (article_pk, access, modifiedData) => {
+  console.log("Article modify Request Data:", modifiedData); // 수정 데이터 로그 출력
+
   try {
     const response = await api.patch(
       `/api/articles/modify/${article_pk}`,
@@ -119,6 +121,8 @@ export const article_modify = async (article_pk, access, modifiedData) => {
         },
       }
     );
+    console.log(modifiedData);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("게시글 수정 중 오류 발생:", error.response?.data);

@@ -11,7 +11,7 @@ import "./Deal.css";
 import DealBuy from "../../components/tabs/deal/DealBuy";
 import DealSell from "../../components/tabs/deal/DealSell";
 
-const tabs = ["채팅", "구매", "판매"];
+const tabs = ["판매중", "판매 완료", "채팅"];
 
 const Deal = () => {
   const [currentTab, setCurrentTab] = useState(tabs[0]);
@@ -27,22 +27,23 @@ const Deal = () => {
 
   const renderContent = () => {
     switch (currentTab) {
-      case "채팅":
+      case "판매중":
         return (
           <div>
-            <ChatNone />
+            <DealSell />
           </div>
         );
-      case "구매":
+
+      case "판매 완료":
         return (
           <div>
             <DealBuy />
           </div>
         );
-      case "판매":
+      case "채팅":
         return (
           <div>
-            <DealSell />
+            <ChatNone />
           </div>
         );
       default:

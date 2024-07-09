@@ -35,7 +35,9 @@ const ProductModal = ({ closeModal, article_pk }) => {
       const articleData = await article_detail(article_pk, access);
 
       console.log(`게시글 수정 페이지로 이동: ${article_pk}`); // 성공 로그
-      navigate("/sell", { state: { articleData, article_pk } });
+      navigate(`/sell?modify=${article_pk}`, {
+        state: { articleData, article_pk },
+      });
       closeModal();
     } catch (error) {
       console.error("게시글 수정 중 오류 발생:", error);

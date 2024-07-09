@@ -8,7 +8,7 @@ import ColorFilterModal from "../../modal/search/ColorFilterModal";
 import SizeFilterModal from "../../modal/search/SizeFilterModal";
 import { article_list } from "../../../api/articles";
 
-import { IoIosArrowDown, IoIosArrowDropdown } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 
 import "./CategoryTabs.css";
 
@@ -55,11 +55,45 @@ const categories = {
 
 const filters = {
   color: [
-    { name: "블랙", color: "black" },
-    { name: "화이트", color: "white" },
-    { name: "옐로우", color: "yellow" },
-    { name: "레드", color: "red" },
-    { name: "블루", color: "blue" },
+    { name: "어두운 빨강", color: "#8b0000" },
+    { name: "빨강", color: "red" },
+    { name: "밝은 빨강", color: "light red" },
+    { name: "어두운 초록", color: "dark green" },
+    { name: "초록", color: "green" },
+    { name: "밝은 초록", color: "light green" },
+    { name: "어두운 파랑", color: "dark blue" },
+    { name: "파랑", color: "blue" },
+    { name: "밝은 파랑", color: "light blue" },
+    { name: "어두운 노랑", color: "dark yellow" },
+    { name: "노랑", color: "yellow" },
+    { name: "밝은 노랑", color: "light yellow" },
+    { name: "어두운 자홍", color: "dark magenta" },
+    { name: "자홍", color: "magenta" },
+    { name: "밝은 자홍", color: "light magenta" },
+    { name: "어두운 청록", color: "dark cyan" },
+    { name: "청록", color: "cyan" },
+    { name: "밝은 청록", color: "light cyan" },
+    { name: "어두운 주황", color: "dark orange" },
+    { name: "주황", color: "orange" },
+    { name: "밝은 주황", color: "light orange" },
+    { name: "어두운 보라", color: "dark purple" },
+    { name: "보라", color: "purple" },
+    { name: "밝은 보라", color: "light purple" },
+    { name: "어두운 분홍", color: "dark pink" },
+    { name: "분홍", color: "pink" },
+    { name: "밝은 분홍", color: "light pink" },
+    { name: "어두운 라임", color: "dark lime" },
+    { name: "라임", color: "lime" },
+    { name: "밝은 라임", color: "light lime" },
+    { name: "어두운 갈색", color: "dark brown" },
+    { name: "갈색", color: "brown" },
+    { name: "밝은 갈색", color: "light brown" },
+    { name: "어두운 회색", color: "dark gray" },
+    { name: "회색", color: "gray" },
+    { name: "밝은 회색", color: "light gray" },
+    { name: "검정", color: "black" },
+    { name: "흰색", color: "white" },
+    { name: "기타 색상", color: "rainbow" },
   ],
   size: ["XS", "S", "M", "L", "XL", "2XL 이상", "FREE"],
   condition: ["New", "Used"],
@@ -159,23 +193,23 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
     updateURLParams({ category: currentCategory, subcategory });
   };
 
-  const handleFilterClick = (filterType, filterValue) => {
-    setActiveFilters((prevFilters) => {
-      const newFilters = { ...prevFilters };
-      if (newFilters[filterType]?.includes(filterValue)) {
-        newFilters[filterType] = newFilters[filterType].filter(
-          (value) => value !== filterValue
-        );
-      } else {
-        newFilters[filterType].push(filterValue);
-      }
-      return newFilters;
-    });
-  };
+  // const handleFilterClick = (filterType, filterValue) => {
+  //   setActiveFilters((prevFilters) => {
+  //     const newFilters = { ...prevFilters };
+  //     if (newFilters[filterType]?.includes(filterValue)) {
+  //       newFilters[filterType] = newFilters[filterType].filter(
+  //         (value) => value !== filterValue
+  //       );
+  //     } else {
+  //       newFilters[filterType].push(filterValue);
+  //     }
+  //     return newFilters;
+  //   });
+  // };
 
-  const isFilterActive = (filterType, filterValue) => {
-    return activeFilters[filterType]?.includes(filterValue) ?? false;
-  };
+  // const isFilterActive = (filterType, filterValue) => {
+  //   return activeFilters[filterType]?.includes(filterValue) ?? false;
+  // };
 
   const openModal = (content) => {
     setModalContent(content);
@@ -245,7 +279,7 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
           onClick={() => openModal("size")}
           Icon={IoIosArrowDown}
         />
-        <FilterButton
+        {/* <FilterButton
           Icon={IoIosArrowDropdown}
           label="새상품"
           isActive={isFilterActive("condition", "New")}
@@ -256,7 +290,7 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
           label="품절제외"
           isActive={isFilterActive("availability", "In Stock")}
           onClick={() => handleFilterClick("availability", "In Stock")}
-        />
+        /> */}
       </div>
       <div className="category-content">
         <div className="cards">

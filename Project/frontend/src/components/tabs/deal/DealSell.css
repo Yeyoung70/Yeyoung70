@@ -1,0 +1,64 @@
+.DealSell {
+  display: flex;
+  flex-direction: column;
+}
+
+.DealSell .sell-sec {
+  padding: 0 1rem;  
+}
+
+.DealSell .sell {
+  display: flex;
+  padding-bottom: 1rem;
+  height: 120px;
+}
+
+.DealSell .sell-sec .card {
+  border-radius: 8px;
+  width: 120px;
+  height: 120px;
+  margin-right: 1rem;
+}
+
+.DealSell .info .deal-title {
+  padding-top: 0.5rem;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.DealSell .info .where {
+  color: #aeaeae;
+  padding-top: 1rem;
+  font-size: 14px;
+}
+
+.DealSell .info .price {
+  display: flex;
+  align-items: center;
+
+  margin-top: 0.4rem;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.review-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 0.5px solid #dadada;
+}
+
+.review-sec .add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 48px;
+  height: 48px;
+  margin-left: 0.5rem;
+
+  background-color: #dadada;
+  border-radius: 6px;
+}

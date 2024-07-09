@@ -1,20 +1,35 @@
-import api from "./utils/axios";
+import axios from "axios";
 
-// 프로필 이미지 업데이트 API
-export const user_profile = async (user_pk, profile_images, access) => {
+export async function user_profile(user_pk) {
   try {
-    const formData = new FormData();
-    formData.append("profile_images_url", profile_images);
-
-    const response = await api.patch(`/api/profiles/${user_pk}`, formData, {
+    const access = localStorage.getItem("access");
+    const response = await axios.get(`/api/profiles/${user_pk}/`, {
       headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${access}`, // 액세스 토큰을 헤더에 추가
+        Authorization: `Bearer ${access}`,
       },
     });
     return response.data;
   } catch (error) {
-    console.error("Profile Image Update Error:", error.response?.data);
+    console.error("Error fetching user profile:", error);
     throw error;
   }
-};
+}
+
+export async function update_user_profile(user_pk, updateData) {
+  try {
+    const access = localStorage.getItem("access");
+    const response = await axios.patch(
+      `/api/profiles/${user_pk}/`,
+      updateData,
+      {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    throw error;
+  }
+}

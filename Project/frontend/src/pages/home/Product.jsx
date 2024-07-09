@@ -77,14 +77,17 @@ const Product = () => {
     return <div>로딩 중...</div>;
   }
 
-  const handleSearchCleck = () => {
+  const handleSearchClick = () => {
     navigate("/search");
   };
+
+  const images = article.product.product_images || [];
+  const imageUrl = images[currentImageIndex]?.image_url || "기본이미지경로";
 
   return (
     <div className="Product">
       <div className="header-sec">
-        <div className="back" onClick={handleSearchCleck}>
+        <div className="back" onClick={handleSearchClick}>
           <IoIosArrowBack size={26} />
         </div>
         <div className="title">{article.title}</div>
@@ -105,7 +108,7 @@ const Product = () => {
           <IoIosArrowBack size={26} />
         </button>
         <img
-          src={article.product.product_images[currentImageIndex].image_url}
+          src={imageUrl}
           alt="Product"
           className="card"
           width={355}
@@ -117,7 +120,7 @@ const Product = () => {
       </div>
 
       <div className="thumbnail-sec">
-        {article.product.product_images.map((image, index) => (
+        {images.map((image, index) => (
           <img
             key={index}
             src={image.image_url}
