@@ -37,7 +37,7 @@ export const login = async (email, password) => {
     email,
     password,
   };
-  console.log("Login Request Data:", requestData);
+  // console.log("Login Request Data:", requestData);
 
   try {
     const response = await api.post("/api/accounts/login/", requestData);
@@ -180,9 +180,12 @@ export const resetPassword = async (newPassword) => {
 };
 
 // 회원 탈퇴 API
-export const delete_user = async () => {
-  const requestData = {};
-  console.log("Delete Request Data:", requestData);
+export const delete_user = async (email, username, password) => {
+  const requestData = {
+    email: email,
+    username: username,
+    password: password,
+  };
 
   const access = localStorage.getItem("access");
 

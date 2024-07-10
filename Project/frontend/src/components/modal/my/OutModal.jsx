@@ -59,22 +59,22 @@ const OutModal = ({ closeModal }) => {
           <input
             type="email"
             placeholder="이메일을 입력해 주세요"
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="input-fields"
           />
           <input
-            type="username"
+            type="text"
             placeholder="이름을 입력해 주세요"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="input-fields"
           />
           <input
             type="password"
             placeholder="비밀번호를 입력해 주세요"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="input-fields"
           />
         </div>

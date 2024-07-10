@@ -117,7 +117,7 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
   const [activeFilters, setActiveFilters] = useState({
     color: [],
     size: [],
-    price: [], // 초기화
+    price: [],
     sort: [],
   });
   const [articles, setArticles] = useState([]);
@@ -143,6 +143,21 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
           throw new Error("Access token not found");
         }
 
+        const sort = activeFilters.sort[0] || "최신순";
+        const isSort =
+          sort === "가격 높은순"
+            ? "desc"
+            : sort === "가격 낮은순"
+            ? "asc"
+            : undefined;
+        const isDate = ["최신순", "오래된순"].includes(sort)
+          ? sort === "최신순"
+            ? "desc"
+            : "asc"
+          : undefined;
+
+        console.log(isDate);
+
         const articleData = {
           top_category:
             currentCategory !== "전체" ? currentCategory : undefined,
@@ -153,16 +168,13 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
           size: activeFilters.size.length
             ? activeFilters.size.join(",")
             : undefined,
-          price: activeFilters.price.length
-            ? activeFilters.price.join(",")
-            : undefined,
-          sort: activeFilters.sort.length
-            ? activeFilters.sort.join(",")
-            : undefined,
-          sPrice: 0,
-          ePrice: 999999999,
-          isSort: "asc",
-          // isDate: "asc",
+          sPrice: activeFilters.price.length === 2 ? activeFilters.price[0] : 0,
+          ePrice:
+            activeFilters.price.length === 2
+              ? activeFilters.price[1]
+              : 999999999,
+          isSort: isSort,
+          isDate: isDate, // 수정된 부분: isDate를 API 요청의 파라미터로 사용
         };
 
         const data = await article_list(articleData, access);
@@ -218,14 +230,17 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
       subcategory: currentSubcategory,
       color: activeFilters.color.join(","),
       size: activeFilters.size.join(","),
-      price: activeFilters.price.join(","),
+      sPrice: activeFilters.price[0],
+      ePrice: activeFilters.price[1],
+      sort: activeFilters.sort.join(","),
     };
     if (filterType === "color") {
       filterParams.color = selectedFilters.join(",");
     } else if (filterType === "size") {
       filterParams.size = selectedFilters.join(",");
     } else if (filterType === "price") {
-      filterParams.price = selectedFilters.join(",");
+      filterParams.sPrice = selectedFilters[0];
+      filterParams.ePrice = selectedFilters[1];
     } else if (filterType === "sort") {
       filterParams.sort = selectedFilters.join(",");
     }
@@ -327,7 +342,6 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
       <PriceFilterModal
         isOpen={isModalOpen && modalContent === "price"}
         onClose={closeModal}
-        prices={filters.price} // prices prop 전달
         activeFilters={activeFilters.price}
         onApply={handleApplyFilter}
       />

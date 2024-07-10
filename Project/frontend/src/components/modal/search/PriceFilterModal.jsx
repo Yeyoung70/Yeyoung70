@@ -1,30 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import ReactSlider from "react-slider";
 import "./PriceFilterModal.css";
 
-const PriceFilterModal = ({
-  isOpen,
-  onClose,
-  prices = [], // 기본값 설정
-  activeFilters,
-  onApply,
-}) => {
-  const [selectedPrices, setSelectedPrices] = useState([]);
+const PriceFilterModal = ({ isOpen, onClose, activeFilters, onApply }) => {
+  const [selectedPriceRange, setSelectedPriceRange] = useState([0, 999999999]);
 
   useEffect(() => {
-    setSelectedPrices(Array.isArray(activeFilters) ? activeFilters : []);
+    if (activeFilters.length === 2) {
+      setSelectedPriceRange(activeFilters);
+    }
   }, [activeFilters]);
 
-  const handleSizeClick = (price) => {
-    setSelectedPrices((prevPrices) =>
-      prevPrices.includes(price)
-        ? prevPrices.filter((s) => s !== price)
-        : [...prevPrices, price]
-    );
-  };
-
   const handleApply = () => {
-    onApply("price", selectedPrices);
+    onApply("price", selectedPriceRange);
     onClose();
   };
 
@@ -36,19 +25,25 @@ const PriceFilterModal = ({
         <button className="cancel" onClick={onClose}>
           <IoCloseOutline size={30} />
         </button>
-        <div className="price-title">가격대를 선택하세요</div>
-        <div className="price-samples">
-          {prices.map((price) => (
-            <span
-              key={price}
-              className={`price-item ${
-                selectedPrices.includes(price) ? "active" : ""
-              }`}
-              onClick={() => handleSizeClick(price)}
-            >
-              {price}
-            </span>
-          ))}
+        <div className="price-title">가격 범위를 선택하세요</div>
+        <ReactSlider
+          className="horizontal-slider"
+          thumbClassName="thumb"
+          trackClassName="track"
+          value={selectedPriceRange}
+          min={0}
+          max={999999}
+          step={1000}
+          onChange={(value) => setSelectedPriceRange(value)}
+          renderThumb={(props, state) => (
+            <div {...props} key={state.index}>
+              {state.valueNow}
+            </div>
+          )}
+        />
+        <div className="price-range">
+          <span>{selectedPriceRange[0]} 원</span>
+          <span>{selectedPriceRange[1]} 원</span>
         </div>
         <div className="price-button">
           <button
@@ -56,7 +51,10 @@ const PriceFilterModal = ({
             onClick={handleApply}
             style={{
               backgroundColor:
-                selectedPrices.length > 0 ? "#8f0456" : "#dadada",
+                selectedPriceRange[0] !== 0 ||
+                selectedPriceRange[1] !== 999999999
+                  ? "#8f0456"
+                  : "#dadada",
               color: "#ffffff",
             }}
           >

@@ -6,10 +6,12 @@ import ReviewButton from "../../Button/deal/ReviewButton";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
 import "./DealSoldout.css";
+import DealSellModal from "../../modal/deal/DealSellModal";
 
 const DealSoldout = () => {
   const navigate = useNavigate();
   const [salesList, setSalesList] = useState([]);
+  const [showSellModal, setShowSellModal] = useState(false);
 
   useEffect(() => {
     const getSalesList = async () => {
@@ -18,7 +20,7 @@ const DealSoldout = () => {
         const articles = await article_sales_list(user_pk);
         setSalesList(articles);
       } catch (error) {
-        console.error("Error fetching sales list:", error);
+        console.error("종료된 판매 목록을 불러오는 중 오류 발생:", error);
       }
     };
 
@@ -27,6 +29,14 @@ const DealSoldout = () => {
 
   const handleClick = (id) => {
     navigate(`/search?detail=${id}`);
+  };
+
+  const handleShowSellModal = () => {
+    setShowSellModal(true);
+  };
+
+  const handleCloseSellModal = () => {
+    setShowSellModal(false);
   };
 
   return (
@@ -51,6 +61,9 @@ const DealSoldout = () => {
                 <SellingButton onClick={() => handleClick(article.id)} />
                 {article.product.price} 원
               </div>
+              {showSellModal && (
+                <DealSellModal closeModal={handleCloseSellModal} />
+              )}
             </div>
           </div>
           <div className="review-sec">
@@ -58,7 +71,10 @@ const DealSoldout = () => {
               <ReviewButton onClick={() => handleClick(article.id)} />
             </div>
             <div className="add">
-              <HiOutlineDotsHorizontal size={22} />
+              <HiOutlineDotsHorizontal
+                size={22}
+                onClick={handleShowSellModal}
+              />
             </div>
           </div>
         </div>
