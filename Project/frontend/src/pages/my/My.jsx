@@ -1,4 +1,3 @@
-// My.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { getProfileImageURL } from "../../api/auth";
@@ -25,9 +24,9 @@ const My = () => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showOutModal, setShowOutModal] = useState(false);
-  const [profileImageURL, setProfileImageURL] = useState(
-    "/default_profile.jpg"
-  );
+  const [profileImageURL, setProfileImageURL] =
+    useState();
+    // "/default_profile.jpg"
   const { user, updateUser } = useUser(); // Context에서 사용자 정보와 업데이트 함수 가져오기
   const user_pk = localStorage.getItem("user_pk");
   const navigate = useNavigate();
@@ -52,7 +51,8 @@ const My = () => {
     };
 
     loadUserProfile();
-  }, [user_pk, updateUser]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user_pk]);
 
   const handleFileClick = () => {
     profileUploadRef.current.openFileDialog();

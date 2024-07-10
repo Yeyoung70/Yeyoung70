@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ShortButton from "../alarm/ShortButton";
+import ShortButton from "../../Button/alarm/ShortButton";
 
 const ReviewButton = ({ onClick }) => {
   return (

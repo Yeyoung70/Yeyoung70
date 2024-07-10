@@ -143,9 +143,14 @@ const Product = () => {
           @{article.user.username}
         </div>
         <div className="price">{article.product.price} 원</div>
+        <div className="content">{article.content}</div>
       </div>
-      <div className="content">{article.content}</div>
-      <BottomQuest />
+
+      <BottomQuest
+        article_id={article_pk}
+        initialFavoriteCount={article.favorite_count}
+        initialIsFavorited={article.is_favorited}
+      />
     </div>
   );
 };

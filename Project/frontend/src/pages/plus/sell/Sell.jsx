@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { article_create, article_modify } from "../../../api/articles";
 
 import BottomNav from "../../../components/BottomNav/BottomNav";
-import GuideModal from "../../../components/modal/GuideModal";
+import GuideModal from "../../../components/modal/plus/GuideModal";
 import SellCategoryModal from "../../../components/modal/plus/SellCategoryModal";
 import BrendCategoryModal from "../../../components/modal/plus/BrendCategoryModal";
 import StatusCategoryModal from "../../../components/modal/plus/StatusCategoryModal";
@@ -41,10 +41,9 @@ const Sell = () => {
   const imageUploadRef = useRef();
 
   useEffect(() => {
-    if (location.state && location.state.image_url) {
-      setImage_urls(location.state.image_url);
+    if (location.state && location.state.image_urls) {
+      setImage_urls(location.state.image_urls);
     }
-
     if (location.state && location.state.articleData) {
       const { articleData } = location.state;
       setArticlePk(articleData.id); // 게시글 ID 설정
@@ -137,25 +136,31 @@ const Sell = () => {
     const optionParts = selectedOption.split(" / ");
     const size = optionParts.length > 1 ? optionParts[1].split(": ")[1] : "";
     const color = optionParts.length > 0 ? optionParts[0].split(": ")[1] : "";
-    const topCategory = selectedCategory.split(" > ")[0];
-    const bottomCategory = selectedCategory.split(" > ")[1] || "";
+    const categoryParts = selectedCategory.split(" > ");
+    const topCategory = categoryParts[0] || "";
+    const bottomCategory = categoryParts[1] || "";
 
     const articleData = {
-      image_urls,
-      brand: selectedBrendCategory,
-      product_status: selectedStatusCategory,
-      price,
-      top_category: topCategory,
-      bottom_category: bottomCategory,
-      size,
-      color,
       title,
       content,
+      product: {
+        image_urls,
+        brand: selectedBrendCategory,
+        product_status: selectedStatusCategory,
+        price,
+        category: {
+          top_category: topCategory,
+          bottom_category: bottomCategory,
+        },
+        option: {
+          size,
+          color,
+        },
+      },
     };
 
     try {
       const response = await article_create(articleData);
-      console.log("Article submitted successfully:", response);
       const newArticlePk = response.id;
       navigate(`/product?detail=${newArticlePk}`);
     } catch (error) {
@@ -174,8 +179,10 @@ const Sell = () => {
     const bottomCategory = selectedCategory.split(" > ")[1] || "";
 
     const modifiedData = {
+      title,
+      content,
       product: {
-        product_images: image_urls,
+        image_urls,
         brand: selectedBrendCategory,
         product_status: selectedStatusCategory,
         price,
@@ -188,18 +195,11 @@ const Sell = () => {
           color,
         },
       },
-      title,
-      content,
     };
-
-    console.log("Sending modified data:", modifiedData); // 데이터를 로그로 출력
 
     try {
       const access = localStorage.getItem("access");
-      const response = await article_modify(articlePk, access, modifiedData);
-
-      console.log("modifyedData:", modifiedData);
-      console.log("Article modified successfully:", response);
+      await article_modify(articlePk, access, modifiedData);
       navigate(`/product?detail=${articlePk}`);
     } catch (error) {
       console.error("Failed to modify article:", error);
@@ -232,7 +232,7 @@ const Sell = () => {
         <div className="photo">
           <div className="photo-text">상품 사진</div>
           <div className="photo-box">
-            <div className="box">
+            <div className="box" onClick={handleImageUploadClick}>
               {image_urls.length > 0 ? (
                 image_urls.map((url, index) => (
                   <img
@@ -243,7 +243,7 @@ const Sell = () => {
                   />
                 ))
               ) : (
-                <FaCirclePlus size={26} onClick={handleImageUploadClick} />
+                <FaCirclePlus size={26} />
               )}
             </div>
           </div>

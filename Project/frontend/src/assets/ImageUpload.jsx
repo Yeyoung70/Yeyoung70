@@ -34,6 +34,8 @@ const ImageUpload = forwardRef(({ onUploadSuccess }, ref) => {
 
       if (response.status === 201) {
         onUploadSuccess(response.data.uploaded_images);
+      } else {
+        console.error("Unexpected response status:", response.status);
       }
     } catch (error) {
       console.error("Error uploading files:", error);

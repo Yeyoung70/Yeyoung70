@@ -8,7 +8,7 @@ import ChatNone from "./ChatNone";
 import { GoBell } from "react-icons/go";
 
 import "./Deal.css";
-import DealBuy from "../../components/tabs/deal/DealBuy";
+import DealSoldout from "../../components/tabs/deal/DealSoldout";
 import DealSell from "../../components/tabs/deal/DealSell";
 
 const tabs = ["판매중", "판매 완료", "채팅"];
@@ -28,24 +28,11 @@ const Deal = () => {
   const renderContent = () => {
     switch (currentTab) {
       case "판매중":
-        return (
-          <div>
-            <DealSell />
-          </div>
-        );
-
+        return <DealSell />;
       case "판매 완료":
-        return (
-          <div>
-            <DealBuy />
-          </div>
-        );
+        return <DealSoldout />;
       case "채팅":
-        return (
-          <div>
-            <ChatNone />
-          </div>
-        );
+        return <ChatNone />;
       default:
         return null;
     }

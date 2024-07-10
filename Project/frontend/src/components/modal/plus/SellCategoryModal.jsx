@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 
 import Tabs from "../../Button/category/Tabs";
 import CategoryButton from "../../Button/category/CategoryButton";
@@ -8,7 +8,7 @@ import { IoCloseOutline } from "react-icons/io5";
 
 import "./SellCategoryModal.css";
 
-const SellCategoryModal = ({ closeModal, setSelectedcategory }) => {
+const SellCategoryModal = ({ closeModal, setSelectedCategory }) => {
   const categories = {
     상의: [
       "니트",
@@ -22,7 +22,7 @@ const SellCategoryModal = ({ closeModal, setSelectedcategory }) => {
       "베스트",
     ],
     하의: [
-      "데님 팬츠",
+      "데님팬츠",
       "슬랙스",
       "트레이닝조거팬츠",
       "숏팬츠",
@@ -31,7 +31,7 @@ const SellCategoryModal = ({ closeModal, setSelectedcategory }) => {
     ],
     아우터: [
       "후드집업",
-      "바람막이아노락",
+      "바람막이",
       "코트",
       "롱패딩",
       "숏패딩",
@@ -45,7 +45,7 @@ const SellCategoryModal = ({ closeModal, setSelectedcategory }) => {
       "뽀글이후리스",
       "사파리자켓",
     ],
-    원피스: ["미니 원피스", "미디 원피스", "롱원피스"],
+    원피스: ["미니원피스", "미디원피스", "롱원피스"],
     스커트: ["미니스커트", "미디스커트", "롱스커트"],
   };
 
@@ -65,7 +65,7 @@ const SellCategoryModal = ({ closeModal, setSelectedcategory }) => {
 
   const handleConfirmClick = () => {
     if (selectedSubcategory) {
-      setSelectedcategory(`${currentCategory} > ${selectedSubcategory}`);
+      setSelectedCategory(`${currentCategory} > ${selectedSubcategory}`);
       closeModal();
     }
   };

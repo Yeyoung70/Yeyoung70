@@ -41,8 +41,7 @@ export const login = async (email, password) => {
 
   try {
     const response = await api.post("/api/accounts/login/", requestData);
-    console.log("Login Response Data:", response.data); // 로그인 응답 데이터 출력
-
+    // console.log("Login Response Data:", response.data);
     const { access, refresh, username, nickname, id, email, profile_images } =
       response.data;
 

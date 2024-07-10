@@ -1,48 +1,16 @@
 import api from "./utils/axios";
 
 // 게시글 등록 API
-export const article_create = async (
-  image_url,
-  brand,
-  product_type,
-  product_status,
-  price,
-  top_category,
-  bottom_category,
-  size,
-  color,
-  title,
-  content
-) => {
-  const requestData = {
-    product: {
-      product_images: image_url, // 기대하는 키로 조정
-      brand,
-      product_type,
-      product_status,
-      price,
-      category: {
-        top_category,
-        bottom_category,
-      },
-      option: {
-        size,
-        color,
-      },
-    },
-    title,
-    content,
-  };
-
-  console.log("Article create Request Data:", requestData);
+export const article_create = async (articleData) => {
+  console.log("Article create Request Data:", articleData);
   try {
-    const response = await api.post("/api/articles/", requestData, {
+    const response = await api.post("/api/articles/", articleData, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
     });
-    localStorage.setItem("product_images", image_url);
+    localStorage.setItem("product_images", articleData.product.image_urls);
 
     return response.data;
   } catch (error) {
@@ -70,25 +38,6 @@ export const article_list = async (articleData, access) => {
     throw error;
   }
 };
-
-// // 게시글 상세 조회 API
-// export const article_detail = async (article_pk, access) => {
-//   try {
-//     const response = await api.get(`/api/articles/detail/${article_pk}`, {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${access}`, // 액세스 토큰을 헤더에 추가
-//       },
-//     });
-//     return response.data;
-//   } catch (error) {
-//     console.error(
-//       "Get Article Detail Error Response Data:",
-//       error.response?.data
-//     );
-//     throw error;
-//   }
-// };
 
 // 게시글 상세 정보 API
 export const article_detail = async (article_pk, access) => {

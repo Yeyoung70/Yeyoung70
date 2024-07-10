@@ -1,5 +1,4 @@
-/* SizeFilterModal.css */
-.size-modal {
+.sort-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +11,7 @@
   align-items: end;
 }
 
-.size-modal .size-content {
+.sort-modal .sort-content {
   display: flex;
   flex-direction: column;
   background: white;
@@ -23,7 +22,7 @@
   width: 100%;
 }
 
-.size-modal .cancel {
+.sort-modal .cancel {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
@@ -32,7 +31,7 @@
   color: black;
 }
 
-.size-modal .size-title {
+.sort-modal .sort-title {
   display: flex;
   justify-content: center;
   font-size: 22px;
@@ -42,32 +41,32 @@
   border-bottom: 0.5px solid #e5e5e5;
 }
 
-.size-samples {
+.sort-samples {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
 }
 
-.size-item {
+.sort-item {
   cursor: pointer;
   font-size: 16px;
   padding: 10px 20px;
   transition: font-weight 0.3s;
 }
 
-.size-item.active {
+.sort-item.active {
   font-weight: 800;
   color: #d02488;
 }
 
-.size-modal .size-button {
+.sort-modal .sort-button {
   display: flex;
   justify-content: center;
   margin: 1rem 0;
 }
 
-.size-button .apply-button {
+.sort-button .apply-button {
   width: 80%;
   padding: 15px 20px;
   margin-bottom: 1rem;
