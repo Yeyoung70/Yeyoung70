@@ -16,11 +16,15 @@ const SortFilterModal = ({
   }, [activeFilters]);
 
   const handleSortClick = (sort) => {
-    setSelectedSort(sort);
+    if (selectedSort === sort) {
+      setSelectedSort("");
+    } else {
+      setSelectedSort(sort);
+    }
   };
 
   const handleApply = () => {
-    onApply("sort", [selectedSort]);
+    onApply("sort", selectedSort ? [selectedSort] : []);
     onClose();
   };
 

@@ -13,10 +13,9 @@
 
 .DealSell .sell {
   display: flex;
-  /* justify-content: center; */
-  padding-bottom: 1rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
   height: 120px;
-  width: 100%;
 }
 
 .DealSell .sell-sec .card {
@@ -47,16 +46,16 @@
   font-weight: 700;
 }
 
-.DealSell .review-sec {
+.review-sec {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   border-bottom: 0.5px solid #dadada;
 }
 
-.DealSell .review-sec .add {
+.review-sec .add {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,3 +67,7 @@
   background-color: #dadada;
   border-radius: 6px;
 }
+
+
+
+

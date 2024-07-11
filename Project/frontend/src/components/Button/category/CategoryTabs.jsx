@@ -98,12 +98,6 @@ const filters = {
     { name: "기타색상", color: "rainbow" },
   ],
   size: ["XS", "S", "M", "L", "XL", "2XL이상", "FREE", "지정안함"],
-  price: [
-    "1만원 미만",
-    "1만원 이상 2만원 미만",
-    "2만원 이상 3만원 미만",
-    "3만원 이상 4만원 미만",
-  ],
   sort: ["최신순", "오래된순", "가격 높은순", "가격 낮은순"],
 };
 
@@ -156,6 +150,7 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
             : "asc"
           : undefined;
 
+        console.log(isSort);
         console.log(isDate);
 
         const articleData = {
@@ -168,13 +163,16 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
           size: activeFilters.size.length
             ? activeFilters.size.join(",")
             : undefined,
-          sPrice: activeFilters.price.length === 2 ? activeFilters.price[0] : 0,
+          sPrice:
+            activeFilters.price.length === 2
+              ? activeFilters.price[0]
+              : undefined,
           ePrice:
             activeFilters.price.length === 2
               ? activeFilters.price[1]
-              : 999999999,
-          isSort: isSort,
-          isDate: isDate, // 수정된 부분: isDate를 API 요청의 파라미터로 사용
+              : undefined,
+          isSort: undefined,
+          isDate: undefined,
         };
 
         const data = await article_list(articleData, access);
@@ -190,7 +188,7 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
   const updateURLParams = (params) => {
     const searchParams = new URLSearchParams(location.search);
     Object.keys(params).forEach((key) => {
-      if (params[key]) {
+      if (params[key] !== undefined) {
         searchParams.set(key, params[key]);
       } else {
         searchParams.delete(key);
@@ -221,29 +219,32 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
   };
 
   const handleApplyFilter = (filterType, selectedFilters) => {
-    setActiveFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: selectedFilters,
-    }));
-    const filterParams = {
-      category: currentCategory,
-      subcategory: currentSubcategory,
-      color: activeFilters.color.join(","),
-      size: activeFilters.size.join(","),
-      sPrice: activeFilters.price[0],
-      ePrice: activeFilters.price[1],
-      sort: activeFilters.sort.join(","),
+    const newFilters = {
+      ...activeFilters,
+      [filterType]: selectedFilters.length ? selectedFilters : [],
     };
-    if (filterType === "color") {
-      filterParams.color = selectedFilters.join(",");
-    } else if (filterType === "size") {
-      filterParams.size = selectedFilters.join(",");
-    } else if (filterType === "price") {
-      filterParams.sPrice = selectedFilters[0];
-      filterParams.ePrice = selectedFilters[1];
-    } else if (filterType === "sort") {
-      filterParams.sort = selectedFilters.join(",");
-    }
+    setActiveFilters(newFilters);
+
+    const filterParams = {
+      category: currentCategory !== "전체" ? currentCategory : undefined,
+      subcategory: currentSubcategory || undefined,
+      color: newFilters.color.length ? newFilters.color.join(",") : undefined,
+      size: newFilters.size.length ? newFilters.size.join(",") : undefined,
+      sort: newFilters.sort.length ? newFilters.sort.join(",") : undefined,
+      sPrice:
+        filterType === "price" && selectedFilters.length
+          ? selectedFilters[0]
+          : newFilters.price.length
+          ? newFilters.price[0]
+          : undefined,
+      ePrice:
+        filterType === "price" && selectedFilters.length
+          ? selectedFilters[1]
+          : newFilters.price.length
+          ? newFilters.price[1]
+          : undefined,
+    };
+
     updateURLParams(filterParams);
   };
 
@@ -318,6 +319,7 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
                 />
                 <div className="title">{article.title}</div>
                 <div className="price">{article.product.price}원</div>
+                <div className="date">{article.create_at}</div>
               </div>
             ))
           ) : (
