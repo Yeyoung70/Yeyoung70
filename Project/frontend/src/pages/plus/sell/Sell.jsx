@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import {
-  article_create,
-  article_modify,
-  // article_detail,
-} from "../../../api/articles";
+import { article_create, article_modify } from "../../../api/articles";
 
 import BottomNav from "../../../components/BottomNav/BottomNav";
 import GuideModal from "../../../components/modal/plus/GuideModal";
@@ -79,7 +75,7 @@ const Sell = () => {
       }
     };
 
-    if (location.state && location.state.article_pk) {
+    if (location.state && location.state.articleData) {
       fetchArticleData();
     }
   }, [location.state]);
@@ -176,7 +172,9 @@ const Sell = () => {
     try {
       const response = await article_create(articleData);
       const newArticlePk = response.id;
-      navigate(`/product?detail=${newArticlePk}`);
+      navigate(`/product?detail=${newArticlePk}`, {
+        state: { fromSellPage: true },
+      });
     } catch (error) {
       console.error("Failed to submit article:", error);
       if (error.response) {
@@ -222,7 +220,9 @@ const Sell = () => {
     try {
       const access = localStorage.getItem("access");
       await article_modify(articlePk, access, modifiedData);
-      navigate(`/product?detail=${articlePk}`);
+      navigate(`/product?detail=${articlePk}`, {
+        state: { fromSellPage: true },
+      });
     } catch (error) {
       console.error("Failed to modify article:", error);
       if (error.response) {

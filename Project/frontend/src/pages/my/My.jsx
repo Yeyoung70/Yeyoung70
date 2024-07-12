@@ -24,9 +24,8 @@ const My = () => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showOutModal, setShowOutModal] = useState(false);
-  const [profileImageURL, setProfileImageURL] =
-    useState();
-    // "/default_profile.jpg"
+  const [profileImageURL, setProfileImageURL] = useState();
+  // "/default_profile.jpg"
   const { user, updateUser } = useUser(); // Context에서 사용자 정보와 업데이트 함수 가져오기
   const user_pk = localStorage.getItem("user_pk");
   const navigate = useNavigate();
@@ -117,7 +116,7 @@ const My = () => {
   };
 
   const handleDealClick = () => {
-    navigate("/deal");
+    navigate("/deal?isSell=true");
   };
 
   const handleShowLogoutModal = () => {
@@ -144,7 +143,10 @@ const My = () => {
             onUploadSuccess={handleUploadSuccess}
           />
         </div>
-
+        <div className="interest-sec">
+          <div className="text">관심 지수</div>
+          <div className="line"></div>
+        </div>
         <div className="info-modal">
           <div className="name">
             <div>이름</div>

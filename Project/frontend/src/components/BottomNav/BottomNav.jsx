@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Link, useLocation } from "react-router-dom";
 
 import "./BottomNav.css";
@@ -11,6 +10,7 @@ import { BsPersonCircle } from "react-icons/bs";
 
 const BottomNav = () => {
   const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
 
   return (
     <div className="bottom-nav">
@@ -19,8 +19,10 @@ const BottomNav = () => {
           <GoHomeFill size={28} />
         </span>
       </Link>
-      <Link to={"/search"}>
-        <span className={location.pathname === "/search" ? "active" : ""}>
+      <Link to={"/search?category=전체"}>
+        <span
+          className={location.pathname.startsWith("/search") ? "active" : ""}
+        >
           <IoSearchOutline size={28} />
         </span>
       </Link>
@@ -31,7 +33,12 @@ const BottomNav = () => {
       </Link>
       <Link to={"/deal?isSell=true"}>
         <span
-          className={location.pathname === "/deal?isSell=true" ? "active" : ""}
+          className={
+            location.pathname === "/deal" &&
+            searchParams.get("isSell") === "true"
+              ? "active"
+              : ""
+          }
         >
           <IoChatboxOutline size={28} />
         </span>

@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import { article_detail } from "../../api/articles";
+import { list_comments } from "../../api/comment";
 
 import ProductModal from "../../components/modal/home/ProductModal";
 import BottomQuest from "../../components/BottomNav/BottomQuest";
+import card from "../../assets/card/card_sample.png";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { GoArrowLeft } from "react-icons/go";
 
 import "./Product.css";
 
 const Product = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchParams] = useSearchParams();
   const article_pk = searchParams.get("detail");
 
@@ -19,6 +23,7 @@ const Product = () => {
   const [error, setError] = useState(null);
   const [showProductModal, setShowProductModal] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -42,6 +47,21 @@ const Product = () => {
     }
   }, [article_pk]);
 
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const data = await list_comments(article_pk);
+        setComments(data);
+      } catch (err) {
+        console.error("댓글 정보를 가져오는 중 오류 발생:", err);
+      }
+    };
+
+    if (article_pk) {
+      fetchComments();
+    }
+  }, [article_pk]);
+
   const handleShowProductModal = () => {
     setShowProductModal(true);
   };
@@ -55,19 +75,23 @@ const Product = () => {
   };
 
   const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0
-        ? article.product.product_images.length - 1
-        : prevIndex - 1
-    );
+    if (article?.product) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0
+          ? article.product.product_images.length - 1
+          : prevIndex - 1
+      );
+    }
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === article.product.product_images.length - 1
-        ? 0
-        : prevIndex + 1
-    );
+    if (article?.product) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === article.product.product_images.length - 1
+          ? 0
+          : prevIndex + 1
+      );
+    }
   };
 
   if (error) {
@@ -78,17 +102,22 @@ const Product = () => {
     return <div>로딩 중...</div>;
   }
 
-  const handleSearchClick = () => {
-    navigate("/search");
+  const handleBackClick = () => {
+    const fromSellPage = location.state?.fromSellPage || false;
+    if (fromSellPage) {
+      navigate("/search");
+    } else {
+      navigate(-1);
+    }
   };
 
-  const images = article.product.product_images || [];
+  const images = article.product?.product_images || [];
   const imageUrl = images[currentImageIndex]?.image_url || "기본이미지경로";
 
   return (
     <div className="Product">
       <div className="header-sec">
-        <div className="back" onClick={handleSearchClick}>
+        <div className="back" onClick={handleBackClick}>
           <IoIosArrowBack size={26} />
         </div>
         <div className="title">{article.title}</div>
@@ -157,11 +186,43 @@ const Product = () => {
         <div className="price">{article.product.price} 원</div>
         <div className="content">{article.content}</div>
       </div>
+      <div className="line"></div>
+      {comments.map((comment, index) => (
+        <div className="review-sec" key={index}>
+          <div className="photo">
+            <img
+              src={comment.user.profile_image || card}
+              alt="card"
+              className="card"
+            />
+          </div>
+          <div className="info">
+            <div className="nickname">@{comment.user.nickname}</div>
+            <div className="text">{comment.text}</div>
+            <div className="bottom">
+              <div className="time">
+                {new Date(comment.created_at).toLocaleString()}
+              </div>
+              <div className="like">♡ 좋아요</div>
+              <div className="rereview">답글 쓰기</div>
+            </div>
+          </div>
+        </div>
+      ))}
+      <div className="comment-sec">
+        <div className="info">
+          <input type="text" placeholder="댓글을 입력해 주세요" />
+          <div className="icon">
+            <GoArrowLeft size={24} />
+          </div>
+        </div>
+      </div>
 
       <BottomQuest
         article_id={article_pk}
-        initialFavoriteCount={article.favorite_count}
+        initialFavoriteCount={article.num_favorites}
         initialIsFavorited={article.is_favorited}
+        access={localStorage.getItem("access")}
       />
     </div>
   );

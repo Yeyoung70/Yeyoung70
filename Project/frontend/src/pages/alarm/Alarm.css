@@ -3,16 +3,13 @@
   flex-direction: column;
   align-items: center;
   background-color: #ffffff;
-  margin-top: 0.5rem;
   margin-bottom: 5rem;
-  padding: 0 1rem;
 }
 
 .Alarm .header-sec {
   display: flex;
   justify-content: space-between;
   width: 100%; 
-  margin: 0.5rem 0;
 }
 
 .Alarm .alarm-sec {

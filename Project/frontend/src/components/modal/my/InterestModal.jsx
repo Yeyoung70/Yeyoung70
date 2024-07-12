@@ -41,18 +41,18 @@ const InterestModal = ({ closeModal }) => {
         <div className="interest-cards">
           {favorites.map((favorite) => {
             const article = favorite.article;
-            const product = article.product;
+            const product = article?.product;
             const imageUrl =
-              product.product_images[0]?.image_url || "기본이미지경로";
+              product?.product_images[0]?.image_url || "기본이미지경로";
             return (
               <div
                 key={favorite.id}
                 className="card-sec"
-                onClick={() => handleCardSecClick(article.id)}
+                onClick={() => handleCardSecClick(article?.id)}
               >
                 <img src={imageUrl} alt="Card" className="card" />
-                <div className="name">{article.title}</div>
-                <div className="price">{product.price} 원</div>
+                <div className="name">{article?.title}</div>
+                <div className="price">{product?.price} 원</div>
               </div>
             );
           })}

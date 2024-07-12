@@ -12,9 +12,10 @@
   justify-content: center;
   align-items: center;
 
-  /* width: 86%; */
+  width: 100%;
+  transform: translate(-1rem, -1rem);
   background-color: #dadada;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   padding: 1rem 1rem;
 
   font-weight: 600;

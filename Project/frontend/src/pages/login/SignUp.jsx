@@ -19,7 +19,18 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSignupClick = async () => {
+    // 이메일 형식 체크
+    if (!validateEmail(email)) {
+      setError("올바른 이메일 형식으로 입력해 주세요.");
+      return;
+    }
+
     // 비밀번호 길이 체크
     if (password.length < 10) {
       setError("비밀번호는 10자 이상이어야 합니다.");

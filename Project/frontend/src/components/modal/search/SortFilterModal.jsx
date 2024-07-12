@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import "./SortFilterModal.css";
 
+const sortMapping = {
+  date_desc: "최신순",
+  date_asc: "오래된순",
+  price_desc: "가격 높은순",
+  price_asc: "가격 낮은순",
+};
+
 const SortFilterModal = ({
   isOpen,
   onClose,
@@ -44,7 +51,7 @@ const SortFilterModal = ({
               className={`sort-item ${selectedSort === sort ? "active" : ""}`}
               onClick={() => handleSortClick(sort)}
             >
-              {sort}
+              {sortMapping[sort]}
             </span>
           ))}
         </div>

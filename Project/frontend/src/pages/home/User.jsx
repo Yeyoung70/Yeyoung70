@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import card from "../../assets/card/card_sample.png";
+import NameModal from "../../components/modal/my/NameModal";
 
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
 import "./User.css";
-import NameModal from "../../components/modal/my/NameModal";
 
 const User = () => {
   const navigate = useNavigate();

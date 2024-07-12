@@ -27,6 +27,8 @@ import User from "../pages/home/User";
 import CameraSell from "../pages/plus/camera/CameraSell";
 import CameraBuy from "../pages/plus/camera/CameraBuy";
 
+import ProtectedRoute from "../components/protected/ProtectedBoute";
+
 const AllRoutes = () => {
   return (
     <UserProvider>
@@ -39,23 +41,58 @@ const AllRoutes = () => {
 
         <Route path="/welcome" element={<Wellcome />} />
 
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/product" element={<Product />} />
         <Route path="/user" element={<User />} />
 
-        <Route path="/search" element={<Search />} />
+        <Route
+          path="/search"
+          element={
+            <ProtectedRoute>
+              <Search />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/plus" element={<Plus />} />
+        <Route
+          path="/plus"
+          element={
+            <ProtectedRoute>
+              <Plus />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/sell" element={<Sell />} />
         <Route path="/buy" element={<Buy />} />
         <Route path="/camera-sell" element={<CameraSell />} />
         <Route path="/camera-buy" element={<CameraBuy />} />
         {/* <Route path="/upload" element={<Upload />} /> */}
 
-        <Route path="/deal" element={<Deal />} />
+        <Route
+          path="/deal"
+          element={
+            <ProtectedRoute>
+              <Deal />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/chat" element={<Chat />} />
 
-        <Route path="/my" element={<My />} />
+        <Route
+          path="/my"
+          element={
+            <ProtectedRoute>
+              <My />
+            </ProtectedRoute>
+          }
+        />
 
         <Route path="/alarm" element={<Alarm />} />
       </Routes>

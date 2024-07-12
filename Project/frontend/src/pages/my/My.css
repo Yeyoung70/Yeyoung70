@@ -4,7 +4,7 @@
   align-items: center;
   /* padding: 1rem; */
   width: 100%;
-  height: 95vh;
+  height: 100vh;
 
   background-color: #ffffff;
 }
@@ -16,7 +16,7 @@
 
   width: 100%;
   padding: 0 1rem; 
-  margin: 0.5rem 0;
+  margin-bottom: 0.5rem;
   border-bottom: 0.5px solid #ddd; 
 }
 
@@ -50,6 +50,21 @@
   font-weight: 600;
   margin: 0.8rem 0;
   cursor: pointer;
+}
+
+.My .interest-sec {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.5px solid #dadada;
+}
+
+.My .interest-sec .line {
+  border-radius: 10px;
+  border:  5px solid #e9e9e9;
+  margin: 0.5rem 0;
+  /* margin-bottom: 5rem; */
 }
 
 .My .info-modal {
