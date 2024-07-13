@@ -25,9 +25,10 @@ import My from "../pages/my/My";
 import Alarm from "../pages/alarm/Alarm";
 import User from "../pages/home/User";
 import CameraSell from "../pages/plus/camera/CameraSell";
-import CameraBuy from "../pages/plus/camera/CameraBuy";
 
 import ProtectedRoute from "../components/protected/ProtectedBoute";
+import Review from "../pages/my/Review";
+import Predict from "../pages/plus/buy/Predict";
 
 const AllRoutes = () => {
   return (
@@ -44,9 +45,9 @@ const AllRoutes = () => {
         <Route
           path="/home"
           element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Home />
+            // </ProtectedRoute>
           }
         />
         <Route path="/product" element={<Product />} />
@@ -55,32 +56,33 @@ const AllRoutes = () => {
         <Route
           path="/search"
           element={
-            <ProtectedRoute>
-              <Search />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Search />
+            // </ProtectedRoute>
           }
         />
 
         <Route
           path="/plus"
           element={
-            <ProtectedRoute>
-              <Plus />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Plus />
+            // </ProtectedRoute>
           }
         />
         <Route path="/sell" element={<Sell />} />
+        {/* <Route path="/buy" element={<Buy />} /> */}
         <Route path="/buy" element={<Buy />} />
         <Route path="/camera-sell" element={<CameraSell />} />
-        <Route path="/camera-buy" element={<CameraBuy />} />
+        <Route path="/predict" element={<Predict />} />
         {/* <Route path="/upload" element={<Upload />} /> */}
 
         <Route
           path="/deal"
           element={
-            <ProtectedRoute>
-              <Deal />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Deal />
+            // </ProtectedRoute>
           }
         />
         <Route path="/chat" element={<Chat />} />
@@ -88,11 +90,12 @@ const AllRoutes = () => {
         <Route
           path="/my"
           element={
-            <ProtectedRoute>
-              <My />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <My />
+            // </ProtectedRoute>
           }
         />
+        <Route path="/review" element={<Review />} />
 
         <Route path="/alarm" element={<Alarm />} />
       </Routes>

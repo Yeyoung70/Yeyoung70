@@ -8,7 +8,7 @@ const GoogleButton = ({ onClick }) => {
     <Button
       img={logo}
       text="Google로 시작하기"
-      color="#eeeeee"
+      color="#dadada"
       textcolor="#000"
       onClick={onClick}
     />

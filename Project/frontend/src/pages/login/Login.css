@@ -5,7 +5,7 @@
   align-items: center;
   width: 100%;
   max-width: 600px;
-  height: 100vh;
+  height: 96vh;
   background-color: #ffffff;
 }
 
@@ -69,11 +69,13 @@
 .login-con .info > .left, .login-con .info > .right {
   text-decoration: underline;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .login-con .error {
   color: #cfcfcf;
   font-size: 15px;
+  /* cursor: pointer; */
 }
 
 .error-message {

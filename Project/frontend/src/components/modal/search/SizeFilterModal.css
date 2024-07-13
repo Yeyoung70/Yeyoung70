@@ -30,6 +30,7 @@
   background: none;
   border: none;
   color: black;
+  cursor: pointer;
 }
 
 .size-modal .size-title {

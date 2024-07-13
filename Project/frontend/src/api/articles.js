@@ -10,7 +10,7 @@ export const article_create = async (articleData) => {
         Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
     });
-    localStorage.setItem("product_images", articleData.product.image_urls);
+    // localStorage.setItem("product_images", articleData.product.image_urls);
 
     return response.data;
   } catch (error) {

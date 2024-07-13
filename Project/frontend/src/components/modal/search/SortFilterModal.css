@@ -29,6 +29,7 @@
   background: none;
   border: none;
   color: black;
+  cursor: pointer;
 }
 
 .sort-modal .sort-title {

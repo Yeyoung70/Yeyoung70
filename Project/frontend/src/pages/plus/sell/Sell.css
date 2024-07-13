@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 140vh;
-  margin-bottom: 10rem;
+  height: 91vh;
+  /* margin-bottom: 10rem; */
   background-color: #ffffff;
 }
 
@@ -30,9 +30,14 @@
   padding-left: 0.5rem;
 }
 
-/* .Sell .form-sec {
-  margin: 1rem;
-} */
+.Sell .form-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  overflow-y: auto;
+  width: 100%;
+  height: 900px;
+}
 
 .Sell .photo-text {
   font-size: 20px;
@@ -57,6 +62,7 @@
   border: 2px solid #d8d8d8;
   border-radius: 8px;
   border-style: dashed;
+  cursor: pointer;
 }
 
 .Sell .box .box-text {

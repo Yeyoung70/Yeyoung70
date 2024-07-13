@@ -1,13 +1,13 @@
 import React from "react";
 
-import MoveModal from "../../modal/camera/MoveModal";
+import LongModal from "../../modal/my/LongModal";
 import card from "../../../assets/card/product_sample_1.png";
 
 import "./BuyModal.css";
 
 const BuyModal = ({ closeModal }) => {
   return (
-    <MoveModal isOpen={true} closeModal={closeModal}>
+    <LongModal isOpen={true} closeModal={closeModal}>
       <div className="Buy-modal">
         <div className="topline"></div>
         <div className="title">이 상품들은 어떤가요?</div>
@@ -40,7 +40,7 @@ const BuyModal = ({ closeModal }) => {
           </div>
         </div>
       </div>
-    </MoveModal>
+    </LongModal>
   );
 };
 

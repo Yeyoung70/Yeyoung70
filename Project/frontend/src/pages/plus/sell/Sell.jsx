@@ -10,6 +10,7 @@ import StatusCategoryModal from "../../../components/modal/plus/StatusCategoryMo
 import Placeholder from "../../../components/placeholder/Placeholder";
 import SellOptionModal from "../../../components/modal/plus/SellOptionModal";
 import ImageUpload from "../../../assets/ImageUpload";
+import AiRecoModal from "../../../components/modal/plus/AiRecoModal";
 
 import { FaCirclePlus } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
@@ -35,6 +36,7 @@ const Sell = () => {
   const [content, setContent] = useState("");
   const [articlePk, setArticlePk] = useState(null); // 게시글 ID 상태 추가
   const [isEditMode, setIsEditMode] = useState(false); // 수정 모드 상태 추가
+  const [showAiRecoModal, setShowAiRecoModal] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -80,6 +82,12 @@ const Sell = () => {
     }
   }, [location.state]);
 
+  useEffect(() => {
+    if (location.state && location.state.imageUrl) {
+      setImage_urls([location.state.imageUrl]);
+    }
+  }, [location.state]);
+
   const handleShowModal = () => {
     setShowModal(true);
   };
@@ -118,10 +126,6 @@ const Sell = () => {
 
   const handleCloseOptionModal = () => {
     setShowOptionModal(false);
-  };
-
-  const handleQuestClick = () => {
-    navigate(`/search`);
   };
 
   const handleTitleChange = (event) => {
@@ -243,6 +247,13 @@ const Sell = () => {
     imageUploadRef.current.openFileDialog();
   };
 
+  const handleShowAiRecoModal = () => {
+    setShowAiRecoModal(true);
+  };
+  const handleCloseAiRecoModal = () => {
+    setShowAiRecoModal(false);
+  };
+
   return (
     <div className="Sell">
       <div className="guide-sec" onClick={handleShowModal}>
@@ -303,7 +314,7 @@ const Sell = () => {
         <div className="ai-button">
           <button
             className="apply-button"
-            onClick={handleQuestClick}
+            onClick={handleShowAiRecoModal}
             style={{
               backgroundColor: isAIButtonEnabled ? "#8f0456" : "#dadada",
               color: "#ffffff",
@@ -313,6 +324,9 @@ const Sell = () => {
           >
             AI 측정하기
           </button>
+          {showAiRecoModal && (
+            <AiRecoModal closeModal={handleCloseAiRecoModal} />
+          )}
         </div>
 
         <div className="info">

@@ -27,7 +27,15 @@ const BottomNav = () => {
         </span>
       </Link>
       <Link to={"/plus"}>
-        <span className={location.pathname === "/plus" ? "active" : ""}>
+        <span
+          className={
+            location.pathname === "/plus" ||
+            location.pathname === "/sell" ||
+            location.pathname === "/buy"
+              ? "active"
+              : ""
+          }
+        >
           <AiOutlinePlusSquare size={28} />
         </span>
       </Link>
@@ -35,7 +43,9 @@ const BottomNav = () => {
         <span
           className={
             location.pathname === "/deal" &&
-            searchParams.get("isSell") === "true"
+            (searchParams.get("isSell") === "true" ||
+              searchParams.get("isSell") === "false" ||
+              searchParams.get("chat") !== null)
               ? "active"
               : ""
           }

@@ -28,6 +28,7 @@
   background: none;
   border: none;
   color: black;
+  cursor: pointer;
 }
 
 .price-modal .price-title {

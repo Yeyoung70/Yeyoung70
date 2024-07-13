@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+
+import { login } from "../../api/auth";
+import { useUser } from "../../pages/context/UserContext";
+
 import logo from "../../assets/logo/logo_basic.png";
 import LoginButton from "../../components/Button/LoginButton";
 import KakaoButton from "../../components/Button/KakaoButton";
 import GoogleButton from "../../components/Button/GoogleButton";
-import { login } from "../../api/auth";
-import { useUser } from "../../pages/context/UserContext";
+
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");

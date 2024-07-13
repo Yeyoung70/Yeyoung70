@@ -9,7 +9,6 @@ const Button = ({
   textcolor = "#fff",
   onClick = () => {},
 }) => {
-  //   console.log("Button onClick:", onClick); // 디버깅 추가
   return (
     <button
       className="custom-button"

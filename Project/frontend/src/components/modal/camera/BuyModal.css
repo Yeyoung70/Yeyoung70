@@ -20,35 +20,33 @@
   border-bottom: 0.5px solid #dadada;
 }
 
-.Buy-modal .cancel {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .Buy-modal .Buy-cards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: wrap; /* 카드들을 두 줄로 배치할 수 있게 합니다 */
   width: 100%;
-  margin-top: 1rem;
+  max-height: 400px; /* 최대 높이로 설정 */
+  background-color: #ffffff;
+  overflow-y: auto; /* 세로 스크롤을 추가합니다 */
 }
 
 .Buy-modal .Buy-cards .card-sec {
   display: flex;
   flex-direction: column;
   align-items: left;
-  width: calc(50% - 4px);
   margin-bottom: 12px;
-  text-align: left;
+  width: 48%; /* 두 개씩 배치하기 위해 폭을 48%로 설정합니다 */
+  margin-right: 2%; /* 카드 간의 간격을 줍니다 */
+}
+
+.Buy-modal .Buy-cards .card-sec:nth-child(2n) {
+  margin-right: 0; /* 오른쪽 끝 카드에 마진을 없애줍니다 */
 }
 
 .Buy-modal .Buy-cards .card {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1; /* 정사각형 이미지 */
-  object-fit: cover;
   border-radius: 8px;
 }
+
 
 .Buy-modal .Buy-cards .name {
   font-weight: 500; 

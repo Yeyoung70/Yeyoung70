@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import { article_detail } from "../../api/articles";
-import { list_comments } from "../../api/comment";
+import {
+  list_comments,
+  create_comment,
+  fetch_comment,
+  delete_comment,
+} from "../../api/comment";
 
 import ProductModal from "../../components/modal/home/ProductModal";
 import BottomQuest from "../../components/BottomNav/BottomQuest";
@@ -24,6 +29,9 @@ const Product = () => {
   const [showProductModal, setShowProductModal] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState(""); // 새로운 댓글 입력 상태
+  const [editingCommentId, setEditingCommentId] = useState(null); // 수정 중인 댓글 ID
+  const [editingCommentText, setEditingCommentText] = useState(""); // 수정 중인 댓글 텍스트
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -94,14 +102,6 @@ const Product = () => {
     }
   };
 
-  if (error) {
-    return <div>오류: {error.message}</div>;
-  }
-
-  if (!article) {
-    return <div>로딩 중...</div>;
-  }
-
   const handleBackClick = () => {
     const fromSellPage = location.state?.fromSellPage || false;
     if (fromSellPage) {
@@ -110,6 +110,79 @@ const Product = () => {
       navigate(-1);
     }
   };
+
+  const handleCommentChange = (e) => {
+    setNewComment(e.target.value);
+  };
+
+  const handleCommentSubmit = async () => {
+    try {
+      const commentData = { comment: newComment }; // 서버가 기대하는 데이터 구조
+      const data = await create_comment(article_pk, commentData);
+      setComments([...comments, data]); // 새로운 댓글을 기존 댓글 리스트에 추가
+      setNewComment(""); // 입력 필드 초기화
+    } catch (err) {
+      console.error(
+        "댓글 등록 중 오류 발생:",
+        err.response?.data || err.message
+      );
+    }
+  };
+
+  const handleEditComment = (comment) => {
+    setEditingCommentId(comment.id);
+    setEditingCommentText(comment.comment);
+  };
+
+  const handleEditCommentChange = (e) => {
+    setEditingCommentText(e.target.value);
+  };
+
+  const handleEditCommentSubmit = async () => {
+    try {
+      const access = localStorage.getItem("access");
+      const modifiedData = { comment: editingCommentText };
+      const data = await fetch_comment(
+        article_pk,
+        editingCommentId,
+        modifiedData,
+        access
+      );
+      setComments(
+        comments.map((comment) =>
+          comment.id === editingCommentId ? data : comment
+        )
+      ); // 수정된 댓글을 상태에 반영
+      setEditingCommentId(null);
+      setEditingCommentText("");
+    } catch (err) {
+      console.error(
+        "댓글 수정 중 오류 발생:",
+        err.response?.data || err.message
+      );
+    }
+  };
+
+  const handleDeleteComment = async (commentId) => {
+    try {
+      const access = localStorage.getItem("access");
+
+      await delete_comment(article_pk, commentId, access);
+    } catch (err) {
+      console.error(
+        "댓글 삭제 중 오류 발생:",
+        err.response?.data || err.message
+      );
+    }
+  };
+
+  if (error) {
+    return <div>오류: {error.message}</div>;
+  }
+
+  if (!article) {
+    return <div>로딩 중...</div>;
+  }
 
   const images = article.product?.product_images || [];
   const imageUrl = images[currentImageIndex]?.image_url || "기본이미지경로";
@@ -187,32 +260,71 @@ const Product = () => {
         <div className="content">{article.content}</div>
       </div>
       <div className="line"></div>
-      {comments.map((comment, index) => (
-        <div className="review-sec" key={index}>
+      {comments.map((comment) => (
+        <div className="review-sec" key={comment.id}>
           <div className="photo">
             <img
-              src={comment.user.profile_image || card}
+              src={comment.user.profile_images.image_url || card}
               alt="card"
               className="card"
             />
           </div>
           <div className="info">
             <div className="nickname">@{comment.user.nickname}</div>
-            <div className="text">{comment.text}</div>
+            {editingCommentId === comment.id ? (
+              <div className="modify-sec">
+                <input
+                  className="text"
+                  type="text"
+                  value={editingCommentText}
+                  onChange={handleEditCommentChange}
+                />
+                <div className="modify-button">
+                  <div className="save" onClick={handleEditCommentSubmit}>
+                    저장
+                  </div>
+
+                  <div
+                    className="cancel"
+                    onClick={() => setEditingCommentId(null)}
+                  >
+                    취소
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text">{comment.comment}</div>
+            )}
             <div className="bottom">
               <div className="time">
                 {new Date(comment.created_at).toLocaleString()}
               </div>
               <div className="like">♡ 좋아요</div>
-              <div className="rereview">답글 쓰기</div>
+              <div
+                className="modify"
+                onClick={() => handleEditComment(comment)}
+              >
+                수정
+              </div>
+              <div
+                className="delete"
+                onClick={() => handleDeleteComment(comment.id)}
+              >
+                삭제
+              </div>
             </div>
           </div>
         </div>
       ))}
       <div className="comment-sec">
         <div className="info">
-          <input type="text" placeholder="댓글을 입력해 주세요" />
-          <div className="icon">
+          <input
+            type="text"
+            placeholder="댓글을 입력해 주세요"
+            value={newComment}
+            onChange={handleCommentChange}
+          />
+          <div className="icon" onClick={handleCommentSubmit}>
             <GoArrowLeft size={24} />
           </div>
         </div>

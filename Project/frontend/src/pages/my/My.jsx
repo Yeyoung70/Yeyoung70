@@ -8,7 +8,6 @@ import BottomNav from "../../components/BottomNav/BottomNav";
 import NameModal from "../../components/modal/my/NameModal";
 import NickModal from "../../components/modal/my/NickModal";
 import InterestModal from "../../components/modal/my/InterestModal";
-import ReviewModal from "../../components/modal/my/ReviewModal";
 import OutModal from "../../components/modal/my/OutModal";
 import LogoutModal from "../../components/modal/my/LogoutModal";
 
@@ -21,7 +20,6 @@ const My = () => {
   const [showNameModal, setShowNameModal] = useState(false);
   const [showNickModal, setShowNickModal] = useState(false);
   const [showInterestModal, setShowInterestModal] = useState(false);
-  const [showReviewModal, setShowReviewModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showOutModal, setShowOutModal] = useState(false);
   const [profileImageURL, setProfileImageURL] = useState();
@@ -102,10 +100,7 @@ const My = () => {
   };
 
   const handleShowReviewModal = () => {
-    setShowReviewModal(true);
-  };
-  const handleCloseReviewModal = () => {
-    setShowReviewModal(false);
+    navigate("/review");
   };
 
   const handleShowOutModal = () => {
@@ -199,9 +194,6 @@ const My = () => {
           <div className="arrow" onClick={handleShowReviewModal}>
             <IoIosArrowForward size={20} />
           </div>
-          {showReviewModal && (
-            <ReviewModal closeModal={handleCloseReviewModal} />
-          )}
         </div>
       </div>
       <div className="out-sec">
