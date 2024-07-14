@@ -44,11 +44,15 @@
 }
 
 .interest-modal .interest-cards {
+  width: 100%;
+  height: 500vh;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
   margin-top: 1rem;
+  overflow-y: auto;
 }
 
 .interest-modal .interest-cards .card-sec {

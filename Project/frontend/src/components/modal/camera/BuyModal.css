@@ -1,6 +1,7 @@
 .Buy-modal {
   text-align: center;
   width: 100%;
+  height: 70vh;
 }
 
 .Buy-modal .topline {
@@ -20,41 +21,57 @@
   border-bottom: 0.5px solid #dadada;
 }
 
-.Buy-modal .Buy-cards {
+.Buy-modal .reco {
   display: flex;
-  flex-wrap: wrap; /* 카드들을 두 줄로 배치할 수 있게 합니다 */
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   width: 100%;
-  max-height: 400px; /* 최대 높이로 설정 */
-  background-color: #ffffff;
-  overflow-y: auto; /* 세로 스크롤을 추가합니다 */
+  height: 60vh;
+
+  padding-top: 1rem;
+  overflow-y: auto;
 }
 
-.Buy-modal .Buy-cards .card-sec {
+.Buy-modal .reco .reco-1,
+.Buy-modal .reco .reco-2 {
+  width: 44%;
+  height: 100%;
+}
+
+.Buy-modal .reco .info-1 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #8f0456;
+}
+
+.Buy-modal .reco .info-2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Buy-modal .reco .card-sec {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  margin-bottom: 12px;
-  width: 48%; /* 두 개씩 배치하기 위해 폭을 48%로 설정합니다 */
-  margin-right: 2%; /* 카드 간의 간격을 줍니다 */
+  align-items: start;
+  margin-bottom: 10px;
 }
 
-.Buy-modal .Buy-cards .card-sec:nth-child(2n) {
-  margin-right: 0; /* 오른쪽 끝 카드에 마진을 없애줍니다 */
+.Buy-modal .reco .card-sec .card {
+  width: 170px;
+  height: 170px;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
-.Buy-modal .Buy-cards .card {
-  width: 100%;
-  border-radius: 8px;
+.Buy-modal .reco .card-sec .name {
+  font-size: 12px;
+  text-align: left;
 }
 
-
-.Buy-modal .Buy-cards .name {
-  font-weight: 500; 
-  padding-top: 0.3rem;
-}
-
-.Buy-modal .Buy-cards .price {
-  font-weight: bold;
+.Buy-modal .reco .card-sec .price {
   font-size: 14px;
-  padding-top: 0.4rem;
+  font-weight: 700;
+  text-align: left;
 }

@@ -5,7 +5,12 @@ import BuyModal from "../../../components/modal/camera/BuyModal";
 
 const Predict = () => {
   const location = useLocation();
-  const { imageUrls } = location.state || {}; // 전달받은 상태에서 imageUrls 추출
+  const {
+    imageUrls,
+    imageFile,
+    selectedBrendCategory,
+    selectedStatusCategory,
+  } = location.state || {};
 
   return (
     <div className="Predict">
@@ -13,15 +18,19 @@ const Predict = () => {
         {imageUrls && imageUrls.length > 0 ? (
           imageUrls.map((url, index) => (
             <div key={index} className="imgBox">
-              <img src={url} alt="Captured" className="img" />
+              <img src={url} alt="캡처된 이미지" className="img" />
             </div>
           ))
         ) : (
-          <p>No image captured</p>
+          <p>이미지가 없습니다</p>
         )}
       </div>
       <div className="modal">
-        <BuyModal />
+        <BuyModal
+          imageFile={imageFile}
+          selectedBrendCategory={selectedBrendCategory}
+          selectedStatusCategory={selectedStatusCategory}
+        />
       </div>
     </div>
   );

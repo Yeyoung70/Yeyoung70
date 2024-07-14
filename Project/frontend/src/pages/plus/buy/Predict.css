@@ -1,8 +1,8 @@
 .Predict {
-  background-color: black;
+  background-color: #8f0456;
 
   width: 100%;
-  height: 92vh;
+  height: 90vh;
   padding: 1rem;
   transform: translate(-1rem, -1rem);
 }

@@ -1,36 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-// import IconButton from "@mui/material/IconButton";
-
 import BottomNav from "../../../components/BottomNav/BottomNav";
 import BrendCategoryModal from "../../../components/modal/plus/BrendCategoryModal";
 import StatusCategoryModal from "../../../components/modal/plus/StatusCategoryModal";
-
 import { IoIosArrowForward } from "react-icons/io";
 import { FaCirclePlus } from "react-icons/fa6";
-
 import "./Buy.css";
+import BuyModal from "../../../components/modal/camera/BuyModal";
 
 function Buy() {
   const [source, setSource] = useState("");
-  const navigate = useNavigate();
   const location = useLocation();
   const [showBrendCategoryModal, setShowBrendCategoryModal] = useState(false);
   const [selectedBrendCategory, setSelectedBrendCategory] = useState("");
   const [showStatusCategoryModal, setShowStatusCategoryModal] = useState(false);
   const [selectedStatusCategory, setSelectedStatusCategory] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
+  const [imageFile, setImageFile] = useState(null);
+  const [showBuyModal, setShowBuyModal] = useState(false);
+  const modalRef = useRef(null);
 
   const isAIButtonEnabled =
     selectedBrendCategory && selectedStatusCategory && imageUrls.length > 0;
 
+  // 상태 복원
   useEffect(() => {
-    if (location.state && location.state.imageUrl) {
-      setImageUrls([location.state.imageUrl]);
+    if (location.state) {
+      const {
+        imageFile,
+        selectedBrendCategory,
+        selectedStatusCategory,
+        imageUrls,
+      } = location.state;
+      if (imageFile) setImageFile(imageFile);
+      if (selectedBrendCategory)
+        setSelectedBrendCategory(selectedBrendCategory);
+      if (selectedStatusCategory)
+        setSelectedStatusCategory(selectedStatusCategory);
+      if (imageUrls) setImageUrls(imageUrls);
     }
   }, [location.state]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setShowBuyModal(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleCapture = (target) => {
     if (target.files && target.files.length > 0) {
@@ -42,6 +66,7 @@ function Buy() {
       const newUrl = URL.createObjectURL(file);
       setSource(newUrl);
       setImageUrls((prevUrls) => [...prevUrls, newUrl]);
+      setImageFile(file); // File 객체를 설정합니다.
     }
   };
 
@@ -63,9 +88,7 @@ function Buy() {
 
   const handleAiReco = () => {
     if (isAIButtonEnabled) {
-      navigate("/predict", {
-        state: { imageUrls, selectedBrendCategory, selectedStatusCategory },
-      });
+      setShowBuyModal(true);
     }
   };
 
@@ -155,6 +178,18 @@ function Buy() {
                 AI 측정하기
               </button>
             </div>
+            {showBuyModal && (
+              <div className="modal">
+                <div className="modal-content" ref={modalRef}>
+                  <BuyModal
+                    imageFile={imageFile}
+                    selectedBrendCategory={selectedBrendCategory}
+                    selectedStatusCategory={selectedStatusCategory}
+                    closeModal={() => setShowBuyModal(false)}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </Grid>
       </Grid>

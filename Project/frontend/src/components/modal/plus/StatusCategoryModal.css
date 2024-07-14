@@ -34,6 +34,11 @@
   /* width: 110%; */
 }
 
+
+.statusCategory-modal .category-button {
+font-size: 14px;
+}
+
 .statusCategory-modal .confirm {
   display: flex;
   justify-content: center;

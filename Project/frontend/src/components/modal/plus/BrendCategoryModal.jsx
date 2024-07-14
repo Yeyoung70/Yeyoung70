@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import Tabs from "../../Button/category/Tabs";
-import CategoryButton from "../../Button/category/CategoryButton";
 import WideModal from "../WideModal";
 
 import { IoCloseOutline } from "react-icons/io5";
@@ -10,47 +8,9 @@ import "./BrendCategoryModal.css";
 
 const BrendCategoryModal = ({ closeModal, setSelectedBrendCategory }) => {
   // 수정된 부분
-  const categories = {
-    베이식: [
-      "무신사 스탠다드",
-      "토비",
-      "브렌슨",
-      "소버먼트",
-      "글리머",
-      "어널러코드",
-      "스파오",
-      "에이카화이트",
-    ],
-    영캐주얼: [
-      "예일",
-      "꼼파뇨",
-      "커버낫",
-      "슬로우애시드",
-      "리",
-      "노이아고",
-      "와이드 팬츠",
-    ],
-    여성캐주얼: [
-      "마리떼",
-      "무신사 스탠다드 우먼",
-      "마뗑킴",
-      "닉앤니콜",
-      "라퍼지 포 우먼",
-      "이미스",
-    ],
-    스트리트: ["트릴리온", "에반드레스", "코드그라피", "스컬프터", "트래블"],
-    포멀: ["아웃스탠딩", "라퍼지스토어", "수아레"],
-  };
-
-  const [currentCategory, setCurrentCategory] = useState(
-    Object.keys(categories)[0]
-  );
+  const categories = ["노브랜드", "세터", "브랜드2", "브랜드3", "브랜드4"];
 
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
-
-  const handleTabClick = (category) => {
-    setCurrentCategory(category);
-  };
 
   const handleCategorySelect = (subcategory) => {
     setSelectedSubcategory(subcategory);
@@ -58,7 +18,7 @@ const BrendCategoryModal = ({ closeModal, setSelectedBrendCategory }) => {
 
   const handleConfirmClick = () => {
     if (selectedSubcategory) {
-      setSelectedBrendCategory(`${currentCategory} > ${selectedSubcategory}`); // 수정된 부분
+      setSelectedBrendCategory(selectedSubcategory); // 수정된 부분
       closeModal();
     }
   };
@@ -71,34 +31,30 @@ const BrendCategoryModal = ({ closeModal, setSelectedBrendCategory }) => {
         </div>
         <div className="title">브랜드를 선택해 주세요</div>
         <div className="line"></div>
-
-        <div className="sticky-tabs">
-          <Tabs
-            tabs={Object.keys(categories).map((label) => ({ label }))}
-            onTabClick={handleTabClick}
-          />
-        </div>
         <div className="category-buttons">
-          {categories[currentCategory].map((subcategory) => (
-            <CategoryButton
-              key={subcategory}
-              label={subcategory}
-              onClick={() => handleCategorySelect(subcategory)}
-            />
-          ))}
-          <div className="confirm">
+          {categories.map((subcategory) => (
             <button
-              className="apply-button"
-              onClick={handleConfirmClick}
-              style={{
-                backgroundColor:
-                  selectedSubcategory.length > 0 ? "#8f0456" : "#dadada",
-                color: "#ffffff",
-              }}
+              key={subcategory}
+              className={`category-button ${
+                selectedSubcategory === subcategory ? "selected" : ""
+              }`}
+              onClick={() => handleCategorySelect(subcategory)}
             >
-              확인
+              {subcategory}
             </button>
-          </div>
+          ))}
+        </div>
+        <div className="confirm">
+          <button
+            className="apply-button"
+            onClick={handleConfirmClick}
+            style={{
+              backgroundColor: selectedSubcategory ? "#8f0456" : "#dadada",
+              color: "#ffffff",
+            }}
+          >
+            확인
+          </button>
         </div>
       </div>
     </WideModal>

@@ -21,14 +21,14 @@
   cursor: pointer;
 }
 
-.Product .alarm {
-  /* padding-right: 1rem; */
+/* .Product .alarm {
   cursor: pointer;
-}
+} */
 
 .Product .title {
   font-weight: 600;
   font-size: 18px;
+  transform: translate(-8rem);
 }
 
 .Product .photo-sec {

@@ -3,132 +3,116 @@
   width: 100%;
 }
 
-.AiReco-modal .topline {
-  margin: 0 auto;
-  margin-bottom: 1rem;
-  width: 18%;
-  height: 5px;
-  background-color: #dadada;
-  border-radius: 2px;
+.AiReco-modal .cancel {
+  display: flex;
+  justify-content: flex-end;
+  color: black;
+  cursor: pointer;
 }
 
-.AiReco-modal .title {
+.AiReco-modal .recommened-sec .title {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   padding-bottom: 0.5rem;
   border-bottom: 0.5px solid #dadada;
 }
 
-.AiReco-modal .result {
-  margin: 2rem 0;
+.AiReco-modal .recommened-sec .result .price {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.AiReco-modal .result .price {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.8px;
-  padding-bottom: 0.5rem;
-  color: #8f0456;
-}
-
-.AiReco-modal .result .how {
-  font-size: 14px;
-  font-weight: 500;
+.AiReco-modal .recommened-sec .result .how {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .AiReco-modal .recommened-sec .buttons {
-  display: flex; 
-  justify-content: space-evenly;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #dcdcdc;
-}
-
-.AiReco-modal .button {
-  background-color: #cfcfcf;
-  color: #ffffff;
-  cursor: not-allowed;
-  width: 45%;
-  height: 45px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 00;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #dadada;
 
 }
 
-.AiReco-modal .apply-button.enabled {
-  background-color: #b1b1b1;
+.AiReco-modal .recommened-sec .buttons .button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.AiReco-modal .apply-button.enabled:hover {
+.AiReco-modal .recommened-sec .buttons .button.enabled {
   background-color: #8f0456;
-}
-
-.AiReco-modal .AiReco-cards {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-height: 400px; /* 최대 높이로 설정 */
-  padding-top: 1rem;
-  border-top: 8px solid #f0f0f0;
-  background-color: #ffffff;
-  overflow-y: auto; /* 세로 스크롤을 추가합니다 */
+  color: white;
 }
 
 .AiReco-modal .AiReco-cards .show {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  /* margin-bottom: 20px; */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 8px solid #eeeeee;
+  border-bottom: 1px solid #dadada;
 }
 
 .AiReco-modal .AiReco-cards .reco {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
-  padding: 1rem 0 ;
-}
-
-.AiReco-modal .AiReco-cards .reco-1, 
-.AiReco-modal .AiReco-cards .reco-2 {
+  height: 50vh;
   display: flex;
-  flex-direction: column;
-  width: 49%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  /* border-top: 8px solid #eeeeee; */
+  overflow-y: auto;
+
 }
 
-.AiReco-modal .AiReco-cards .info-1 {
+.AiReco-modal .AiReco-cards .reco .reco-1,
+.AiReco-modal .AiReco-cards .reco .reco-2 {
+  width: 48%;
+}
+
+.AiReco-modal .AiReco-cards .reco .info-1 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
   color: #8f0456;
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
 }
 
-.AiReco-modal .AiReco-cards .info-2 {
+.AiReco-modal .AiReco-cards .reco .info-2 {
   font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 0.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.AiReco-modal .AiReco-cards .card-sec {
+.AiReco-modal .AiReco-cards .reco .card-sec {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: start;
+  margin-bottom: 10px;
+}
 
-  margin-bottom: 12px;
+.AiReco-modal .AiReco-cards .reco .card-sec .card {
+  width: 150px;
+  height: 150px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.AiReco-modal .AiReco-cards .reco .card-sec .name {
+  font-size: 12px;
   text-align: left;
 }
 
-.AiReco-modal .AiReco-cards .card {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.AiReco-modal .AiReco-cards .name {
-  font-weight: 500; 
-  padding-top: 0.3rem;
-}
-
-.AiReco-modal .AiReco-cards .price {
-  font-weight: bold;
+.AiReco-modal .AiReco-cards .reco .card-sec .price {
   font-size: 14px;
-  padding-top: 0.4rem;
+  font-weight: 700;
+  text-align: left;
 }

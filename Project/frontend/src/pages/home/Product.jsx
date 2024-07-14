@@ -7,15 +7,11 @@ import {
   fetch_comment,
   delete_comment,
 } from "../../api/comment";
-
 import ProductModal from "../../components/modal/home/ProductModal";
 import BottomQuest from "../../components/BottomNav/BottomQuest";
 import card from "../../assets/card/card_sample.png";
-
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { HiOutlineDotsVertical } from "react-icons/hi";
 import { GoArrowLeft } from "react-icons/go";
-
 import "./Product.css";
 
 const Product = () => {
@@ -70,9 +66,9 @@ const Product = () => {
     }
   }, [article_pk]);
 
-  const handleShowProductModal = () => {
-    setShowProductModal(true);
-  };
+  // const handleShowProductModal = () => {
+  //   setShowProductModal(true);
+  // };
 
   const handleCloseProductModal = () => {
     setShowProductModal(false);
@@ -103,9 +99,9 @@ const Product = () => {
   };
 
   const handleBackClick = () => {
-    const fromSellPage = location.state?.fromSellPage || false;
-    if (fromSellPage) {
-      navigate("/search");
+    const fromBuyPage = location.state?.fromBuyPage || false;
+    if (fromBuyPage) {
+      navigate("/buy", { state: { ...location.state } });
     } else {
       navigate(-1);
     }
@@ -168,6 +164,8 @@ const Product = () => {
       const access = localStorage.getItem("access");
 
       await delete_comment(article_pk, commentId, access);
+      // 댓글 삭제 후 상태 업데이트
+      setComments(comments.filter((comment) => comment.id !== commentId));
     } catch (err) {
       console.error(
         "댓글 삭제 중 오류 발생:",
@@ -194,9 +192,9 @@ const Product = () => {
           <IoIosArrowBack size={26} />
         </div>
         <div className="title">{article.title}</div>
-        <div className="alarm">
+        {/* <div className="alarm">
           <HiOutlineDotsVertical size={26} onClick={handleShowProductModal} />
-        </div>
+        </div> */}
         {showProductModal && (
           <ProductModal
             closeModal={handleCloseProductModal}
