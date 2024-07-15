@@ -64,12 +64,24 @@
 }
 
 .Home .left_2 {
+  display: flex;
+  align-items: center;
   margin-bottom: 0.7rem;
   width: 100%;
+}
 
+.Home .left_2 .text-1 {
+  margin-right: 0.5rem;
   text-align: left;
   font-size: 24px;
   font-weight: 600;
+}
+
+.Home .left_2 .text-2 {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+  color: #8f0456;
 }
 
 .Home .Home-cards {

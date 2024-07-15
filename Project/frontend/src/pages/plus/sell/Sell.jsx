@@ -15,6 +15,7 @@ import ImageUpload from "../../../assets/ImageUpload";
 
 import { FaCirclePlus } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
+import { BsStars } from "react-icons/bs";
 
 import "./Sell.css";
 
@@ -115,9 +116,9 @@ const Sell = () => {
   };
 
   const handlePriceChange = (event) => {
-    const price = event.target.value;
-    setPrice(price);
-    setPriceLength(price.length);
+    const inputValue = event.target.value.replace(/[^0-9]/g, ""); // 숫자 이외의 문자 제거
+    setPrice(inputValue);
+    setPriceLength(inputValue.length);
   };
 
   const handleContentChange = (event) => {
@@ -331,6 +332,7 @@ const Sell = () => {
             }}
             disabled={!isAIButtonEnabled}
           >
+            <BsStars />
             AI 측정하기
           </button>
           {showAiRecoModal && (
@@ -338,7 +340,7 @@ const Sell = () => {
               closeModal={handleCloseAiRecoModal}
               brand={selectedBrendCategory}
               productStatus={selectedStatusCategory}
-              imageFile={imageFiles[0]} // 첫 번째 이미지만 사용
+              imageFile={imageFiles[0]}
               setPrice={setPrice} // setPrice 함수를 prop으로 전달
             />
           )}

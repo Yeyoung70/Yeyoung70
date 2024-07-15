@@ -56,16 +56,28 @@
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   border-bottom: 0.5px solid #dadada;
 }
 
-.My .interest-sec .line {
+.My .interest-sec .line-1 {
+  display: flex;
+  transform: translate(0.5rem);
+  width: 92%;
   border-radius: 10px;
   border:  5px solid #e9e9e9;
   margin: 0.5rem 0;
-  /* margin-bottom: 5rem; */
 }
+
+.My .interest-sec .line-2 {
+  display: flex;
+  transform: translate(0.5rem, -1.6rem);
+  width: 35%;
+  border-radius: 10px;
+  border:  5px solid #ff1c8e;
+  margin: 0.5rem 0;
+}
+
 
 .My .info-modal {
   margin: 1cqb 0;

@@ -15,7 +15,43 @@ import { IoIosArrowDown } from "react-icons/io";
 import "./CategoryTabs.css";
 
 const categories = {
-  전체: ["반소매티셔츠", "숏팬츠", "코튼팬츠", "후드집업", "바람막이"],
+  전체: [
+    "니트",
+    "후드",
+    "맨투맨",
+    "셔츠블라우스",
+    "긴소매티셔츠",
+    "반소매티셔츠",
+    "민소매티셔츠",
+    "카라티셔츠",
+    "베스트",
+    "데님 팬츠",
+    "슬랙스",
+    "트레이닝조거팬츠",
+    "숏팬츠",
+    "코튼팬츠",
+    "레깅스",
+    "후드집업",
+    "바람막이",
+    "코트",
+    "롱패딩",
+    "숏패딩",
+    "패딩베스트",
+    "블루종",
+    "레더자켓",
+    "무스탕",
+    "트러커자켓",
+    "블레이저",
+    "가디건",
+    "뽀글이후리스",
+    "사파리자켓",
+    "미니원피스",
+    "미디원피스",
+    "롱원피스",
+    "미니스커트",
+    "미디스커트",
+    "롱스커트",
+  ],
   상의: [
     "니트",
     "후드",
@@ -57,6 +93,12 @@ const categories = {
 
 const filters = {
   color: [
+    { name: "기타색상", color: "#8f0456" },
+    { name: "검정", color: "black" },
+    { name: "흰색", color: "white" },
+    { name: "어두운 회색", color: "#3b3b3b" },
+    { name: "회색", color: "gray" },
+    { name: "밝은 회색", color: "#d4d4d4" },
     { name: "어두운 빨강", color: "#8b0000" },
     { name: "빨강", color: "red" },
     { name: "밝은 빨강", color: "#ffa3a3" },
@@ -90,12 +132,6 @@ const filters = {
     { name: "어두운 갈색", color: "#451b06" },
     { name: "갈색", color: "brown" },
     { name: "밝은 갈색", color: "#e49269" },
-    { name: "어두운 회색", color: "#3b3b3b" },
-    { name: "회색", color: "gray" },
-    { name: "밝은 회색", color: "#d4d4d4" },
-    { name: "검정", color: "black" },
-    { name: "흰색", color: "white" },
-    { name: "기타색상", color: "rainbow" },
   ],
   size: ["XS", "S", "M", "L", "XL", "2XL이상", "FREE", "지정안함"],
   sort: ["date_desc", "date_asc", "price_desc", "price_asc"],
@@ -193,35 +229,34 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
     } else {
       didMountRef.current = true;
     }
-  }, [currentCategory, currentSubcategory, activeFilters]);
+  }, [currentCategory, currentSubcategory, activeFilters, fetchArticles]);
 
   useEffect(() => {
     if (page > 1) {
       fetchArticles();
     }
-  }, [page]);
+  }, [page, fetchArticles]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (loadMoreButtonRef.current) {
-          if (entries[0].isIntersecting && hasMore) {
-            loadMoreButtonRef.current.style.display = "block";
-          } else {
-            loadMoreButtonRef.current.style.display = "none";
-          }
+        if (entries[0].isIntersecting && hasMore) {
+          loadMoreButtonRef.current.style.display = "block";
+        } else {
+          loadMoreButtonRef.current.style.display = "none";
         }
       },
       { threshold: 1.0 }
     );
 
-    if (loadMoreButtonRef.current) {
-      observer.observe(loadMoreButtonRef.current);
+    const loadMoreButton = loadMoreButtonRef.current;
+    if (loadMoreButton) {
+      observer.observe(loadMoreButton);
     }
 
     return () => {
-      if (loadMoreButtonRef.current) {
-        observer.unobserve(loadMoreButtonRef.current);
+      if (loadMoreButton) {
+        observer.unobserve(loadMoreButton);
       }
     };
   }, [hasMore]);
@@ -361,7 +396,7 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
               </div>
             ))
           ) : (
-            <p>No articles found</p>
+            <p></p>
           )}
         </div>
         {hasMore && (
@@ -398,7 +433,7 @@ const CategoryTabs = ({ defaultCategory, defaultSubcategory }) => {
       <SortFilterModal
         isOpen={isModalOpen && modalContent === "sort"}
         onClose={closeModal}
-        sortes={filters.sort}
+        sortOptions={filters.sort} // prop 이름 수정
         activeFilters={activeFilters.sort}
         onApply={handleApplyFilter}
       />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+
 import "./SortFilterModal.css";
 
 const sortMapping = {
@@ -12,7 +13,7 @@ const sortMapping = {
 const SortFilterModal = ({
   isOpen,
   onClose,
-  sortes = [], // 기본값 설정
+  sortOptions = [], // prop 이름 수정 및 기본값 설정
   activeFilters,
   onApply,
 }) => {
@@ -45,7 +46,7 @@ const SortFilterModal = ({
         </button>
         <div className="sort-title">정렬 기준을 선택하세요</div>
         <div className="sort-samples">
-          {sortes.map((sort) => (
+          {sortOptions.map((sort) => (
             <span
               key={sort}
               className={`sort-item ${selectedSort === sort ? "active" : ""}`}

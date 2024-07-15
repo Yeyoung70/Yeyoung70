@@ -47,7 +47,9 @@ const My = () => {
       }
     };
 
-    loadUserProfile();
+    if (user_pk) {
+      loadUserProfile();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user_pk]);
 
@@ -73,8 +75,8 @@ const My = () => {
   const handleSaveUserProfile = async (newName, newNickname) => {
     try {
       const updatedProfile = await update_user_profile(user_pk, {
-        username: newName || user.username,
-        nickname: newNickname || user.nickname,
+        username: newName || user?.username,
+        nickname: newNickname || user?.nickname,
       });
       updateUser({
         username: updatedProfile.username,
@@ -99,10 +101,6 @@ const My = () => {
     setShowInterestModal(false);
   };
 
-  const handleShowReviewModal = () => {
-    navigate("/review");
-  };
-
   const handleShowOutModal = () => {
     setShowOutModal(true);
   };
@@ -122,6 +120,10 @@ const My = () => {
     setShowLogoutModal(false);
   };
 
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="My">
       <div className="header-sec">
@@ -140,7 +142,8 @@ const My = () => {
         </div>
         <div className="interest-sec">
           <div className="text">관심 지수</div>
-          <div className="line"></div>
+          <div className="line-1"></div>
+          <div className="line-2"></div>
         </div>
         <div className="info-modal">
           <div className="name">
@@ -191,7 +194,7 @@ const My = () => {
         </div>
         <div className="review">
           <div>나의 리뷰</div>
-          <div className="arrow" onClick={handleShowReviewModal}>
+          <div className="arrow">
             <IoIosArrowForward size={20} />
           </div>
         </div>

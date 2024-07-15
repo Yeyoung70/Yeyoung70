@@ -13,7 +13,7 @@
 .AiReco-modal .recommened-sec .title {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 0.5px solid #dadada;
 }
@@ -23,6 +23,7 @@
   font-weight: bold;
   text-align: center;
   margin-bottom: 10px;
+  letter-spacing: -0.5px;
 }
 
 .AiReco-modal .recommened-sec .result .how {
@@ -34,7 +35,7 @@
 .AiReco-modal .recommened-sec .buttons {
   display: flex;
   justify-content: space-around;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid #dadada;
 
 }
@@ -64,13 +65,14 @@
 
 .AiReco-modal .AiReco-cards .reco {
   width: 100%;
-  height: 50vh;
+  height: 39vh;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   padding-top: 1rem;
   /* border-top: 8px solid #eeeeee; */
   overflow-y: auto;
+  overflow-x: hidden;
 
 }
 
@@ -96,12 +98,13 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  height: 32%;
   margin-bottom: 10px;
 }
 
 .AiReco-modal .AiReco-cards .reco .card-sec .card {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 18vh;
   border-radius: 6px;
   margin-bottom: 10px;
 }

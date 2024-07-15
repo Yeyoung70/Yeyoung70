@@ -5,9 +5,9 @@ import { login } from "../../api/auth";
 import { useUser } from "../../pages/context/UserContext";
 
 import logo from "../../assets/logo/logo_basic.png";
-import LoginButton from "../../components/Button/LoginButton";
-import KakaoButton from "../../components/Button/KakaoButton";
-import GoogleButton from "../../components/Button/GoogleButton";
+import LoginButton from "../../components/Button/login/LoginButton";
+import KakaoButton from "../../components/Button/login/KakaoButton";
+import GoogleButton from "../../components/Button/login/GoogleButton";
 
 import "./Login.css";
 
@@ -121,7 +121,7 @@ const Login = () => {
             아이디 찾기 / 비밀번호 재설정
           </div>
         </div>
-        <div className="error">로그인에 문제가 있으신가요?</div>
+        {/* <div className="error">로그인에 문제가 있으신가요?</div> */}
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Button.css";
+import "./AppButton.css";
 
-const Button = ({
+const LoginButton = ({
   img,
   text,
   color = "#007BFF",
@@ -11,7 +11,7 @@ const Button = ({
 }) => {
   return (
     <button
-      className="custom-button"
+      className="AppButton-button"
       style={{ backgroundColor: color, color: textcolor }}
       onClick={onClick}
     >
@@ -23,12 +23,12 @@ const Button = ({
   );
 };
 
-Button.propTypes = {
+LoginButton.propTypes = {
   img: PropTypes.string,
-  text: PropTypes.node.isRequired,
+  text: PropTypes.string.isRequired,
   color: PropTypes.string,
   textcolor: PropTypes.string,
   onClick: PropTypes.func,
 };
 
-export default Button;
+export default LoginButton;

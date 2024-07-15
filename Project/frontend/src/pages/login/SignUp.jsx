@@ -4,7 +4,6 @@ import { signUp } from "../../api/auth";
 
 import "./SignUp.css";
 
-import SignupButton from "../../components/Button/SignupButton";
 import { GoCheckCircle } from "react-icons/go";
 import { IoIosArrowBack } from "react-icons/io";
 import { SlArrowDown } from "react-icons/sl";
@@ -77,6 +76,10 @@ const SignUp = () => {
     navigate(`/login`);
   };
 
+  const isFormComplete = () => {
+    return email && password && username && nickname && phone;
+  };
+
   return (
     <div className="SignUp">
       <div className="header-sec">
@@ -140,7 +143,7 @@ const SignUp = () => {
           <GoCheckCircle size={30} />
         </div>
         <div className="text">
-          신제품, 이벤트 안내 등 광고성 마케팅 수신 동의 (선택)
+          신제품, 이벤트 안내 등 광고성 마케팅 수신 동의(선택)
         </div>
       </div>
 
@@ -157,7 +160,17 @@ const SignUp = () => {
       </div>
 
       <div className="signup-sec">
-        <SignupButton onClick={handleSignupClick} />
+        <div
+          className="id-button"
+          onClick={handleSignupClick}
+          style={{
+            backgroundColor: isFormComplete() ? "#8f0456" : "#dadada",
+            color: "#ffffff",
+            cursor: isFormComplete() ? "pointer" : "not-allowed",
+          }}
+        >
+          가입하기
+        </div>
       </div>
     </div>
   );

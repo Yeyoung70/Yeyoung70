@@ -5,10 +5,13 @@ import Box from "@mui/material/Box";
 import BottomNav from "../../../components/BottomNav/BottomNav";
 import BrendCategoryModal from "../../../components/modal/plus/BrendCategoryModal";
 import StatusCategoryModal from "../../../components/modal/plus/StatusCategoryModal";
+import BuyModal from "../../../components/modal/camera/BuyModal";
+
 import { IoIosArrowForward } from "react-icons/io";
 import { FaCirclePlus } from "react-icons/fa6";
+import { BsStars } from "react-icons/bs";
+
 import "./Buy.css";
-import BuyModal from "../../../components/modal/camera/BuyModal";
 
 function Buy() {
   const [source, setSource] = useState("");
@@ -175,6 +178,7 @@ function Buy() {
                 }}
                 disabled={!isAIButtonEnabled}
               >
+                <BsStars />
                 AI 측정하기
               </button>
             </div>

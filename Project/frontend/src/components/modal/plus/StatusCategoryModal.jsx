@@ -2,14 +2,12 @@ import React, { useState } from "react";
 
 import CategoryButton from "../../Button/category/CategoryButton";
 import WideModal from "../WideModal";
-// import ShortModal from "../my/ShortModal";
 
 import { IoCloseOutline } from "react-icons/io5";
 
 import "./StatusCategoryModal.css";
 
 const StatusCategoryModal = ({ closeModal, setSelectedStatusCategory }) => {
-  // 수정된 부분
   const categories = [
     "새 상품",
     "거의 새상품",

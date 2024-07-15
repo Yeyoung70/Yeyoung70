@@ -7,11 +7,14 @@ import {
   fetch_comment,
   delete_comment,
 } from "../../api/comment";
+
 import ProductModal from "../../components/modal/home/ProductModal";
 import BottomQuest from "../../components/BottomNav/BottomQuest";
 import card from "../../assets/card/card_sample.png";
+
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { GoArrowLeft } from "react-icons/go";
+
 import "./Product.css";
 
 const Product = () => {
@@ -191,7 +194,7 @@ const Product = () => {
         <div className="back" onClick={handleBackClick}>
           <IoIosArrowBack size={26} />
         </div>
-        <div className="title">{article.title}</div>
+        <div className="title">제품 상세</div>
         {/* <div className="alarm">
           <HiOutlineDotsVertical size={26} onClick={handleShowProductModal} />
         </div> */}
@@ -203,127 +206,129 @@ const Product = () => {
           />
         )}
       </div>
-
-      <div className="photo-sec">
-        <button className="arrow left" onClick={handlePrevImage}>
-          <IoIosArrowBack size={26} />
-        </button>
-        <img
-          src={imageUrl}
-          alt="Product"
-          className="card"
-          width={355}
-          height={355}
-        />
-        <button className="arrow right" onClick={handleNextImage}>
-          <IoIosArrowForward size={26} />
-        </button>
-      </div>
-
-      <div className="thumbnail-sec">
-        {images.map((image, index) => (
+      <div className="total-info">
+        <div className="photo-sec">
+          <button className="arrow left" onClick={handlePrevImage}>
+            <IoIosArrowBack size={26} />
+          </button>
           <img
-            key={index}
-            src={image.image_url}
-            alt="Thumbnail"
-            className={`thumbnail ${
-              index === currentImageIndex ? "active" : ""
-            }`}
-            onClick={() => handleImageClick(index)}
-            width={45}
-            height={45}
+            src={imageUrl}
+            alt="Product"
+            className="card"
+            width={355}
+            height={355}
           />
-        ))}
-      </div>
+          <button className="arrow right" onClick={handleNextImage}>
+            <IoIosArrowForward size={26} />
+          </button>
+        </div>
 
-      <div className="product-sec">
-        <div className="info">
-          <div className="cate">
-            <div className="top">{article.product.category.top_category}</div>
-            <div>
-              &nbsp;
-              <IoIosArrowForward size={16} />
-              &nbsp;
-            </div>
-            <div className="bottom">
-              {article.product.category.bottom_category}
-            </div>
-          </div>
-          <div className="name">{article.title}</div>
-        </div>
-        <div className="nickname" onClick={() => navigate(`/user`)}>
-          @{article.nickname}
-        </div>
-        <div className="price">{article.product.price} 원</div>
-        <div className="content">{article.content}</div>
-      </div>
-      <div className="line"></div>
-      {comments.map((comment) => (
-        <div className="review-sec" key={comment.id}>
-          <div className="photo">
+        <div className="thumbnail-sec">
+          {images.map((image, index) => (
             <img
-              src={comment.user.profile_images.image_url || card}
-              alt="card"
-              className="card"
+              key={index}
+              src={image.image_url}
+              alt="Thumbnail"
+              className={`thumbnail ${
+                index === currentImageIndex ? "active" : ""
+              }`}
+              onClick={() => handleImageClick(index)}
+              width={45}
+              height={45}
             />
-          </div>
-          <div className="info">
-            <div className="nickname">@{comment.user.nickname}</div>
-            {editingCommentId === comment.id ? (
-              <div className="modify-sec">
-                <input
-                  className="text"
-                  type="text"
-                  value={editingCommentText}
-                  onChange={handleEditCommentChange}
-                />
-                <div className="modify-button">
-                  <div className="save" onClick={handleEditCommentSubmit}>
-                    저장
-                  </div>
+          ))}
+        </div>
 
-                  <div
-                    className="cancel"
-                    onClick={() => setEditingCommentId(null)}
-                  >
-                    취소
+        <div className="product-sec">
+          <div className="info">
+            <div className="cate">
+              <div className="top">{article.product.category.top_category}</div>
+              <div>
+                &nbsp;
+                <IoIosArrowForward size={16} />
+                &nbsp;
+              </div>
+              <div className="bottom">
+                {article.product.category.bottom_category}
+              </div>
+            </div>
+            <div className="name">{article.title}</div>
+          </div>
+          <div className="price">{article.product.price} 원</div>
+          <div className="nickname" onClick={() => navigate(`/user`)}>
+            @{article.nickname}
+          </div>
+
+          <div className="content">{article.content}</div>
+        </div>
+        {/* <div className="line"></div> */}
+        {comments.map((comment) => (
+          <div className="review-sec" key={comment.id}>
+            <div className="photo">
+              <img
+                src={comment.user.profile_images.image_url || card}
+                alt="card"
+                className="card"
+              />
+            </div>
+            <div className="info">
+              <div className="nickname">@{comment.user.nickname}</div>
+              {editingCommentId === comment.id ? (
+                <div className="modify-sec">
+                  <input
+                    className="text"
+                    type="text"
+                    value={editingCommentText}
+                    onChange={handleEditCommentChange}
+                  />
+                  <div className="modify-button">
+                    <div className="save" onClick={handleEditCommentSubmit}>
+                      저장
+                    </div>
+
+                    <div
+                      className="cancel"
+                      onClick={() => setEditingCommentId(null)}
+                    >
+                      취소
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className="text">{comment.comment}</div>
-            )}
-            <div className="bottom">
-              <div className="time">
-                {new Date(comment.created_at).toLocaleString()}
-              </div>
-              <div className="like">♡ 좋아요</div>
-              <div
-                className="modify"
-                onClick={() => handleEditComment(comment)}
-              >
-                수정
-              </div>
-              <div
-                className="delete"
-                onClick={() => handleDeleteComment(comment.id)}
-              >
-                삭제
+              ) : (
+                <div className="text">{comment.comment}</div>
+              )}
+              <div className="bottom">
+                <div className="time">
+                  {new Date(comment.created_at).toLocaleString()}
+                </div>
+                <div className="like">♡ 좋아요</div>
+                <div
+                  className="modify"
+                  onClick={() => handleEditComment(comment)}
+                >
+                  수정
+                </div>
+                <div
+                  className="delete"
+                  onClick={() => handleDeleteComment(comment.id)}
+                >
+                  삭제
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
-      <div className="comment-sec">
-        <div className="info">
-          <input
-            type="text"
-            placeholder="댓글을 입력해 주세요"
-            value={newComment}
-            onChange={handleCommentChange}
-          />
-          <div className="icon" onClick={handleCommentSubmit}>
-            <GoArrowLeft size={24} />
+        ))}
+        <div className="comment-sec">
+          <div className="info">
+            <input
+              type="text"
+              placeholder="댓글을 입력해 주세요"
+              value={newComment}
+              onChange={handleCommentChange}
+            />
+            <div className="icon" onClick={handleCommentSubmit}>
+              <GoArrowLeft size={24} />
+            </div>
           </div>
         </div>
       </div>

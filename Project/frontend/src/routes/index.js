@@ -6,7 +6,7 @@ import Start from "../pages/login/Start";
 import Login from "../pages/login/Login";
 import SignUp from "../pages/login/SignUp";
 import Find from "../pages/login/Find";
-import Wellcome from "../pages/login/Wellcome";
+import Welcome from "../pages/login/Welcome";
 import Service from "../pages/login/Service";
 
 import Home from "../pages/home/Home";
@@ -40,7 +40,7 @@ const AllRoutes = () => {
         <Route path="/find" element={<Find />} />
         <Route path="/service" element={<Service />} />
 
-        <Route path="/welcome" element={<Wellcome />} />
+        <Route path="/welcome" element={<Welcome />} />
 
         <Route
           path="/home"

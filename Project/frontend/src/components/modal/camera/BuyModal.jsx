@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import card from "../../../assets/card/product_sample_1.png";
-import { sell_ai } from "../../../api/ai";
-import "./BuyModal.css";
-import LongBuyModal from "../deal/LongBuyModal";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { sell_ai } from "../../../api/ai";
+
+import card from "../../../assets/card/product_sample_1.png";
+import LongBuyModal from "../deal/LongBuyModal";
+
+import "./BuyModal.css";
 
 const BuyModal = ({
   imageFile,
@@ -64,7 +66,7 @@ const BuyModal = ({
     <LongBuyModal isOpen={true} closeModal={closeModal}>
       <div className="Buy-modal">
         <div className="topline"></div>
-        <div className="title">이 상품들은 어떤가요?</div>
+        <div className="title-1">이 상품들은 어떤가요?</div>
         <div className="reco">
           <div className="reco-1">
             <div className="info-1">놀부심보의 상품</div>

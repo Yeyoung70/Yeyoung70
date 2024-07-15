@@ -79,6 +79,7 @@
   justify-content: center;
   align-items: center;
   color: #dadada;
+  cursor: pointer;
 }
 
 .Buy .icon {

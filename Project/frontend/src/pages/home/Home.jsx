@@ -26,7 +26,6 @@ const Home = () => {
         console.error("Error fetching favorite list:", error);
       }
     };
-
     fetchTopArticles();
   }, []);
 
@@ -45,7 +44,7 @@ const Home = () => {
   return (
     <div className="Home">
       <div className="header">
-        <div className="left_1">카테고리</div>
+        <div className="left_1">Category</div>
         <div className="right">
           <GoBell size={26} onClick={handleSAlarmClick} />
         </div>
@@ -94,7 +93,9 @@ const Home = () => {
         </div>
       )}
 
-      <div className="left_2">베스트</div>
+      <div className="left_2">
+        <div className="text-1">Best</div>
+      </div>
 
       <div className="Home-cards">
         <div className="cards">
