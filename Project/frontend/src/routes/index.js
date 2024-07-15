@@ -45,9 +45,9 @@ const AllRoutes = () => {
         <Route
           path="/home"
           element={
-            // <ProtectedRoute>
-            <Home />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
           }
         />
         <Route path="/product" element={<Product />} />
@@ -56,22 +56,21 @@ const AllRoutes = () => {
         <Route
           path="/search"
           element={
-            // <ProtectedRoute>
-            <Search />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <Search />/{" "}
+            </ProtectedRoute>
           }
         />
 
         <Route
           path="/plus"
           element={
-            // <ProtectedRoute>
-            <Plus />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <Plus />
+            </ProtectedRoute>
           }
         />
         <Route path="/sell" element={<Sell />} />
-        {/* <Route path="/buy" element={<Buy />} /> */}
         <Route path="/buy" element={<Buy />} />
         <Route path="/camera-sell" element={<CameraSell />} />
         <Route path="/predict" element={<Predict />} />
@@ -80,9 +79,9 @@ const AllRoutes = () => {
         <Route
           path="/deal"
           element={
-            // <ProtectedRoute>
-            <Deal />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <Deal />
+            </ProtectedRoute>
           }
         />
         <Route path="/chat" element={<Chat />} />
@@ -90,9 +89,9 @@ const AllRoutes = () => {
         <Route
           path="/my"
           element={
-            // <ProtectedRoute>
-            <My />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <My />
+            </ProtectedRoute>
           }
         />
         <Route path="/review" element={<Review />} />

@@ -14,7 +14,6 @@ import { BsStars } from "react-icons/bs";
 import "./Buy.css";
 
 function Buy() {
-  const [source, setSource] = useState("");
   const location = useLocation();
   const [showBrendCategoryModal, setShowBrendCategoryModal] = useState(false);
   const [selectedBrendCategory, setSelectedBrendCategory] = useState("");
@@ -28,7 +27,6 @@ function Buy() {
   const isAIButtonEnabled =
     selectedBrendCategory && selectedStatusCategory && imageUrls.length > 0;
 
-  // 상태 복원
   useEffect(() => {
     if (location.state) {
       const {
@@ -67,7 +65,6 @@ function Buy() {
         return;
       }
       const newUrl = URL.createObjectURL(file);
-      setSource(newUrl);
       setImageUrls((prevUrls) => [...prevUrls, newUrl]);
       setImageFile(file); // File 객체를 설정합니다.
     }
