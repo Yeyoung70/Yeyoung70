@@ -1,0 +1,22 @@
+/* 앱부분을 진짜 앱 크기로 만들기 */
+.App {
+  background-color:  #fefefe;
+  text-align: center;
+
+  /* 최대 크기 조정 */
+  max-width: 480px;
+  width: 100%;
+
+  /* 화면 가운데 정렬 */
+  margin: 0 auto; /* vertical horizontal */
+
+  /* 세로 100% 주는 방법, 위아래가 얼마나 길든 전체를 다 차지하도록 */ 
+  height: 100vh;
+
+  position: relative;
+  box-sizing: border-box;
+
+
+}
+
+

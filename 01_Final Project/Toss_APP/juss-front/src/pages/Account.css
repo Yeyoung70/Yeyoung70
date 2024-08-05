@@ -1,0 +1,89 @@
+.Account {
+    padding: 2rem;
+}
+
+.Account > .app-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Account > .app-bar > .left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.Account > .account-info {
+    /* top horizontal bottom */
+    margin: 5rem 0 2rem;
+}
+
+.Account > .account-info > div {
+    display: flex;
+}
+
+.Account .balance {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.Account .account-number {
+    display: flex;
+    align-items: flex-end;
+    gap: .5rem;
+}
+
+.Account .account-number > span:first-child {
+    text-decoration: underline;
+}
+.Account .account-number > span:last-child {
+    font-size: small;
+    color: #707070;
+}
+
+/* 
+:first-child
+:nth-child(n)
+:last-child 
+*/
+
+.Account > .account-btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.Account > .account-btns > * {
+    flex: 1;
+}
+
+.Account > .account-btns > div:first-child {
+    background-color: rgba(92, 137, 255, 0.1);
+    color: #5C89FF;
+}
+
+.Account > .transactions .date-tr-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* 요소 늘리기 */
+    align-items: stretch; 
+    margin-bottom: 2rem;
+}
+.Account > .transactions span {
+    text-align: left;
+}
+
+.Account .tr-balance {
+    text-align: right;
+}
+
+.Account .tr-balance > .income {
+    color: #5C89FF;
+}
+
+.Account .tr-balance > div:last-child {
+    color: #707070;
+}

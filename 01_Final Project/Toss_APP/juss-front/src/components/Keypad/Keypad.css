@@ -1,0 +1,16 @@
+.Keypad {
+    display: flex;
+    flex-wrap: wrap;
+}
+.Keypad > .key {
+    /* calc : % - px */
+    width: calc(100%/3);
+    height: 80px;
+    font-size: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}

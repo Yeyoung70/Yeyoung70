@@ -1,0 +1,24 @@
+.Deposit {
+    height: 700px;
+    background-color: white;
+
+    border-radius: 2rem;
+    padding-left: 1.5rem;
+    margin-bottom: 1.3rem;
+}
+.Deposit > .menu-bar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+
+    text-align: left;
+    font-weight: bold;
+    font-size: 21.5px;
+}
+.Deposit > .accounts > .Card  {
+    margin-bottom: 1rem;
+}
+.Deposit > .accounts {
+    font-size: 18px;
+}

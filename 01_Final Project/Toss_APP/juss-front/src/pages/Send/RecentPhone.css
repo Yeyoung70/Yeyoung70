@@ -1,0 +1,43 @@
+.RecentPhone > .input-box {
+    border-radius: 10px;
+    background-color: #efefef;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1.2rem;
+}
+
+.RecentPhone > .input-box > input {
+    border: 0;
+    flex: 1;
+    background-color: transparent; /* 투명 */
+}
+
+.RecentPhone > .input-box > input:focus {
+    outline: 0;
+}
+.RecentPhone > .recent {
+    margin: 2rem 0;
+
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    gap: 1.7rem;
+
+}
+.RecentPhone > .recent > .SecondCard {
+    cursor: pointer;
+}
+
+.RecentPhone > .recent > div:first-child {
+    text-align: left;
+}
+
+
+
+
+
+/* input css */
+
+/* input css end */

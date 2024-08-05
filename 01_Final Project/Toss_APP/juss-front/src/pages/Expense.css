@@ -1,0 +1,23 @@
+.Expense {
+    padding: 1rem;   
+}
+.Expense > .app-bar {
+    display: flex;
+}
+.Expense > .menu-bar {
+    display: flex;
+    color: #dadada;
+    border-bottom: 1px solid #dadada;
+    height: 36px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.Expense > .menu-bar > div {
+    flex: 1;
+    cursor:  pointer;
+}
+.Expense > .menu-bar > div.active {
+    color: #222;
+    border-bottom: 1px solid #222;
+
+}

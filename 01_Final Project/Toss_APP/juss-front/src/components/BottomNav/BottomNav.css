@@ -1,0 +1,38 @@
+.BottomNav {
+    /* 화면 아래 정렬 */
+    position: fixed;
+    bottom: 0;
+
+    /* 요소 균등 분배 */
+    display: flex;
+    justify-content: space-evenly;
+    /* 가운데 정렬 */
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+    max-width: 480px;
+    height: 60px;
+    
+    background-color: white;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    border: 1px solid #dadada;
+}
+
+.BottomNav > a {
+    display: flex;
+    flex-direction: column; /* row */
+    /* gap: .25rem; */
+
+    /* width: 48px; */
+    flex: 1;
+
+    color: #dadada;
+}
+
+.BottomNav > a.active {
+    color: #222222;
+}

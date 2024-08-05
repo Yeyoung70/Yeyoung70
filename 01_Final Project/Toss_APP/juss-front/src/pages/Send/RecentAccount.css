@@ -1,0 +1,35 @@
+.RecentAccount > .input-box {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.RecentAccount > .input-box > input {
+    flex: 1;
+    border: 0;
+    font-size: 18px;
+}
+.RecentAccount > .input-box > input:focus {
+    outline: 0;
+}
+.RecentAccount > .myaccount {
+    margin: 4rem 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.RecentAccount > .recent {
+    margin: 1rem 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    gap: 1.2rem;
+
+}
+.RecentAccount > .recent > .SecondCard {
+    cursor: pointer;
+}
+
+.RecentAccount > .recent > div:first-child {
+    text-align: left;
+}

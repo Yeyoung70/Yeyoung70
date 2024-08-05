@@ -1,0 +1,6 @@
+.Favorite {
+    color: #707070;
+}
+.Favorite > .active {
+    color: #5C89FF;
+}

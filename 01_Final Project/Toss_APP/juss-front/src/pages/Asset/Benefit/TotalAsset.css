@@ -1,0 +1,52 @@
+.TotalAsset > div {
+    margin: 2rem 0;
+}
+
+.TotalAsset > .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.TotalAsset .total .left {
+    text-align: left;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    margin-bottom: 1.5rem;
+}
+.TotalAsset .total .right {
+    flex: 1;
+}
+
+.TotalAsset .total .title {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.TotalAsset > .account {
+    display: flex;
+    text-align: left;
+}
+.TotalAsset > .account-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.TotalAsset > .account-hide {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.TotalAsset > .account-view > .tit {
+    color: #707070;
+    text-align: left;
+}
+
+.TotalAsset > .account-hide > .tit {
+    color: #707070;
+    text-align: left;
+}

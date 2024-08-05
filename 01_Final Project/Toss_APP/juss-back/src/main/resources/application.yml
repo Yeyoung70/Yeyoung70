@@ -1,0 +1,13 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  level:
+    yeyoung.juss-back: DEBUG
+
+server:
+  port: 8082
+  url: http://3.36.112.92/service
+
