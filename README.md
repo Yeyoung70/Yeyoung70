@@ -107,6 +107,8 @@
 	<a href="https://github.com/jmp-fullstack/BOK_project_TEAM3" ><img src="https://img.shields.io/badge/Text mining Modeling-000000?style=flat&logo=Text mining Modeling&logoColor=white" /></a>
 	<a href="https://github.com/Yeyoung70/NoNoBot" ><img src="https://img.shields.io/badge/NoNoBot-000000?style=flat&logo=NoNoBot&logoColor=white" /></a>
 </div>
+<br>
+<br>
 
 <!-- <pre>
 <code>
