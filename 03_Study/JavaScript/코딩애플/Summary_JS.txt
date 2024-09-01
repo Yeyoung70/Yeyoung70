@@ -1,0 +1,8 @@
+[UI 만드는 step]
+1. HTML/CSS로 미리 디자인
+2. 필요할 때 보여달라고 코드짬 (자바스크립트로)
+
+[용어 정리]
+getElementById, getElementByClassname => 해당 이름을 찾아오는 것 
+addEventListener => 사용자의 반응을 감지하는 역할 ex. click, mouseover 등
+function {} () 콜백함수라 부름 

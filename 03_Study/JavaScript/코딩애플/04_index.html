@@ -1,0 +1,44 @@
+<!-- function의 파라미터 문법 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+	<div class="alert-box" id="alert">
+		<p id="title">알림창임</p>
+		<button onclick="alertOpen('none')">닫기</button>
+	</div>
+
+	<button onclick="idArert()">버튼1</button>
+	<button onclick="pwArert()">버튼2</button>
+
+	<script>
+		
+	  function idArert() { 	
+			document.getElementById('title').innerHTML = '아이디를 입력하세요';
+			document.getElementById('alert').style.display = 'block';
+		}
+	  function pwArert() { 	
+			document.getElementById('title').innerHTML = '비밀번호를 입력하세요';
+			document.getElementById('alert').style.display = 'block';
+		}
+
+		function alertOpen(구멍) {
+			document.getElementById('alert').style.display = 구멍;
+		}
+		// alertOpen('block');
+		// alertOpen('none');
+
+		// function alertClose() {
+		// 	document.getElementById('alert').style.display = 'none';
+		// }
+
+	</script>
+
+</body>
+</html>
