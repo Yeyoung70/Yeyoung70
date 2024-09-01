@@ -5,4 +5,29 @@
 [용어 정리]
 getElementById, getElementByClassname => 해당 이름을 찾아오는 것 
 addEventListener => 사용자의 반응을 감지하는 역할 ex. click, mouseover 등
+
+document.getElementById('어쩌고').addEventListener('click', function(){
+  // 실행할 코드
+});
+id가 어쩌구인 요소를 클릭하면 안의 코드를 실행해 주세요~!
+편리한 quertSelector() (맨위의 코드만 찾아주기 때문에  querySelectAll로 찾고 인덱싱하기)
+'.list-group' => . 쩜은 class 선택
+'#test1' => # 샵은 id 선택
+
 function {} () 콜백함수라 부름 
+
+classList.toggle('클래스명') => 버튼 한번 더 누르며 숨기기
+
+
+Bootstrap -> 버튼, 네비게이션바 등 디자인 요소 템플릿
+jQuery CDN-> 긴 JS 코드를 줄여줌
+
+[jQuery]
+document.querySelect('.hello).innerHTML = '바보';
+$('.hello').html('바보'); 
+
+$('.hello').css('color', 'red'); ->css 변경
+$('.hello').addClass('클래스명'); -> 클래스 부착
+$('.hello').removeClass('클래스명'); -> 클래스 제거
+$('.hello').toggleClass('클래스명'); -> 클래스 탈부착(토글)
+
