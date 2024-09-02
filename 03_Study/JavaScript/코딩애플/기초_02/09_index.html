@@ -32,14 +32,14 @@
 
   <script>
 
-    if (3 < 1) {
-      console.log('안녕');
-    } else {
-      console.log('바보');
-    }
-
     // 전송버튼 누르면 
     // 저기 input에 입력한 값이 공백이면 알림창 띄워주세요~
+    $('.btn btn-primary').on('click', function() {
+      if (document.querySelector('.form-control').value == '') {
+        alert('안녕하세요')
+      };
+    })
+    
 
   </script>
 
