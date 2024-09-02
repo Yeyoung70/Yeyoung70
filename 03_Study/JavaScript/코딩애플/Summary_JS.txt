@@ -25,9 +25,26 @@ jQuery CDN-> 긴 JS 코드를 줄여줌
 [jQuery]
 document.querySelect('.hello).innerHTML = '바보';
 $('.hello').html('바보'); 
+addEventListener -> on
 
 $('.hello').css('color', 'red'); ->css 변경
 $('.hello').addClass('클래스명'); -> 클래스 부착
 $('.hello').removeClass('클래스명'); -> 클래스 제거
 $('.hello').toggleClass('클래스명'); -> 클래스 탈부착(토글)
 
+클래스명 붙인다는 뜻 classList.add -> addClass
+
+
+one-way UI 애니메이션 만드는 법
+1. 시작스타일
+2. 최종스타일
+(class로 만들어 놓기)
+3. 원할 때 최종스타일로 변하라고 코드짬
+4. transition 추가
+* display말고, visibility : hidden or visible; 로 해야 자연스러움
+
+<form>은 서버로 유저정보 전송하려고 쓰는 것임
+
+[조건문 쓰는 법]
+if(조건){조건이 참일 때 실행할 코드}
+else{위 조건이 참이 아닐 때 실행할 코드}

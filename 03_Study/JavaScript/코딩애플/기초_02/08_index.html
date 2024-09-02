@@ -1,4 +1,4 @@
-<!-- jQuery 사용법 간단 정리 -->
+<!-- 모달창만들기와 간단한 애니메이션 -->
  
 <!DOCTYPE html>
 <html>
@@ -20,6 +20,8 @@
 		</div>
 	</div> 
 
+	
+
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand">Navbar</span>
@@ -37,43 +39,18 @@
 			<li class="list-group-item">And a fifth one</li>
 		</ul>
 
-		<p class="hello">안녕</p>
-		<p class="hello">안녕</p>
-		<p class="hello">안녕</p>
-		<button id="test-btn">버튼</button>
-
 		<button id="login">로그인</button>
 
 		<script>
 
 			// 로그인버튼 누르면 show-modal 클래스를 저기 붙
 			$('#login').on('click', function(){
-				$('.black-bg').addClass('show-modal')
+				$('.black-bg').addClass('show-modal');
 			})
+
 			// 닫기 버튼을 누르면 display가 none이됨
 			$('#close').on('click', function(){
 				$('.black-bg').css('display', 'none');
-			})
-
-			// document.querySelector('#test-btn').addEventListener()
-			$('#test-btn').on('click', function(){
-				$('.hello').show(); //.fadeOut(), .sideUp()
-			})
-
-			// document.querySelectorAll('.hello')[0].innerHTML = '바보';
-
-			// document.querySelector('.hello').innerHTML = '바보';
-			// $('.hello').html('바보');
-			// $('.hello').css('color', 'red');
-			$('.hello').addClass('show');
-
-
-			// document.querySelector('.list-group')
-			// document.querySelector('#test1')
-			// document.querySelectorall('.list-group')[1]
-
-			document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', function(){
-				document.getElementsByClassName('list-group')[0].classList.toggle('show');
 			})
 
 		</script>

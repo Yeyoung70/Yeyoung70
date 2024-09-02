@@ -40,3 +40,8 @@
     border-radius: 5px;
     padding: 30px;
   } 
+
+.main-bg {
+    padding: 100px 20px;
+    background: lightgray;
+}
