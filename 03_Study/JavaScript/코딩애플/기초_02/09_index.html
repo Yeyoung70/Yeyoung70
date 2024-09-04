@@ -24,7 +24,7 @@
          <div class="my-3">
            <input type="password" class="form-control">
          </div>
-         <button type="submit" class="btn btn-primary">전송</button>
+         <button type="submit" class="btn btn-primary" id="send">전송</button>
          <button type="button" class="btn btn-danger" id="close">닫기</button>
       </form> 
 		</div>
@@ -34,7 +34,7 @@
 
     // 전송버튼 누르면 
     // 저기 input에 입력한 값이 공백이면 알림창 띄워주세요~
-    $('.btn btn-primary').on('click', function() {
+    $('#send').on('click', function() {
       if (document.querySelector('.form-control').value == '') {
         alert('안녕하세요')
       };
