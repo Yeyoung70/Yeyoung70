@@ -59,4 +59,11 @@ e.precvenDefault();
     } else if (2 == 3){
       console.log('맞아요!!');
     } 
-검사하고 싶을 때
+검사하고 싶을 때, else if
+
+click -> 값을 바꿀 때 마다
+change -> 값을 다 입력하고 출력할 때 
+
+== 느슨한 비교
+=== 엄격한 비교 (+ 타입까지 점검)
+
