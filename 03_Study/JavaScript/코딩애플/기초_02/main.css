@@ -40,3 +40,8 @@
     border-radius: 5px;
     padding: 30px;
   } 
+
+.dark {
+  background: black;
+  color: white;
+}
