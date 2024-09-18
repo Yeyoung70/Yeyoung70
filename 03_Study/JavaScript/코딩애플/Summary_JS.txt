@@ -73,3 +73,21 @@ $('.badge').html('')  해당 클래스의 안에 있는 내용을 바꿔줌
 let 재선언x 재할당o 범위 function (변수 까먹는 버그를 방지하기 위함)
 const 재선언x 재할당x 범위{} (변하지 않는 값, 상수를 지정하면 좋음)  
 var 재선언x 재할당x 범위{}
+
+setTimeout(function(){실행할 코드}, ms) 시간할당 함수
+setInterval(function(){실행할 코드}, ms) X초 마다 코드 실행  
+
+if var function  -> 자바스크립트 문법
+document.querySelector() / setTimeout() / alert() -> (웹 API) 브라우저 사용법
+
+'abc'.includes('a') 콘솔에서 해당 문자가 있는지 확인하는 법
+/a/.test('abcde') 정규식으로 문자 검사하는 법
+/[a-z]/.test('abcd')  a부터z까지 아무글자 하나만
+/[ㄱ-ㅎ가-힣]/ 아무 한글문자 1개가 있느냐 ? 
+/[0-9]/ 숫자가 있느냐 ?
+/\S/ 특수기호 포함 아무 문자 하나
+/^a/ a로 시작하냐? 
+/a$/ a로 끝나냐?
+/a|b/ a 또는 b
+/\S+@\S+\.\S+/ 
+regular expresstion (정규표현식) https://regexr.com/
