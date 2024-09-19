@@ -91,3 +91,5 @@ document.querySelector() / setTimeout() / alert() -> (웹 API) 브라우저 사�
 /a|b/ a 또는 b
 /\S+@\S+\.\S+/ 
 regular expresstion (정규표현식) https://regexr.com/
+
+<div style="overflow: hidden"> 스크롤 숨김 
