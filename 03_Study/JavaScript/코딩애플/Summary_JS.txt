@@ -93,3 +93,24 @@ document.querySelector() / setTimeout() / alert() -> (웹 API) 브라우저 사�
 regular expresstion (정규표현식) https://regexr.com/
 
 <div style="overflow: hidden"> 스크롤 숨김 
+-
+숫자.toFixed(몇자리) 근데 주의점은 이렇게 하고 나면 '문자'로 변환
+'숫자'를 숫자로 변환하고 싶으면 parseFloat('123'), parseInt('123') 
+-
+window.addEventListener('scroll', function(){
+  console.log(window.scrollY);
+});
+->스크롤이 Y축으로 얼마만큼 내려가는지 확인할 때
+  window.scrollTo(0, 100); 
+-> (x, y)만큼 강제로 스크롤 하기 
+  window.scrollBy(0, 100);
+-> 현재 위치부터 강제로 스크롤 하기
+$(window).on('scroll', function(){
+  $(window).scrollTop();
+});
+-> 현재 스크롤바 위치 출력하는 j쿼리
+
+스크롤바 교훈
+1. 스크롤바 조작할 때 마다 코드실행이 가능하구나
+2. 박스의 숨겨진 실제 높이도 구할 수 있구나
+3. 스크롤 내린 양도 구할 수 있구나
