@@ -20,3 +20,5 @@ for (횟수){
 for (let i = 0; i < 3; i++){
    consol.log('안녕');
 };
+
+var let 반복문시 let을 사용! 변수의 범위가 차이가 있음 
