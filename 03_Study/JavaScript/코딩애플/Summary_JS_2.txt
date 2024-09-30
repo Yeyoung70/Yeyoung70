@@ -1,0 +1,22 @@
+[탭기능 만들며 배우는 for 반복문]
+// 버튼 0 누르면
+// 모든 버튼에 붙은 orange 클래스명 제거
+// 버튼 0에 오렌지 클래스명 추가
+// 모든 div show 클래스명 제거
+// div 0에 show 클래스명 추가
+
+querySelectorAll('.tab-button')[0] 
+== $('.tab-button').eq(0)
+
+*removeClass -> 클래스명에서 해당 단어 삭제
+$('.tab-button').removeClass('orange');
+*addClass -> 클래스명에서 해당 단어 추가
+$('.tab-button').eq(0).addClass('orange');
+
+*반복문 사용하는 법
+for (횟수){
+   consol.log('안녕');
+};
+for (let i = 0; i < 3; i++){
+   consol.log('안녕');
+};
