@@ -1,0 +1,224 @@
+<!-- 이벤트 버블링과 이벤트 관련 함수들 -->
+ 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="02_main.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	 crossorigin="anonymous"></script>
+</head>
+<body>
+
+  	<div class="black-bg">
+		<div class="white-bg">
+			<h4>로그인하세요</h4>
+
+      <form action="09_success.html">
+        <div class="my-3">
+          <input type="text" class="form-control" id="email">
+         </div>
+         <div class="my-3">
+           <input type="password" class="form-control" id="pw">
+         </div>
+         <button type="submit" class="btn btn-primary" id="send">전송</button>
+         <button type="button" class="btn btn-danger" id="close">닫기</button>
+      </form> 
+		</div>
+	</div> 
+
+    <script>
+        document.querySelector('.black-bg').addEventListener('click', function (e) {
+					if (e.target == document.querySelector('.black-bg') ){
+						document.querySelector('.black-bg').classList.remove('show-modal');
+					}
+        })
+
+    </script>
+
+  <script>   
+    
+    $('form').on('submit', function(){
+      var 입력한값 = document.getElementById('email').value;
+      if (입력한값 == ''){
+        alert('아이디 입력안함');
+      }
+      if (/\S+@\S+.\S+/.test(입력한값)){
+        alert('이메일 형식 아님');
+      }
+    });
+
+    $('form').on('submit', function(e){
+      var 비번 = document.getElementById('pw').value;
+      if (/A-Z/.test(비번) == false ){
+        alert('대문자를 입력해 주세요.');
+      }
+    });
+
+  </script>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand">JSShop</span>
+					<span class="badge bg-dark">Dark 🔄</span>
+          <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+    </nav>
+
+    <script>
+
+      window.addEventListener('scroll', function(){
+        console.log(window.scrollY);
+        if (100 < scrollY < 743 ) {
+          $('.navbar-brand').css('font-size', '20px');
+        } if (scrollY < 100) {
+          $('.navbar-brand').css('font-size', '30px');
+        };
+
+        // 스크롤높이가 0이상 743이하일 때 네브바 폰트가 작아짐
+        // 0이되면 네브바 폰트가 정상
+      });
+
+    </script>
+
+
+
+    <script>
+
+      var 이름 = 'kim';
+      var count = 0;
+      $('.badge').on('click', function () {
+        count += 1;
+        if (count % 2 == 0) {
+          $('.badge').html('Light 🔄')
+        } else {
+          $('.badge').html('Dark 🔄');
+        }
+
+        console.log(count);
+        
+        
+      });
+     
+    </script>
+
+		<div class="main-bg">
+      <h4>Shirts on Sale</h4>
+      <button id="login" class="btn btn-danger">로그인</button>
+    </div>
+
+    <div style="height: 1000px;"></div>
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+    </div> 
+
+    <script>
+
+      $('.lorem').on('scroll', function(){
+        var 스크롤양 = document.querySelector('.lorem').scrollTop;
+        var 실제높이 = document.querySelector('.lorem').scrollHeight;
+        var div높이 = document.querySelector('.lorem').clientHeight;
+        console.log(스크롤양, 실제높이, div높이);
+        if (스크롤양 + div높이 > 실제높이 - 10) {
+          alert('확인했습니다.')
+        };
+      
+      });
+      
+
+      // div 의 스크롤바 내린 양 + 눈에 보이는 div높이 == div 실제높이가 맞으면 
+      // alert 띄우기
+
+    </script>
+
+
+  <div style="overflow: hidden;">
+    <div class="slide-container">
+      <div class="slide-box">
+        <img src="car1.png">
+      </div>
+      <div class="slide-box">
+        <img src="car2.png">
+      </div>
+      <div class="slide-box">
+        <img src="car3.png">
+      </div>
+    </div>
+  </div>
+
+  <button class="before">이전</button>
+  <button class="slide-1">1</button>
+  <button class="slide-2">2</button>
+  <button class="slide-3">3</button>
+  <button class="next">다음</button>
+
+
+  <script>
+
+    var count = 1;
+    $('.next').on('click', function(){
+      $('.slide-container').css('transform', 'translateX(-' + count + '00vw)');
+      count += 1;
+    })
+
+
+    // var 지금사진 = 1;
+
+    // $('.next').on('click', function(){
+    //   if (지금사진 == 1) {
+    //     $('.slide-container').css('transform', 'translateX(-100vw)');
+    //     지금사진 += 1;
+    //   } else if (지금사진 = 2) {
+    //     $('.slide-container').css('transform', 'translateX(-200vw)');
+    //     지금사진 += 1;
+    //   }
+    // }); 
+
+    // var 지금사진 = 3;
+
+    // $('.before').on('click', function(){
+    //   if (지금사진 == 3) {
+    //     $('.slide-container').css('transform', 'translateX(-200vw)');
+    //     지금사진 -= 1;
+    //   } else if (지금사진 == 2) {
+    //     $('.slide-container').css('transform', 'translateX(-100vw)');
+    //     지금사진 -= 1;
+    //   }
+    // })
+
+
+    $('.slide-1').on('click', function(){
+      $('.slide-container').css('transform', 'translateX(0vw)');
+    })
+    $(".slide-2").on('click', function(){
+      $('.slide-container').css('transform', 'translateX(-100vw)');
+    });
+    $('.slide-3').on('click', function(){
+      $('.slide-container').css('transform', 'translateX(-200vw)');
+    })
+
+  </script>
+
+		<script>
+
+			// 로그인버튼 누르면 show-modal 클래스를 저기 붙
+			$('#login').on('click', function(){
+				$('.black-bg').addClass('show-modal');
+			})
+
+			// 닫기 버튼을 누르면 display가 none이됨
+			$('#close').on('click', function(){
+				$('.black-bg').css('display', 'none');
+			})
+
+		</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

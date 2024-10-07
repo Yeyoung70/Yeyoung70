@@ -20,7 +20,7 @@
     height : 100%;
     position : fixed;
     background : rgba(0,0,0,0.5);
-    z-index : 6;
+    z-index : 5;
     padding: 30px;
     /* display: none; */
     visibility: hidden;
@@ -44,30 +44,4 @@
 .main-bg {
     padding: 100px 20px;
     background: lightgray;
-}
-
-.slide-container {
-  width: 300vw;
-  /* margin-left: -100vw; */
-  /* transform: translateX(-100vw); */
-  transition: all 1s;
-}
-
-.slide-box {
-  width: 100vw;
-  float: left;
-}
-
-.slide-box img {
-  width: 100%;
-}
-
-.navbar {
-  position: fixed;
-  width: 100%;
-  z-index: 5;
-}
-
-.navbar-brand {
-  font-size: 30px;
 }

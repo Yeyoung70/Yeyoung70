@@ -22,3 +22,13 @@ for (let i = 0; i < 3; i++){
 };
 
 var let 반복문시 let을 사용! 변수의 범위가 차이가 있음 
+
+1.이벤트 버블링 항상 일어남
+2. 이벤트 관련 기능들 사용 가능 
+function(e) {
+  e.target; // 유저가 실제로 누른 것
+  e.currentTarget; // 이벤트리스너 달린 곳
+  == this;
+  e.preventDefault(); // 이벤트 기본동작 막아줌
+  e.stopPropagation(); // 내 상위요소로 이벤트 버블링 막아줌
+}
