@@ -32,3 +32,8 @@ function(e) {
   e.preventDefault(); // 이벤트 기본동작 막아줌
   e.stopPropagation(); // 내 상위요소로 이벤트 버블링 막아줌
 }
+
+이벤트 버블링 응용과 dataset
+1. 함수로 축약할 때 변수 있으면 파라미터로 바꿔보기
+2. data-id로 몰래 숨기기 가능 / 콘솔로 확인 가능 
+3. 이벤트리스너 1개만 써도 개발가능할 수도 -> 탭열기(e.target.dataset.id)
