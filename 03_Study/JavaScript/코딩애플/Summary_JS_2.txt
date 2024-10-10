@@ -37,3 +37,11 @@ function(e) {
 1. 함수로 축약할 때 변수 있으면 파라미터로 바꿔보기
 2. data-id로 몰래 숨기기 가능 / 콘솔로 확인 가능 
 3. 이벤트리스너 1개만 써도 개발가능할 수도 -> 탭열기(e.target.dataset.id)
+
+Array 자료형 ['', '', ... ]
+Object 자료형 {name: '', price: '', ... }  key-value 자료형
+
+
+개발방식1. 완성된 html 파일  => Server-side rendering 서버가 귀찮
+개발방식2. 빈 html 파일 + 데이터 (html 완성은 JS가 하도록함) => Client-side rendering 서버가 편함 
+프론트는 빈html에 데이터 꽂는 작업을 많이 할텐데 그게 '데이터바인딩'
