@@ -64,6 +64,7 @@
         <select class="form-select mt-2">
           <option>모자</option>
           <option>셔츠</option>
+          <option>바지</option>
         </select>
       </form>
 
@@ -76,12 +77,32 @@
       </form>
 
       <script>
+
+        var pants = [28, 30, 32];
+
+        // var a = document.createElement('p');
+        // a.innerHTML = '안녕';
+        // document.querySelector('#test11').appendChild(a);
+
+
         // input의 값 변경할 때 마다 input 이벤트 발동
         $('.form-select').eq(0).on('input', function(){
           // 유저가 셔츠를 고르면 hide를 떼주세요
           if ($('.form-select').eq(0).val() == '셔츠') {
             $('.form-select').eq(1).removeClass('form-hide');
-          } else ($('.form-select').eq(1).addClass('form-hide'))
+          }  
+          else if ($('.form-select').eq(0).val() == '바지') {
+            $('.form-select').eq(1).removeClass('form-hide');
+          //   var 템플릿 = `<option>28</option>
+          // <option>30</option>`;
+          // $('.form-select').eq(1).html(템플릿);
+          for (var i = 0; i < pants.length; i++){
+            // option 태그 생성해주세요
+          }
+          }  
+          else if ($('.form-select').eq(0).val() == '모자') {
+            $('.form-select').eq(1).addClass('form-hide');
+          }
         });
 
       </script>

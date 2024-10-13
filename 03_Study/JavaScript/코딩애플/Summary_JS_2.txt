@@ -45,3 +45,44 @@ Object 자료형 {name: '', price: '', ... }  key-value 자료형
 개발방식1. 완성된 html 파일  => Server-side rendering 서버가 귀찮
 개발방식2. 빈 html 파일 + 데이터 (html 완성은 JS가 하도록함) => Client-side rendering 서버가 편함 
 프론트는 빈html에 데이터 꽂는 작업을 많이 할텐데 그게 '데이터바인딩'
+
+
+JS로 html 만들기
+<div id="test">
+</div>
+<script>
+1.  var a = document.createElement('p')
+  a.innerHTML = '안녕';
+  document.querySelector('#test').appnedChild(a);
+
+2.  var a = '<p>안녕</p>'
+   document.quertSelector('#test').innerAdjacentHTML('beforeend', a);
+
+3.  $('#test').append(a);
+</script>
+
+innerAdjacentHTML, append 아래에 html 추가해줌
+innerHTML, html 그냥 다 없애고 새로 추가해줌
+
+반복문의 용도
+1. 코드 반복
+2. array, object 데이터 전부 꺼낼 때
+
+[forEach, for in 반복문] 
+for (var i = 0; i < pants.length; i++){
+            option 태그 생성해주세요
+          }
+이게 너무 기니까, 배열일 때 간편하게 forEach 사용, 배열 길이만큼 반복문을 돌려준다 
+pants.forEach(funtion(a){
+ $('.form-select').eq(1).append<`<option>${a}</option>`);
+})
+a는 pants 안에 있던 값들
+
+오브젝트 문법을 반목문 돌리고싶으면 for in문 사용
+var obj = {name: 'kim', age: 20}
+for (var key in obj) {
+  console.log(obj[key]);
+}
+
+funtion{}, arrow funtion () => {}
+
