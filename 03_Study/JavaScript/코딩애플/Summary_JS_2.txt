@@ -86,4 +86,22 @@ for (var key in obj) {
 
 funtion{}, arrow funtion () => {}
 
+문자 정렬은 array.sort()
+var 어레이 = [7, 3, 5, 2, 40];
+어레이.sort();
+console.log(어레이);
 
+숫자 정렬은
+var 어레이 = [7, 3, 5, 2, 40];
+어레이.sort(function(a, b) {
+    return a - b
+});
+console.log(어레이);
+
+작동 원리는 
+1. a, b는 array 안의 자료임
+2. return 오른쪽이 양수면 a를 오른쪽으로
+3. return 오른쪽이 음수면 b를 오른쪽으로
+
+.sort() 는 원본 변형o
+.filter() 는 원본 변형x 그래서 새 변수에 저장해야 함

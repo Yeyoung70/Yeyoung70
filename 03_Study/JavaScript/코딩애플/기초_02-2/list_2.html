@@ -24,13 +24,130 @@
 
   </div>
 </div> 
-	
+
+<div class="container my-3">
+	<button class="btn btn-danger" id="price">
+		가격순정렬
+	</button>
+	<button class="btn btn-warning" id="title">
+		다나가순정렬
+	</button>
+	<button class="btn btn-warning" id="60000">
+		6만원 이하
+	</button>
+</div>
+
 	<script>
 		var products = [
 			{ id : 0, price : 70000, title : 'Blossom Dress' },
 			{ id : 1, price : 50000, title : 'Springfield Shirt' },
 			{ id : 2, price : 60000, title : 'Black Monastery' }
 		];
+
+		// $('#price').click(function(){
+		// 	products.sort(function(a, b){
+		// 		return a.price - b.price
+		// 	});
+		// 	console.log(products);
+			
+		// 	$('.row').html('');
+
+		// 	products.forEach((a, i)=>{
+		// 	var 템플릿 = `<div class="col-sm-4">
+		// 	<img src="https://via.placeholder.com/600" class="w-100">
+		// 	<h5>${a.title}</h5>
+		// 	<p>${products[i].price}</p>
+		// 	</div>`;
+		// 	console.log(a);
+			
+		// $('.row').append(템플릿)
+		// })
+		// })
+
+		// var 테스트 = ['가', '나', '다']
+		// 테스트.sort(function(a, b){
+		// 	if (a < b) {
+		// 		return 1
+		// 	} else {
+		// 		return -1
+		// 	}
+		// });
+		// console.log(테스트);
+		
+
+		$('#title').click(function(){
+			products.sort(function(a, b){
+				if (a.title < b.title) {
+					return 1
+				} else {
+					return -1
+				}
+			});
+
+				$('.row').html('');
+
+				products.forEach((a, i)=>{
+				var 템플릿 = `<div class="col-sm-4">
+				<img src="https://via.placeholder.com/600" class="w-100">
+				<h5>${a.title}</h5>
+				<p>${products[i].price}</p>
+				</div>`;
+				console.log(a);
+				
+			$('.row').append(템플릿)
+			})
+		})
+		console.log(products);
+
+		$('#60000').click(function(){
+			var newProduct = products.filter(function(a){
+				return a.price <= 60000
+			})
+			console.log(newProduct);
+
+			$('.row').html('');
+
+			newProduct.forEach((a, i)=>{
+			var 템플릿 = `<div class="col-sm-4">
+			<img src="https://via.placeholder.com/600" class="w-100">
+			<h5>${a.title}</h5>
+			<p>${newProduct[i].price}</p>
+			</div>`;
+			console.log(a);
+
+			$('.row').append(템플릿)
+			})
+		})
+
+		
+		
+
+
+		// var 어레이 = [7, 3, 4, 10, 30]
+		// var 어레이2 = ['a', 'r', 'c', 'k']
+		// 어레이.sort(function(a, b) {
+		// 	return a - b
+		// });
+		// console.log(어레이);
+
+		// var 어레이 = [7, 3, 4, 10, 30]
+		// // filter()의 결과는 변수에 저장해서 써야함
+		// var 새어레이 = 	어레이.filter(function(a){
+		// 	return a < 4
+		// })
+		// console.log(새어레이);
+
+		// var 어레이 = [7, 3, 4, 10, 30]
+		// // map은 다 적용하고 싶을 때
+		// var 새어레이 = 	어레이.map(function(a){
+		// 	return a * 1000
+		// })
+		// console.log(새어레이);
+	
+
+
+
+
 		
 		// $.get('https://codingapple1.github.io/hello.txt').done(function(data){
 		// 	console.log(data);
@@ -53,7 +170,7 @@
 	
 	<div class="container">
 	  <button class="btn btn-danger" id="more">더보기</button>
-  </div>
+	</div>
 
 	<script>
 
