@@ -105,3 +105,21 @@ console.log(어레이);
 
 .sort() 는 원본 변형o
 .filter() 는 원본 변형x 그래서 새 변수에 저장해야 함
+
+유저몰래 브라우저 안에 몰래 데이터 저장 가능 -> 반영구적으로 저장할 수 있는 방법
+개발자 도구 - Applocation
+localStorage(반영구적) / Session Storage(휘발성) 이름: 값 형태로 저장가능 용량은 5MB 문자/숫자만 저장 가능 
+IndexedDB : 구조화된 대용량데이터 저장시
+Cookies : 보통 로그인 정보 저장
+Cache Storage : html, css, js 파일 저장하는 곳 
+
+localStorage.setItem('이름', '값') 로컬 스토리지에 키값 저장하기
+localStorage.getItem('이름'); 값 불러오기
+localStorage.removeItem('이름'); 제거하기 
+
+array, object 저장하려면 
+var arr = [1,2,3];
+var newArr = JSON.stringify(arr); -> 제이슨으로 바꾸고싶은 문자 넣기
+JSON.parse() -> array, object로 변환
+
+localStorage -> sessionStorage로 바꾸면 수정 가능
